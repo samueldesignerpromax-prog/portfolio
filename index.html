@@ -1153,10 +1153,6 @@
                             <label for="project-link">Link do Projeto</label>
                             <input type="text" id="project-link">
                         </div>
-                        <div class="form-group">
-                            <label for="project-github">Link GitHub</label>
-                            <input type="text" id="project-github">
-                        </div>
                         <button type="submit" class="btn" id="project-submit">Adicionar Projeto</button>
                     </form>
                     
@@ -1215,9 +1211,7 @@
             <div class="about-content">
                 <div class="profile-img">
                     <div class="profile-img-container" id="profile-container">
-                        <i class="fas fa-user-plus"></i>
-                        <p>Clique em "Alterar Foto" para adicionar sua imagem</p>
-                        <img id="profile-picture" style="display: none;">
+                        <img id="profile-picture" src="https://raw.githubusercontent.com/samueldesignerpromax-prog/Assistente-virtual-do-Samuel/main/Imagem%20do%20WhatsApp%20de%202024-09-24%20%C3%A0(s)%2016.13.59_5d2b8d2a.jpg" alt="Samuel Ciryaco de Andrade">
                     </div>
                     <input type="file" id="upload-photo" accept="image/*" style="display: none;">
                     <button onclick="document.getElementById('upload-photo').click()" class="btn" style="margin-top: 15px;">Alterar Foto</button>
@@ -1544,91 +1538,80 @@
         let projects = JSON.parse(localStorage.getItem('projects')) || [
             {
                 id: '1',
-                title: 'Chatbot Inteligente - Samuel Designer Pro Max',
-                description: 'Chatbot avançado com reconhecimento de voz e IA para atendimento automático de clientes.',
-                image: 'https://via.placeholder.com/400x200/00ff41/000000?text=Chatbot+IA+Avancado',
-                link: 'https://samueldesignerpromax-prog.github.io/novo-chatbot',
-                github: 'https://github.com/samueldesignerpromax-prog/novo-chatbot'
+                title: 'Assistente Virtual - Samuel Designer Pro Max',
+                description: 'Assistente virtual inteligente com reconhecimento de voz e IA para atendimento automático de clientes.',
+                image: 'https://raw.githubusercontent.com/samueldesignerpromax-prog/Assistente-virtual-do-Samuel/main/Imagem%20do%20WhatsApp%20de%202024-09-24%20%C3%A0(s)%2016.13.59_5d2b8d2a.jpg',
+                link: 'https://samueldesignerpromax-prog.github.io/Assistente-virtual-do-Samuel/'
             },
             {
                 id: '2',
                 title: 'Chatbot Inteligente - Versão Anterior',
                 description: 'Sistema de chatbot desenvolvido com JavaScript para atendimento automático e interativo.',
                 image: 'https://via.placeholder.com/400x200/00ff41/000000?text=Chatbot+AI',
-                link: 'https://samueldesignerpromax-prog.github.io/chatbot/',
-                github: 'https://github.com/samueldesignerpromax-prog/chatbot'
+                link: 'https://samueldesignerpromax-prog.github.io/chatbot/'
             },
             {
                 id: '3',
                 title: 'Sistema de Afiliação - E-books',
                 description: 'Plataforma de afiliação e vendas de e-books com design responsivo e sistema de pagamento.',
                 image: 'https://via.placeholder.com/400x200/00ff41/000000?text=E-books+Store',
-                link: 'https://samueldesignerpromax-prog.github.io/Afilia-o-e-vendas-de-e-books/',
-                github: 'https://github.com/samueldesignerpromax-prog/Afilia-o-e-vendas-de-e-books'
+                link: 'https://samueldesignerpromax-prog.github.io/Afilia-o-e-vendas-de-e-books/'
             },
             {
                 id: '4',
                 title: 'Adega Len - Website',
                 description: 'Site institucional para adega com catálogo de produtos e informações sobre vinhos.',
                 image: 'https://via.placeholder.com/400x200/00ff41/000000?text=Adega+Len',
-                link: 'https://samueldesignerpromax-prog.github.io/Adega-len/',
-                github: 'https://github.com/samueldesignerpromax-prog/Adega-len'
+                link: 'https://samueldesignerpromax-prog.github.io/Adega-len/'
             },
             {
                 id: '5',
                 title: 'Plataforma de Vendas Online',
                 description: 'E-commerce completo com carrinho de compras e sistema de checkout.',
                 image: 'https://via.placeholder.com/400x200/00ff41/000000?text=E-commerce',
-                link: 'https://samueldesignerpromax-prog.github.io/Vendas-online/',
-                github: 'https://github.com/samueldesignerpromax-prog/Vendas-online'
+                link: 'https://samueldesignerpromax-prog.github.io/Vendas-online/'
             },
             {
                 id: '6',
                 title: 'Pizzaria Delivery',
                 description: 'Site de delivery de pizza com cardápio online e sistema de pedidos.',
                 image: 'https://via.placeholder.com/400x200/00ff41/000000?text=Pizzaria',
-                link: 'https://samueldesignerpromax-prog.github.io/Pizzaria/',
-                github: 'https://github.com/samueldesignerpromax-prog/Pizzaria'
+                link: 'https://samueldesignerpromax-prog.github.io/Pizzaria/'
             },
             {
                 id: '7',
                 title: 'Loja de Roupas Online',
                 description: 'E-commerce de moda com catálogo de produtos e filtros de busca.',
                 image: 'https://via.placeholder.com/400x200/00ff41/000000?text=Fashion+Store',
-                link: 'https://samueldesignerpromax-prog.github.io/Loja-de-Roupa/',
-                github: 'https://github.com/samueldesignerpromax-prog/Loja-de-Roupa'
+                link: 'https://samueldesignerpromax-prog.github.io/Loja-de-Roupa/'
             },
             {
                 id: '8',
                 title: 'Hamburgueria Artesanal',
                 description: 'Site para hamburgueria com cardápio digital e sistema de delivery.',
                 image: 'https://via.placeholder.com/400x200/00ff41/000000?text=Hamburgueria',
-                link: 'https://samueldesignerpromax-prog.github.io/Hamburgueria/',
-                github: 'https://github.com/samueldesignerpromax-prog/Hamburgueria'
+                link: 'https://samueldesignerpromax-prog.github.io/Hamburgueria/'
             },
             {
                 id: '9',
                 title: 'Padaria Adelaide Maria',
                 description: 'Website institucional para padaria tradicional com produtos artesanais.',
                 image: 'https://via.placeholder.com/400x200/00ff41/000000?text=Padaria',
-                link: 'https://fijccufufxu.github.io/Padaria-Adelaide-Maria-/',
-                github: 'https://github.com/fijccufufxu/Padaria-Adelaide-Maria-'
+                link: 'https://fijccufufxu.github.io/Padaria-Adelaide-Maria-/'
             },
             {
                 id: '10',
                 title: 'Portfólio Pessoal - Wix',
                 description: 'Site pessoal desenvolvido na plataforma Wix com informações profissionais.',
                 image: 'https://via.placeholder.com/400x200/00ff41/000000?text=Portfolio+Wix',
-                link: 'https://samueldesignerprom.wixsite.com/my-site-2',
-                github: ''
+                link: 'https://samueldesignerprom.wixsite.com/my-site-2'
             },
             {
                 id: '11',
                 title: 'Site Pessoal - Wix',
                 description: 'Outro site pessoal desenvolvido na plataforma Wix com diferentes abordagens.',
                 image: 'https://via.placeholder.com/400x200/00ff41/000000?text=Personal+Site',
-                link: 'https://ciryacodeandradesa6.wixsite.com/meusite',
-                github: ''
+                link: 'https://ciryacodeandradesa6.wixsite.com/meusite'
             }
         ];
         
@@ -2050,9 +2033,9 @@
                 let icon = 'fas fa-laptop-code';
                 let placeholderText = 'Projeto Web';
                 
-                if (project.title.toLowerCase().includes('chatbot')) {
+                if (project.title.toLowerCase().includes('chatbot') || project.title.toLowerCase().includes('assistente')) {
                     icon = 'fas fa-robot';
-                    placeholderText = 'Chatbot AI';
+                    placeholderText = 'Assistente Virtual';
                 } else if (project.title.toLowerCase().includes('e-book') || project.title.toLowerCase().includes('afiliação')) {
                     icon = 'fas fa-book';
                     placeholderText = 'E-books Store';
@@ -2092,7 +2075,6 @@
                         <p>${project.description}</p>
                         <div class="project-links">
                             ${project.link ? `<a href="${project.link}" target="_blank"><i class="fas fa-external-link-alt"></i> Ver Online</a>` : ''}
-                            ${project.github ? `<a href="${project.github}" target="_blank"><i class="fab fa-github"></i> Código</a>` : ''}
                         </div>
                     </div>
                 `;
@@ -2142,7 +2124,6 @@
                 document.getElementById('project-description').value = project.description;
                 document.getElementById('project-image').value = project.image;
                 document.getElementById('project-link').value = project.link || '';
-                document.getElementById('project-github').value = project.github || '';
                 document.getElementById('project-submit').textContent = 'Atualizar Projeto';
             }
         }
@@ -2165,8 +2146,7 @@
                 title: document.getElementById('project-title').value,
                 description: document.getElementById('project-description').value,
                 image: document.getElementById('project-image').value,
-                link: document.getElementById('project-link').value,
-                github: document.getElementById('project-github').value
+                link: document.getElementById('project-link').value
             };
             
             if (project.id) {
