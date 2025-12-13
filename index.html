@@ -1327,6 +1327,10 @@
                         <li><i class="fas fa-check"></i> PowerPoint</li>
                         <li><i class="fas fa-check"></i> Outlook</li>
                         <li><i class="fas fa-check"></i> Access</li>
+                        <!-- NOVOS CURSOS ADICIONADOS AQUI -->
+                        <li><i class="fas fa-check"></i> Power BI</li>
+                        <li><i class="fas fa-check"></i> Excel Avançado 1</li>
+                        <li><i class="fas fa-check"></i> Excel Avançado 2</li>
                     </ul>
                 </div>
             </div>
@@ -1421,6 +1425,14 @@
     <script>
         // Dados iniciais (serão salvos no localStorage)
         let certificates = JSON.parse(localStorage.getItem('certificates')) || [
+            // NOVO CERTIFICADO ADICIONADO NO INÍCIO
+            {
+                id: '17',
+                title: 'Decoradores, Iteradores e Geradores com Python',
+                description: 'Certificado de conclusão do curso "Decoradores, Iteradores e Geradores com Python" com carga horária de 1 hora, concluído em 13 de Dezembro de 2025.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Python+Decorators+Iterators+Generators',
+                download: '#'
+            },
             {
                 id: '1',
                 title: 'AI Builders Day 2025 - Tera',
@@ -1536,6 +1548,14 @@
         ];
         
         let projects = JSON.parse(localStorage.getItem('projects')) || [
+            // NOVO PROJETO ADICIONADO NO INÍCIO
+            {
+                id: '12',
+                title: 'Avatar 3.0 - Portfólio Interativo',
+                description: 'Portfólio interativo com tema futurista, efeitos Matrix, administração de conteúdo e visualização dinâmica de certificados e projetos.',
+                image: 'https://via.placeholder.com/400x200/00ff41/000000?text=Avatar+3.0+Portfolio',
+                link: 'https://samueldesignerpromax-prog.github.io/Avatar-3.0/'
+            },
             {
                 id: '1',
                 title: 'Assistente Virtual - Samuel Designer Pro Max',
@@ -2033,7 +2053,10 @@
                 let icon = 'fas fa-laptop-code';
                 let placeholderText = 'Projeto Web';
                 
-                if (project.title.toLowerCase().includes('chatbot') || project.title.toLowerCase().includes('assistente')) {
+                if (project.title.toLowerCase().includes('avatar')) {
+                    icon = 'fas fa-user-astronaut';
+                    placeholderText = 'Portfólio Avatar';
+                } else if (project.title.toLowerCase().includes('chatbot') || project.title.toLowerCase().includes('assistente')) {
                     icon = 'fas fa-robot';
                     placeholderText = 'Assistente Virtual';
                 } else if (project.title.toLowerCase().includes('e-book') || project.title.toLowerCase().includes('afiliação')) {
