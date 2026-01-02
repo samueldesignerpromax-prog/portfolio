@@ -283,7 +283,7 @@
             display: block;
             width: 80px;
             height: 4px;
-            background-color: var(--primary-color);
+            background-color = var(--primary-color);
             margin: 10px auto;
         }
 
@@ -765,7 +765,7 @@
         .modal-content {
             max-width: 90%;
             max-height: 90%;
-            background-color: var(--secondary-color);
+            background-color = var(--secondary-color);
             border-radius: 10px;
             overflow: hidden;
             border: 2px solid var(--primary-color);
@@ -1425,7 +1425,7 @@
     <script>
         // Dados iniciais (serão salvos no localStorage)
         let certificates = JSON.parse(localStorage.getItem('certificates')) || [
-            // NOVO CERTIFICADO ADICIONADO NO INÍCIO
+            // NOVOS CERTIFICADOS ADICIONADOS - DEZEMBRO 2025
             {
                 id: '17',
                 title: 'Decoradores, Iteradores e Geradores com Python',
@@ -1433,6 +1433,98 @@
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Python+Decorators+Iterators+Generators',
                 download: '#'
             },
+            {
+                id: '18',
+                title: 'Gerenciamento de Pacotes, Convenções e Boas Práticas Python',
+                description: 'Certificado de conclusão do curso "Gerenciamento de Pacotes, Convenções e Boas Práticas Python" com carga horária de 1 hora, concluído em 20 de Dezembro de 2025.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Python+Packages+Best+Practices',
+                download: '#'
+            },
+            {
+                id: '19',
+                title: 'Manipulando Arquivos em Python',
+                description: 'Certificado de conclusão do curso "Manipulando Arquivos em Python" com carga horária de 1 hora, concluído em 16 de Dezembro de 2025.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Python+File+Handling',
+                download: '#'
+            },
+            {
+                id: '20',
+                title: 'Desafios de Código: Aperfeiçoe Sua Lógica e Pensamento Computacional',
+                description: 'Certificado de conclusão do curso "Desafios de Código: Aperfeiçoe Sua Lógica e Pensamento Computacional" com carga horária de 1 hora, concluído em 20 de Dezembro de 2025.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Coding+Challenges+Logic',
+                download: '#'
+            },
+            {
+                id: '21',
+                title: 'Introdução à Programação Orientada a Objetos (POO) com Python',
+                description: 'Certificado de conclusão do curso "Introdução à Programação Orientada a Objetos (POO) com Python" com carga horária de 1 hora, concluído em 20 de Dezembro de 2025.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Python+OOP+Introduction',
+                download: '#'
+            },
+            {
+                id: '22',
+                title: 'Aprendendo o Conceito de Herança com Python',
+                description: 'Certificado de conclusão do curso "Aprendendo o Conceito de Herança com Python" com carga horária de 1 hora, concluído em 22 de Dezembro de 2025.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Python+Inheritance',
+                download: '#'
+            },
+            {
+                id: '23',
+                title: 'Aplicando Encapsulamento em Python',
+                description: 'Certificado de conclusão do curso "Aplicando Encapsulamento em Python" com carga horária de 1 hora, concluído em 22 de Dezembro de 2025.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Python+Encapsulation',
+                download: '#'
+            },
+            {
+                id: '24',
+                title: 'Conhecendo Polimorfismo em Python',
+                description: 'Certificado de conclusão do curso "Conhecendo Polimorfismo em Python" com carga horária de 1 hora, concluído em 25 de Dezembro de 2025.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Python+Polymorphism',
+                download: '#'
+            },
+            {
+                id: '25',
+                title: 'Interfaces e Classes Abstratas com Python',
+                description: 'Certificado de conclusão do curso "Interfaces e Classes Abstratas com Python" com carga horária de 1 hora, concluído em 25 de Dezembro de 2025.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Python+Interfaces+Abstract+Classes',
+                download: '#'
+            },
+            {
+                id: '26',
+                title: 'Introdução a Aplicações Rest',
+                description: 'Certificado de conclusão do curso "Introdução a Aplicações Rest" com carga horária de 1 hora, concluído em 28 de Dezembro de 2025.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=REST+Applications',
+                download: '#'
+            },
+            {
+                id: '27',
+                title: 'Boas Práticas Para APIs RESTful',
+                description: 'Certificado de conclusão do curso "Boas Práticas Para APIs RESTful" com carga horária de 3 horas, concluído em 29 de Dezembro de 2025.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=RESTful+APIs+Best+Practices',
+                download: '#'
+            },
+            {
+                id: '28',
+                title: 'Introdução ao FastAPI para APIs RESTful Assíncronas',
+                description: 'Certificado de conclusão do curso "Introdução ao FastAPI para APIs RESTful Assíncronas" com carga horária de 1 hora, concluído em 29 de Dezembro de 2025.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=FastAPI+RESTful',
+                download: '#'
+            },
+            {
+                id: '29',
+                title: 'Primeiros passos com FastAPI',
+                description: 'Certificado de conclusão do curso "Primeiros passos com FastAPI" com carga horária de 1 hora, concluído em 30 de Dezembro de 2025.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=FastAPI+First+Steps',
+                download: '#'
+            },
+            {
+                id: '30',
+                title: 'Introdução Banco de Dados',
+                description: 'Certificado de conclusão do curso "Introdução Banco de Dados" com carga horária de 2 horas, concluído em 30 de Dezembro de 2025.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Database+Introduction',
+                download: '#'
+            },
+            // CERTIFICADOS ANTERIORES (mantidos da versão original)
             {
                 id: '1',
                 title: 'AI Builders Day 2025 - Tera',
