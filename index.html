@@ -184,7 +184,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org2000/svg" viewBox="0 0 1440 320"><path fill="%2300ff41" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%2300ff41" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
             background-size: cover;
             background-position: center bottom;
         }
@@ -283,7 +283,7 @@
             display: block;
             width: 80px;
             height: 4px;
-            background-color = var(--primary-color);
+            background-color: var(--primary-color);
             margin: 10px auto;
         }
 
@@ -765,7 +765,7 @@
         .modal-content {
             max-width: 90%;
             max-height: 90%;
-            background-color = var(--secondary-color);
+            background-color: var(--secondary-color);
             border-radius: 10px;
             overflow: hidden;
             border: 2px solid var(--primary-color);
@@ -1425,6 +1425,133 @@
     <script>
         // Dados iniciais (serão salvos no localStorage)
         let certificates = JSON.parse(localStorage.getItem('certificates')) || [
+            // CERTIFICADOS DOS ARQUIVOS PDF FORNECIDOS (JANEIRO 2026)
+            {
+                id: '31',
+                title: 'Desafios de Código: Aperfeiçoe Sua Lógica e Pensamento Computacional',
+                description: 'Certificado de conclusão do curso "Desafios de Código: Aperfeiçoe Sua Lógica e Pensamento Computacional" com carga horária de 1 hora, concluído em 20 de Dezembro de 2025.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Desafios+de+Código',
+                download: '#'
+            },
+            {
+                id: '32',
+                title: 'Modelando o Sistema Bancário em POO com Python',
+                description: 'Certificado de conclusão do projeto "Modelando o Sistema Bancário em POO com Python" com carga horária de 1 hora, concluído em 08 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Sistema+Bancário+POO+Python',
+                download: '#'
+            },
+            {
+                id: '33',
+                title: 'Desenvolvendo sua Primeira API com FastAPI, Python e Docker',
+                description: 'Certificado de conclusão do projeto "Desenvolvendo sua Primeira API com FastAPI, Python e Docker" com carga horária de 3 horas, concluído em 08 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=FastAPI+Python+Docker',
+                download: '#'
+            },
+            {
+                id: '34',
+                title: 'Integrando Python com Banco de Dados Relacionais Utilizando SQLAlchemy',
+                description: 'Certificado de conclusão do curso "Integrando Python com Banco de Dados Relacionais Utilizando SQLAlchemy" com carga horária de 3 horas, concluído em 03 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Python+SQLAlchemy',
+                download: '#'
+            },
+            {
+                id: '35',
+                title: 'Manipulação de Dados com FastAPI Assíncrono',
+                description: 'Certificado de conclusão do curso "Manipulação de Dados com FastAPI Assíncrono" com carga horária de 1 hora, concluído em 03 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=FastAPI+Assíncrono',
+                download: '#'
+            },
+            {
+                id: '36',
+                title: 'Autenticação e Autorização em FastAPI',
+                description: 'Certificado de conclusão do curso "Autenticação e Autorização em FastAPI" com carga horária de 1 hora, concluído em 05 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Autenticação+FastAPI',
+                download: '#'
+            },
+            {
+                id: '37',
+                title: 'Testando APIs RESTful Assíncronas em FastAPI',
+                description: 'Certificado de conclusão do curso "Testando APIs RESTful Assíncronas em FastAPI" com carga horária de 1 hora, concluído em 05 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Teste+APIs+FastAPI',
+                download: '#'
+            },
+            {
+                id: '38',
+                title: 'Deploy de uma API FastAPI Assíncrona',
+                description: 'Certificado de conclusão do curso "Deploy de uma API FastAPI Assíncrona" com carga horária de 1 hora, concluído em 05 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Deploy+FastAPI',
+                download: '#'
+            },
+            {
+                id: '39',
+                title: 'Boas Práticas para APIs RESTful Assíncronas com FastAPI',
+                description: 'Certificado de conclusão do curso "Boas Práticas para APIs RESTful Assíncronas com FastAPI" com carga horária de 1 hora, concluído em 06 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Boas+Práticas+FastAPI',
+                download: '#'
+            },
+            {
+                id: '40',
+                title: 'Criando sua API Bancária Assíncrona com FastAPI',
+                description: 'Certificado de conclusão do projeto "Criando sua API Bancária Assíncrona com FastAPI" com carga horária de 1 hora, concluído em 08 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=API+Bancária+FastAPI',
+                download: '#'
+            },
+            {
+                id: '41',
+                title: 'Conhecendo o GitHub Copilot: Aumentando sua Produtividade na Programação',
+                description: 'Certificado de conclusão do curso "Conhecendo o GitHub Copilot: Aumentando sua Produtividade na Programação" com carga horária de 1 hora, concluído em 06 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=GitHub+Copilot',
+                download: '#'
+            },
+            {
+                id: '42',
+                title: 'Configurando e Usando o GitHub Copilot',
+                description: 'Certificado de conclusão do curso "Configurando e Usando o GitHub Copilot" com carga horária de 1 hora, concluído em 06 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Config+GitHub+Copilot',
+                download: '#'
+            },
+            {
+                id: '43',
+                title: 'Bases de Prompt Engineering para o GitHub Copilot',
+                description: 'Certificado de conclusão do curso "Bases de Prompt Engineering para o GitHub Copilot" com carga horária de 2 horas, concluído em 07 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Prompt+Engineering',
+                download: '#'
+            },
+            {
+                id: '44',
+                title: 'Técnicas de Engenharia de Prompt',
+                description: 'Certificado de conclusão do curso "Técnicas de Engenharia de Prompt" com carga horária de 2 horas, concluído em 08 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Técnicas+Prompt',
+                download: '#'
+            },
+            {
+                id: '45',
+                title: 'Utilizando as Ferramentas do GitHub para Solucionar Algoritmos em Python',
+                description: 'Certificado de conclusão do projeto "Utilizando as Ferramentas do GitHub para Solucionar Algoritmos em Python" com carga horária de 1 hora, concluído em 08 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=GitHub+Algoritmos+Python',
+                download: '#'
+            },
+            {
+                id: '46',
+                title: 'Dominando Funções e Boas Práticas em Python',
+                description: 'Certificado de conclusão do módulo "Dominando Funções e Boas Práticas em Python" com carga horária de 8 horas, concluído em 08 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Funções+Python',
+                download: '#'
+            },
+            {
+                id: '47',
+                title: 'Programação Orientada a Objetos com Python',
+                description: 'Certificado de conclusão do módulo "Programação Orientada a Objetos com Python" com carga horária de 7 horas, concluído em 08 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=POO+Python',
+                download: '#'
+            },
+            {
+                id: '48',
+                title: 'Fundamentos de APIs REST com FastAPI',
+                description: 'Certificado de conclusão do módulo "Fundamentos de APIs REST com FastAPI" com carga horária de 9 horas, concluído em 08 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=APIs+REST+FastAPI',
+                download: '#'
+            },
             // NOVOS CERTIFICADOS ADICIONADOS - DEZEMBRO 2025
             {
                 id: '17',
