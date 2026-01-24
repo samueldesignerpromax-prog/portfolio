@@ -164,6 +164,7 @@
             display: none;
             cursor: pointer;
             font-size: 1.5rem;
+            color: var(--light-color);
         }
 
         /* Seção Hero - Primeira Página Melhorada */
@@ -1009,19 +1010,141 @@
             transform: translateY(0);
         }
 
-        /* Responsividade */
+        /* Carousel para certificados no celular */
+        .certificates-carousel {
+            display: none;
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+            max-width: 500px;
+        }
+
+        .carousel-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            padding: 0 10px;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+            gap: 0.5rem;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .carousel-dot.active {
+            background-color: var(--primary-color);
+            transform: scale(1.2);
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: var(--primary-color);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            z-index: 10;
+        }
+
+        .carousel-arrow.left {
+            left: 10px;
+        }
+
+        .carousel-arrow.right {
+            right: 10px;
+        }
+
+        /* Filtro para certificados */
+        .certificates-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            background-color: rgba(30, 30, 30, 0.8);
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+        }
+
+        /* Projetos em grid para celular */
+        .mobile-projects-grid {
+            display: none;
+        }
+
+        /* Responsividade MELHORADA */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1.3rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile-img-container {
+                width: 300px;
+                height: 380px;
+            }
+            
+            .personal-info {
+                grid-template-columns: 1fr;
+                justify-items: center;
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
-                position: absolute;
-                top: 100%;
+                position: fixed;
+                top: 70px;
                 left: 0;
                 width: 100%;
-                background-color: rgba(10, 10, 10, 0.95);
+                height: calc(100vh - 70px);
+                background-color: rgba(10, 10, 10, 0.98);
                 flex-direction: column;
-                padding: 1rem 0;
+                padding: 2rem 0;
                 text-align: center;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+                overflow-y: auto;
             }
 
             .nav-links.active {
@@ -1030,35 +1153,209 @@
 
             .nav-links li {
                 margin: 1rem 0;
+                width: 100%;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 1rem;
+                font-size: 1.2rem;
             }
 
             .hamburger {
                 display: block;
+                z-index: 1000;
             }
 
-            .about-content {
-                flex-direction: column;
+            .hero {
+                height: 90vh;
+                padding-top: 70px;
             }
 
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
+                line-height: 1.2;
             }
 
             .hero p {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
 
-            .personal-info {
+            .typing-text {
+                font-size: 1.4rem;
+                min-height: 2em;
+            }
+
+            .hero-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+
+            .btn {
+                width: 90%;
+                max-width: 250px;
+                margin: 0.3rem 0;
+            }
+
+            .about, .skills, .courses, .certificates, .projects, .contact {
+                padding: 70px 0;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+
+            /* Carousel para certificados no celular */
+            .certificates-container {
+                display: none;
+            }
+            
+            .certificates-carousel {
+                display: block;
+            }
+
+            /* Grid para projetos no celular */
+            .projects-container {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .project-card {
+                margin-bottom: 1rem;
             }
 
             .certificate-actions {
                 flex-direction: column;
+                align-items: stretch;
+            }
+
+            .certificate-actions a {
+                text-align: center;
+                margin-bottom: 0.5rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .admin-panel {
+                padding: 1rem;
+            }
+
+            .admin-content {
+                padding: 1rem;
+            }
+
+            .admin-item {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .admin-actions {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .mobile-projects-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1rem;
+                margin-top: 2rem;
+            }
+
+            .mobile-project-item {
+                background: rgba(30, 30, 30, 0.8);
+                border-radius: 10px;
+                padding: 1rem;
+                text-align: center;
+                border: 1px solid rgba(0, 255, 65, 0.2);
+            }
+
+            .mobile-project-item i {
+                font-size: 2rem;
+                color: var(--primary-color);
+                margin-bottom: 0.5rem;
+            }
+
+            .mobile-project-item h4 {
+                font-size: 0.9rem;
+                margin-bottom: 0.5rem;
+                color: var(--primary-color);
+            }
+
+            .mobile-project-item a {
+                display: inline-block;
+                font-size: 0.8rem;
+                color: var(--light-color);
+                text-decoration: none;
+                background: rgba(0, 255, 65, 0.1);
+                padding: 0.3rem 0.8rem;
+                border-radius: 4px;
+                margin-top: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .typing-text {
+                font-size: 1.2rem;
             }
 
             .profile-img-container {
-                width: 280px;
-                height: 350px;
+                width: 250px;
+                height: 320px;
+            }
+
+            .skill-card, .course-category {
+                padding: 1.5rem;
+            }
+
+            .certificate-info, .project-info {
+                padding: 1rem;
+            }
+
+            .certificate-info h3, .project-info h3 {
+                font-size: 1.1rem;
+            }
+
+            .certificate-info p, .project-info p {
+                font-size: 0.9rem;
+            }
+
+            .courses-container {
+                grid-template-columns: 1fr;
+            }
+
+            .mobile-projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            }
+        }
+
+        @media (max-width: 360px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .typing-text {
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 0.7rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .profile-img-container {
+                width: 220px;
+                height: 280px;
             }
         }
     </style>
@@ -1236,7 +1533,7 @@
                         </div>
                         <div class="info-item">
                             <i class="fas fa-laptop-code"></i>
-                            <span><strong>Interesses:</strong> Web Design, Programação</span>
+                            <span><strong>Interesses:</strong> Web Design, Programação, Machine Learning</span>
                         </div>
                     </div>
                 </div>
@@ -1285,6 +1582,11 @@
                     <p>Desenvolvimento backend, automação e análise de dados.</p>
                 </div>
                 <div class="skill-card animate-on-scroll">
+                    <i class="fas fa-robot"></i>
+                    <h3>Machine Learning</h3>
+                    <p>Modelos preditivos, redes neurais e IA.</p>
+                </div>
+                <div class="skill-card animate-on-scroll">
                     <i class="fab fa-git-alt"></i>
                     <h3>Git & GitHub</h3>
                     <p>Controle de versão e colaboração em projetos.</p>
@@ -1327,10 +1629,23 @@
                         <li><i class="fas fa-check"></i> PowerPoint</li>
                         <li><i class="fas fa-check"></i> Outlook</li>
                         <li><i class="fas fa-check"></i> Access</li>
-                        <!-- NOVOS CURSOS ADICIONADOS AQUI -->
                         <li><i class="fas fa-check"></i> Power BI</li>
                         <li><i class="fas fa-check"></i> Excel Avançado 1</li>
                         <li><i class="fas fa-check"></i> Excel Avançado 2</li>
+                    </ul>
+                </div>
+                <div class="course-category animate-on-scroll">
+                    <h3>Machine Learning & IA</h3>
+                    <ul class="course-list">
+                        <li><i class="fas fa-check"></i> BairesDev - Machine Learning Practitioner</li>
+                        <li><i class="fas fa-check"></i> Bradesco - GenAI & Dados</li>
+                        <li><i class="fas fa-check"></i> Machine Learning Supervisionado</li>
+                        <li><i class="fas fa-check"></i> Machine Learning Não-Supervisionado</li>
+                        <li><i class="fas fa-check"></i> Aprendizado por Reforço</li>
+                        <li><i class="fas fa-check"></i> Algoritmos de Regressão</li>
+                        <li><i class="fas fa-check"></i> Redes Neurais Artificiais</li>
+                        <li><i class="fas fa-check"></i> Algoritmos Genéticos</li>
+                        <li><i class="fas fa-check"></i> SVM (Support Vector Machine)</li>
                     </ul>
                 </div>
             </div>
@@ -1341,8 +1656,34 @@
     <section id="certificates" class="certificates">
         <div class="container">
             <h2 class="section-title">Meus Certificados</h2>
+            
+            <!-- Filtros para certificados -->
+            <div class="certificates-filter" id="certificates-filter">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="machine-learning">Machine Learning</button>
+                <button class="filter-btn" data-filter="programming">Programação</button>
+                <button class="filter-btn" data-filter="web">Web Design</button>
+            </div>
+            
+            <!-- Grid para desktop -->
             <div class="certificates-container" id="certificates-display">
                 <!-- Certificados serão carregados aqui dinamicamente -->
+            </div>
+            
+            <!-- Carousel para mobile -->
+            <div class="certificates-carousel" id="certificates-carousel">
+                <div class="carousel-container" id="carousel-container">
+                    <!-- Slides serão carregados aqui dinamicamente -->
+                </div>
+                <button class="carousel-arrow left" id="carousel-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-arrow right" id="carousel-next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="carousel-nav" id="carousel-nav">
+                    <!-- Dots serão adicionados dinamicamente -->
+                </div>
             </div>
         </div>
     </section>
@@ -1351,8 +1692,15 @@
     <section id="projects" class="projects">
         <div class="container">
             <h2 class="section-title">Meus Projetos</h2>
+            
+            <!-- Grid de projetos para desktop -->
             <div class="projects-container" id="projects-display">
                 <!-- Projetos serão carregados aqui dinamicamente -->
+            </div>
+            
+            <!-- Grid de projetos para mobile -->
+            <div class="mobile-projects-grid" id="mobile-projects-grid">
+                <!-- Projetos móveis serão carregados aqui -->
             </div>
         </div>
     </section>
@@ -1425,132 +1773,416 @@
     <script>
         // Dados iniciais (serão salvos no localStorage)
         let certificates = JSON.parse(localStorage.getItem('certificates')) || [
+            // NOVOS PROJETOS ADICIONADOS NO INÍCIO
+            {
+                id: 'ml-project-1',
+                title: 'Chatbot IA 3.0 - Assistente Virtual Inteligente',
+                description: 'Chatbot avançado com inteligência artificial, processamento de linguagem natural e interface moderna. Desenvolvido com JavaScript e APIs de IA.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Chatbot+IA+3.0',
+                download: '#',
+                category: 'machine-learning'
+            },
+            {
+                id: 'web-project-1',
+                title: 'Pet Shop - E-commerce para Pets',
+                description: 'Site completo para pet shop com catálogo de produtos, sistema de agendamento de serviços e área do cliente. Design responsivo e moderno.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Pet+Shop+E-commerce',
+                download: '#',
+                category: 'web'
+            },
             // CERTIFICADOS DOS ARQUIVOS PDF FORNECIDOS (JANEIRO 2026)
+            {
+                id: 'ml-1',
+                title: 'Treinamento Não-Supervisionado em Machine Learning',
+                description: 'Certificado de conclusão do curso "Treinamento Não-Supervisionado em Machine Learning" com carga horária de 1 hora, concluído em 17 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=ML+Não-Supervisionado',
+                download: '#',
+                category: 'machine-learning'
+            },
+            {
+                id: 'ml-2',
+                title: 'Treinamento Supervisionado para Machine Learning',
+                description: 'Certificado de conclusão do curso "Treinamento Supervisionado para Machine Learning" com carga horária de 2 horas, concluído em 17 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=ML+Supervisionado',
+                download: '#',
+                category: 'machine-learning'
+            },
+            {
+                id: 'ml-3',
+                title: 'Aprendizado por Reforço em Machine Learning',
+                description: 'Certificado de conclusão do curso "Aprendizado por Reforço em Machine Learning" com carga horária de 1 hora, concluído em 17 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Aprendizado+Reforço',
+                download: '#',
+                category: 'machine-learning'
+            },
+            {
+                id: 'ml-4',
+                title: 'Algoritmos de Regressão para Machine Learning',
+                description: 'Certificado de conclusão do curso "Algoritmos de Regressão para Machine Learning" com carga horária de 1 hora, concluído em 17 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Algoritmos+Regressão',
+                download: '#',
+                category: 'machine-learning'
+            },
+            {
+                id: 'ml-5',
+                title: 'Extração de Features e Redução de Dimensionalidade em Dados',
+                description: 'Certificado de conclusão do curso "Extração de Features e Redução de Dimensionalidade em Dados" com carga horária de 2 horas, concluído em 20 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Redução+Dimensionalidade',
+                download: '#',
+                category: 'machine-learning'
+            },
+            {
+                id: 'ml-6',
+                title: 'Redução de Dimensionalidade em Imagens para Redes Neurais',
+                description: 'Certificado de conclusão do projeto "Redução de Dimensionalidade em Imagens para Redes Neurais" com carga horária de 2 horas, concluído em 20 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Redução+Dimensionalidade+Imagens',
+                download: '#',
+                category: 'machine-learning'
+            },
+            {
+                id: 'ml-7',
+                title: 'Materiais Complementares: Algoritmos de Treinamento em Machine Learning',
+                description: 'Certificado de conclusão do curso "Materiais Complementares: Algoritmos de Treinamento em Machine Learning" com carga horária de 1 hora, concluído em 20 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Algoritmos+Treinamento+ML',
+                download: '#',
+                category: 'machine-learning'
+            },
+            {
+                id: 'ml-8',
+                title: 'Métodos de Validação de Treinamento',
+                description: 'Certificado de conclusão do curso "Métodos de Validação de Treinamento" com carga horária de 2 horas, concluído em 20 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Validação+Treinamento',
+                download: '#',
+                category: 'machine-learning'
+            },
+            {
+                id: 'ml-9',
+                title: 'Métodos de Otimização de Aprendizado',
+                description: 'Certificado de conclusão do curso "Métodos de Otimização de Aprendizado" com carga horária de 2 horas, concluído em 21 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Otimização+Aprendizado',
+                download: '#',
+                category: 'machine-learning'
+            },
+            {
+                id: 'ml-10',
+                title: 'Modelos de Machine Learning: Métricas de Avaliação de Desempenho',
+                description: 'Certificado de conclusão do curso "Modelos de Machine Learning: Métricas de Avaliação de Desempenho" com carga horária de 1 hora, concluído em 21 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Métricas+Avaliação+ML',
+                download: '#',
+                category: 'machine-learning'
+            },
+            {
+                id: 'ml-11',
+                title: 'Materiais Complementares: Teoria do Aprendizado Estatístico',
+                description: 'Certificado de conclusão do curso "Materiais Complementares: Teoria do Aprendizado Estatístico" com carga horária de 1 hora, concluído em 21 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Teoria+Aprendizado+Estatístico',
+                download: '#',
+                category: 'machine-learning'
+            },
+            {
+                id: 'ml-12',
+                title: 'Redes de Classificação para Deep Learning',
+                description: 'Certificado de conclusão do curso "Redes de Classificação para Deep Learning" com carga horária de 2 horas, concluído em 23 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Redes+Classificação+DL',
+                download: '#',
+                category: 'machine-learning'
+            },
+            {
+                id: 'ml-13',
+                title: 'Treinamento de Redes Neurais com Transfer Learning',
+                description: 'Certificado de conclusão do projeto "Treinamento de Redes Neurais com Transfer Learning" com carga horária de 2 horas, concluído em 20 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Transfer+Learning',
+                download: '#',
+                category: 'machine-learning'
+            },
+            {
+                id: 'ml-14',
+                title: 'Materiais Complementares: Programação para Machine Learning',
+                description: 'Certificado de conclusão do curso "Materiais Complementares: Programação para Machine Learning" com carga horária de 1 hora, concluído em 17 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Programação+para+ML',
+                download: '#',
+                category: 'machine-learning'
+            },
+            {
+                id: 'ml-15',
+                title: 'Desafios de Projetos: Crie Um Portfólio Vencedor',
+                description: 'Certificado de conclusão do curso "Desafios de Projetos: Crie Um Portfólio Vencedor" com carga horária de 1 hora, concluído em 17 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Portfólio+Vencedor',
+                download: '#',
+                category: 'programming'
+            },
+            {
+                id: 'ml-16',
+                title: 'Boas-vindas ao Bradesco - GenAI & Dados',
+                description: 'Certificado de conclusão do curso "Boas-vindas ao Bradesco - GenAI & Dados" com carga horária de 1 hora, concluído em 23 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Bradesco+GenAI+Dados',
+                download: '#',
+                category: 'machine-learning'
+            },
+            {
+                id: 'ml-17',
+                title: 'Introdução à Inteligência Artificial',
+                description: 'Certificado de conclusão do curso "Introdução à Inteligência Artificial" com carga horária de 1 hora, concluído em 23 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Introdução+IA',
+                download: '#',
+                category: 'machine-learning'
+            },
+            {
+                id: 'ml-18',
+                title: 'Machine Learning com a BairesDev',
+                description: 'Certificado de conclusão do curso "Machine Learning com a BairesDev" com carga horária de 1 hora, concluído em 11 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=BairesDev+ML',
+                download: '#',
+                category: 'machine-learning'
+            },
+            {
+                id: 'ml-19',
+                title: 'Introdução ao Machine Learning',
+                description: 'Certificado de conclusão do curso "Introdução ao Machine Learning" com carga horária de 2 horas, concluído em 11 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Introdução+ML',
+                download: '#',
+                category: 'machine-learning'
+            },
+            {
+                id: 'ml-20',
+                title: 'Métodos de Machine Learning Bioinspirados',
+                description: 'Certificado de conclusão do curso "Métodos de Machine Learning Bioinspirados" com carga horária de 1 hora, concluído em 11 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=ML+Bioinspirados',
+                download: '#',
+                category: 'machine-learning'
+            },
+            {
+                id: 'ml-21',
+                title: 'Redes Neurais Artificiais',
+                description: 'Certificado de conclusão do curso "Redes Neurais Artificiais" com carga horária de 1 hora, concluído em 11 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Redes+Neurais+Artificiais',
+                download: '#',
+                category: 'machine-learning'
+            },
+            {
+                id: 'ml-22',
+                title: 'Algoritmos Genéticos',
+                description: 'Certificado de conclusão do curso "Algoritmos Genéticos" com carga horária de 2 horas, concluído em 12 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Algoritmos+Genéticos',
+                download: '#',
+                category: 'machine-learning'
+            },
+            {
+                id: 'ml-23',
+                title: 'Algoritmos de SVM (Support Vector Machine)',
+                description: 'Certificado de conclusão do curso "Algoritmos de SVM (Support Vector Machine)" com carga horária de 1 hora, concluído em 12 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=SVM',
+                download: '#',
+                category: 'machine-learning'
+            },
+            {
+                id: 'ml-24',
+                title: 'Classificação de Problemas: Explorando Datasets',
+                description: 'Certificado de conclusão do curso "Classificação de Problemas: Explorando Datasets" com carga horária de 1 hora, concluído em 12 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Classificação+Datasets',
+                download: '#',
+                category: 'machine-learning'
+            },
+            {
+                id: 'ml-25',
+                title: 'Materiais Complementares: Introdução ao Machine Learning',
+                description: 'Certificado de conclusão do curso "Materiais Complementares: Introdução ao Machine Learning" com carga horária de 1 hora, concluído em 12 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Intro+ML+Complementar',
+                download: '#',
+                category: 'machine-learning'
+            },
+            {
+                id: 'ml-26',
+                title: 'Linguagens de Programação para Machine Learning',
+                description: 'Certificado de conclusão do curso "Linguagens de Programação para Machine Learning" com carga horária de 1 hora, concluído em 12 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Linguagens+para+ML',
+                download: '#',
+                category: 'machine-learning'
+            },
+            {
+                id: 'ml-27',
+                title: 'Python para Machine Learning na Prática',
+                description: 'Certificado de conclusão do curso "Python para Machine Learning na Prática" com carga horária de 2 horas, concluído em 13 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Python+ML+Prática',
+                download: '#',
+                category: 'machine-learning'
+            },
+            {
+                id: 'ml-28',
+                title: 'Scilab para Machine Learning',
+                description: 'Certificado de conclusão do curso "Scilab para Machine Learning" com carga horária de 2 horas, concluído em 14 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Scilab+ML',
+                download: '#',
+                category: 'machine-learning'
+            },
+            {
+                id: 'ml-29',
+                title: 'R para Machine Learning',
+                description: 'Certificado de conclusão do curso "R para Machine Learning" com carga horária de 2 horas, concluído em 14 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=R+ML',
+                download: '#',
+                category: 'machine-learning'
+            },
+            {
+                id: 'ml-30',
+                title: 'Conhecendo o Anaconda, TensorFlow e SciPy',
+                description: 'Certificado de conclusão do curso "Conhecendo o Anaconda, TensorFlow e SciPy" com carga horária de 1 hora, concluído em 16 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Anaconda+TensorFlow+SciPy',
+                download: '#',
+                category: 'machine-learning'
+            },
+            {
+                id: 'ml-31',
+                title: 'Introdução ao COLAB',
+                description: 'Certificado de conclusão do curso "Introdução ao COLAB" com carga horária de 2 horas, concluído em 16 de Janeiro de 2026.',
+                image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Introdução+COLAB',
+                download: '#',
+                category: 'machine-learning'
+            },
+            // CERTIFICADOS ANTERIORES (mantidos da versão original)
             {
                 id: '31',
                 title: 'Desafios de Código: Aperfeiçoe Sua Lógica e Pensamento Computacional',
                 description: 'Certificado de conclusão do curso "Desafios de Código: Aperfeiçoe Sua Lógica e Pensamento Computacional" com carga horária de 1 hora, concluído em 20 de Dezembro de 2025.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Desafios+de+Código',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '32',
                 title: 'Modelando o Sistema Bancário em POO com Python',
                 description: 'Certificado de conclusão do projeto "Modelando o Sistema Bancário em POO com Python" com carga horária de 1 hora, concluído em 08 de Janeiro de 2026.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Sistema+Bancário+POO+Python',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '33',
                 title: 'Desenvolvendo sua Primeira API com FastAPI, Python e Docker',
                 description: 'Certificado de conclusão do projeto "Desenvolvendo sua Primeira API com FastAPI, Python e Docker" com carga horária de 3 horas, concluído em 08 de Janeiro de 2026.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=FastAPI+Python+Docker',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '34',
                 title: 'Integrando Python com Banco de Dados Relacionais Utilizando SQLAlchemy',
                 description: 'Certificado de conclusão do curso "Integrando Python com Banco de Dados Relacionais Utilizando SQLAlchemy" com carga horária de 3 horas, concluído em 03 de Janeiro de 2026.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Python+SQLAlchemy',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '35',
                 title: 'Manipulação de Dados com FastAPI Assíncrono',
                 description: 'Certificado de conclusão do curso "Manipulação de Dados com FastAPI Assíncrono" com carga horária de 1 hora, concluído em 03 de Janeiro de 2026.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=FastAPI+Assíncrono',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '36',
                 title: 'Autenticação e Autorização em FastAPI',
                 description: 'Certificado de conclusão do curso "Autenticação e Autorização em FastAPI" com carga horária de 1 hora, concluído em 05 de Janeiro de 2026.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Autenticação+FastAPI',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '37',
                 title: 'Testando APIs RESTful Assíncronas em FastAPI',
                 description: 'Certificado de conclusão do curso "Testando APIs RESTful Assíncronas em FastAPI" com carga horária de 1 hora, concluído em 05 de Janeiro de 2026.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Teste+APIs+FastAPI',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '38',
                 title: 'Deploy de uma API FastAPI Assíncrona',
                 description: 'Certificado de conclusão do curso "Deploy de uma API FastAPI Assíncrona" com carga horária de 1 hora, concluído em 05 de Janeiro de 2026.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Deploy+FastAPI',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '39',
                 title: 'Boas Práticas para APIs RESTful Assíncronas com FastAPI',
                 description: 'Certificado de conclusão do curso "Boas Práticas para APIs RESTful Assíncronas com FastAPI" com carga horária de 1 hora, concluído em 06 de Janeiro de 2026.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Boas+Práticas+FastAPI',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '40',
                 title: 'Criando sua API Bancária Assíncrona com FastAPI',
                 description: 'Certificado de conclusão do projeto "Criando sua API Bancária Assíncrona com FastAPI" com carga horária de 1 hora, concluído em 08 de Janeiro de 2026.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=API+Bancária+FastAPI',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '41',
                 title: 'Conhecendo o GitHub Copilot: Aumentando sua Produtividade na Programação',
                 description: 'Certificado de conclusão do curso "Conhecendo o GitHub Copilot: Aumentando sua Produtividade na Programação" com carga horária de 1 hora, concluído em 06 de Janeiro de 2026.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=GitHub+Copilot',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '42',
                 title: 'Configurando e Usando o GitHub Copilot',
                 description: 'Certificado de conclusão do curso "Configurando e Usando o GitHub Copilot" com carga horária de 1 hora, concluído em 06 de Janeiro de 2026.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Config+GitHub+Copilot',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '43',
                 title: 'Bases de Prompt Engineering para o GitHub Copilot',
                 description: 'Certificado de conclusão do curso "Bases de Prompt Engineering para o GitHub Copilot" com carga horária de 2 horas, concluído em 07 de Janeiro de 2026.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Prompt+Engineering',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '44',
                 title: 'Técnicas de Engenharia de Prompt',
                 description: 'Certificado de conclusão do curso "Técnicas de Engenharia de Prompt" com carga horária de 2 horas, concluído em 08 de Janeiro de 2026.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Técnicas+Prompt',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '45',
                 title: 'Utilizando as Ferramentas do GitHub para Solucionar Algoritmos em Python',
                 description: 'Certificado de conclusão do projeto "Utilizando as Ferramentas do GitHub para Solucionar Algoritmos em Python" com carga horária de 1 hora, concluído em 08 de Janeiro de 2026.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=GitHub+Algoritmos+Python',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '46',
                 title: 'Dominando Funções e Boas Práticas em Python',
                 description: 'Certificado de conclusão do módulo "Dominando Funções e Boas Práticas em Python" com carga horária de 8 horas, concluído em 08 de Janeiro de 2026.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Funções+Python',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '47',
                 title: 'Programação Orientada a Objetos com Python',
                 description: 'Certificado de conclusão do módulo "Programação Orientada a Objetos com Python" com carga horária de 7 horas, concluído em 08 de Janeiro de 2026.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=POO+Python',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '48',
                 title: 'Fundamentos de APIs REST com FastAPI',
                 description: 'Certificado de conclusão do módulo "Fundamentos de APIs REST com FastAPI" com carga horária de 9 horas, concluído em 08 de Janeiro de 2026.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=APIs+REST+FastAPI',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             // NOVOS CERTIFICADOS ADICIONADOS - DEZEMBRO 2025
             {
@@ -1558,98 +2190,112 @@
                 title: 'Decoradores, Iteradores e Geradores com Python',
                 description: 'Certificado de conclusão do curso "Decoradores, Iteradores e Geradores com Python" com carga horária de 1 hora, concluído em 13 de Dezembro de 2025.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Python+Decorators+Iterators+Generators',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '18',
                 title: 'Gerenciamento de Pacotes, Convenções e Boas Práticas Python',
                 description: 'Certificado de conclusão do curso "Gerenciamento de Pacotes, Convenções e Boas Práticas Python" com carga horária de 1 hora, concluído em 20 de Dezembro de 2025.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Python+Packages+Best+Practices',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '19',
                 title: 'Manipulando Arquivos em Python',
                 description: 'Certificado de conclusão do curso "Manipulando Arquivos em Python" com carga horária de 1 hora, concluído em 16 de Dezembro de 2025.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Python+File+Handling',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '20',
                 title: 'Desafios de Código: Aperfeiçoe Sua Lógica e Pensamento Computacional',
                 description: 'Certificado de conclusão do curso "Desafios de Código: Aperfeiçoe Sua Lógica e Pensamento Computacional" com carga horária de 1 hora, concluído em 20 de Dezembro de 2025.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Coding+Challenges+Logic',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '21',
                 title: 'Introdução à Programação Orientada a Objetos (POO) com Python',
                 description: 'Certificado de conclusão do curso "Introdução à Programação Orientada a Objetos (POO) com Python" com carga horária de 1 hora, concluído em 20 de Dezembro de 2025.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Python+OOP+Introduction',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '22',
                 title: 'Aprendendo o Conceito de Herança com Python',
                 description: 'Certificado de conclusão do curso "Aprendendo o Conceito de Herança com Python" com carga horária de 1 hora, concluído em 22 de Dezembro de 2025.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Python+Inheritance',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '23',
                 title: 'Aplicando Encapsulamento em Python',
                 description: 'Certificado de conclusão do curso "Aplicando Encapsulamento em Python" com carga horária de 1 hora, concluído em 22 de Dezembro de 2025.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Python+Encapsulation',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '24',
                 title: 'Conhecendo Polimorfismo em Python',
                 description: 'Certificado de conclusão do curso "Conhecendo Polimorfismo em Python" com carga horária de 1 hora, concluído em 25 de Dezembro de 2025.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Python+Polymorphism',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '25',
                 title: 'Interfaces e Classes Abstratas com Python',
                 description: 'Certificado de conclusão do curso "Interfaces e Classes Abstratas com Python" com carga horária de 1 hora, concluído em 25 de Dezembro de 2025.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Python+Interfaces+Abstract+Classes',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '26',
                 title: 'Introdução a Aplicações Rest',
                 description: 'Certificado de conclusão do curso "Introdução a Aplicações Rest" com carga horária de 1 hora, concluído em 28 de Dezembro de 2025.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=REST+Applications',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '27',
                 title: 'Boas Práticas Para APIs RESTful',
                 description: 'Certificado de conclusão do curso "Boas Práticas Para APIs RESTful" com carga horária de 3 horas, concluído em 29 de Dezembro de 2025.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=RESTful+APIs+Best+Practices',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '28',
                 title: 'Introdução ao FastAPI para APIs RESTful Assíncronas',
                 description: 'Certificado de conclusão do curso "Introdução ao FastAPI para APIs RESTful Assíncronas" com carga horária de 1 hora, concluído em 29 de Dezembro de 2025.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=FastAPI+RESTful',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '29',
                 title: 'Primeiros passos com FastAPI',
                 description: 'Certificado de conclusão do curso "Primeiros passos com FastAPI" com carga horária de 1 hora, concluído em 30 de Dezembro de 2025.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=FastAPI+First+Steps',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '30',
                 title: 'Introdução Banco de Dados',
                 description: 'Certificado de conclusão do curso "Introdução Banco de Dados" com carga horária de 2 horas, concluído em 30 de Dezembro de 2025.',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Database+Introduction',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             // CERTIFICADOS ANTERIORES (mantidos da versão original)
             {
@@ -1657,117 +2303,147 @@
                 title: 'AI Builders Day 2025 - Tera',
                 description: 'Certificado de participação no AI Builders Day com 4h de aulas e debates sobre IA - Tera',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=AI+Builders+Day+2025',
-                download: '#'
+                download: '#',
+                category: 'machine-learning'
             },
             {
                 id: '2',
                 title: 'Bootcamp Back-end com Python - Introdução',
                 description: 'Certificado de conclusão do curso introdutório ao Bootcamp de Back-end com Python - 1 hora',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Python+Bootcamp',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '3',
                 title: 'Python - Ambiente de Desenvolvimento',
                 description: 'Certificado de conclusão do curso sobre ambiente de desenvolvimento Python - 1 hora',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Python+Dev+Environment',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '4',
                 title: 'Python - Fundamentos da Linguagem',
                 description: 'Certificado de conclusão do curso sobre fundamentos da linguagem Python - 2 horas',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Python+Fundamentals',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '5',
                 title: 'Python - Operadores',
                 description: 'Certificado de conclusão do curso sobre operadores em Python - 2 horas',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Python+Operators',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '6',
                 title: 'Python - Estruturas de Controle',
                 description: 'Certificado de conclusão do curso sobre estruturas de controle em Python - 2 horas',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Python+Control+Structures',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '7',
                 title: 'Python - Manipulação de Strings',
                 description: 'Certificado de conclusão do curso sobre manipulação de strings em Python - 2 horas',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Python+Strings',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '8',
                 title: 'Python - Trabalhando com Listas',
                 description: 'Certificado de conclusão do curso sobre listas em Python - 1 hora',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Python+Lists',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '9',
                 title: 'Python - Conhecendo Tuplas',
                 description: 'Certificado de conclusão do curso sobre tuplas em Python - 1 hora',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Python+Tuples',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '10',
                 title: 'Python - Dicionários',
                 description: 'Certificado de conclusão do curso sobre dicionários em Python - 1 hora',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Python+Dictionaries',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '11',
                 title: 'Git e GitHub - Versionamento',
                 description: 'Certificado de conclusão do curso sobre Git e GitHub - 2 horas',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Git+GitHub',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '12',
                 title: 'Python - Funções',
                 description: 'Certificado de conclusão do curso sobre funções em Python - 1 hora',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Python+Functions',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '13',
                 title: 'Portfólio - Desafios de Projetos',
                 description: 'Certificado de conclusão do curso sobre criação de portfólios - 1 hora',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Portfolio+Projects',
-                download: '#'
+                download: '#',
+                category: 'programming'
             },
             {
                 id: '14',
                 title: 'Certificado Garance Corporo',
                 description: 'Certificado de conclusão do curso Garance Corporo',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Garance+Corporo',
-                download: '#'
+                download: '#',
+                category: 'web'
             },
             {
                 id: '15',
                 title: 'Certificado SOS',
                 description: 'Certificado de participação em projeto SOS',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=SOS+Project',
-                download: '#'
+                download: '#',
+                category: 'web'
             },
             {
                 id: '16',
                 title: 'Certificado SOS Avançado',
                 description: 'Certificado de conclusão do curso avançado SOS',
                 image: 'https://via.placeholder.com/400x300/00ff41/000000?text=SOS+Advanced',
-                download: '#'
+                download: '#',
+                category: 'web'
             }
         ];
         
         let projects = JSON.parse(localStorage.getItem('projects')) || [
-            // NOVO PROJETO ADICIONADO NO INÍCIO
+            // NOVOS PROJETOS ADICIONADOS NO INÍCIO
+            {
+                id: 'ml-project-1',
+                title: 'Chatbot IA 3.0 - Assistente Virtual Inteligente',
+                description: 'Chatbot avançado com inteligência artificial, processamento de linguagem natural e interface moderna. Desenvolvido com JavaScript e APIs de IA.',
+                image: 'https://via.placeholder.com/400x200/00ff41/000000?text=Chatbot+IA+3.0',
+                link: 'https://samueldesignerpromax-prog.github.io/Chatbot-IA-3.0/'
+            },
+            {
+                id: 'web-project-2',
+                title: 'Pet Shop - E-commerce para Pets',
+                description: 'Site completo para pet shop com catálogo de produtos, sistema de agendamento de serviços e área do cliente. Design responsivo e moderno.',
+                image: 'https://via.placeholder.com/400x200/00ff41/000000?text=Pet+Shop+E-commerce',
+                link: 'https://samueldesignerpromax-prog.github.io/Pet-Shop/'
+            },
             {
                 id: '12',
                 title: 'Avatar 3.0 - Portfólio Interativo',
@@ -1857,12 +2533,19 @@
         // Senha do admin (altere para uma senha segura)
         const ADMIN_PASSWORD = "samuel123";
 
+        // Variáveis do carousel
+        let currentSlide = 0;
+        let totalSlides = 0;
+        let filteredCertificates = [];
+
         // Animação Matrix
         function createMatrix() {
             const matrixBg = document.getElementById('matrix-bg');
             const chars = '01';
             const fontSize = 18;
             const columns = Math.floor(window.innerWidth / fontSize);
+            
+            matrixBg.innerHTML = '';
             
             for (let i = 0; i < columns; i++) {
                 const code = document.createElement('div');
@@ -1885,12 +2568,16 @@
         // Menu hamburger para dispositivos móveis
         document.querySelector('.hamburger').addEventListener('click', function() {
             document.querySelector('.nav-links').classList.toggle('active');
+            this.innerHTML = document.querySelector('.nav-links').classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
         });
 
         // Fechar menu ao clicar em um link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 document.querySelector('.nav-links').classList.remove('active');
+                document.querySelector('.hamburger').innerHTML = '<i class="fas fa-bars"></i>';
             });
         });
 
@@ -1981,6 +2668,10 @@
                 
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
+                    // Fechar menu mobile se aberto
+                    document.querySelector('.nav-links').classList.remove('active');
+                    document.querySelector('.hamburger').innerHTML = '<i class="fas fa-bars"></i>';
+                    
                     window.scrollTo({
                         top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
@@ -1995,6 +2686,7 @@
             "Desenvolvedor Full Stack",
             "Especialista em Web Design",
             "Programador Python",
+            "Especialista em Machine Learning",
             "Apaixonado por Tecnologia"
         ];
         let textIndex = 0;
@@ -2134,16 +2826,37 @@
         });
 
         // Funções para gerenciar certificados
+        function filterCertificates(filter) {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-filter') === filter) {
+                    btn.classList.add('active');
+                }
+            });
+
+            if (filter === 'all') {
+                filteredCertificates = [...certificates];
+            } else {
+                filteredCertificates = certificates.filter(cert => cert.category === filter);
+            }
+
+            loadCertificates();
+            if (window.innerWidth <= 768) {
+                loadCarousel();
+            }
+        }
+
         function loadCertificates() {
             const container = document.getElementById('certificates-display');
             container.innerHTML = '';
             
-            if (certificates.length === 0) {
+            if (filteredCertificates.length === 0) {
                 container.innerHTML = '<p style="text-align: center; grid-column: 1 / -1;">Nenhum certificado cadastrado ainda.</p>';
                 return;
             }
             
-            certificates.forEach(certificate => {
+            filteredCertificates.forEach(certificate => {
                 const card = document.createElement('div');
                 card.className = 'certificate-card animate-on-scroll';
                 card.innerHTML = `
@@ -2151,7 +2864,7 @@
                         <img src="${certificate.image}" alt="${certificate.title}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         <div class="certificate-placeholder" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
                             <i class="fas fa-certificate" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
-                            <span style="color: var(--primary-color); font-weight: bold;">${certificate.title}</span>
+                            <span style="color: var(--primary-color); font-weight: bold;">${certificate.title.substring(0, 30)}${certificate.title.length > 30 ? '...' : ''}</span>
                         </div>
                     </div>
                     <div class="certificate-info">
@@ -2171,6 +2884,85 @@
                 observer.observe(element);
             });
             setupCertificateModal();
+        }
+
+        // Funções do carousel para mobile
+        function loadCarousel() {
+            const carouselContainer = document.getElementById('carousel-container');
+            const carouselNav = document.getElementById('carousel-nav');
+            
+            carouselContainer.innerHTML = '';
+            carouselNav.innerHTML = '';
+            
+            if (filteredCertificates.length === 0) {
+                carouselContainer.innerHTML = '<div class="carousel-slide"><p style="text-align: center; padding: 2rem;">Nenhum certificado encontrado.</p></div>';
+                return;
+            }
+            
+            totalSlides = filteredCertificates.length;
+            currentSlide = 0;
+            
+            // Criar slides
+            filteredCertificates.forEach((certificate, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'carousel-slide';
+                slide.innerHTML = `
+                    <div class="certificate-card">
+                        <div class="certificate-img">
+                            <img src="${certificate.image}" alt="${certificate.title}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="certificate-placeholder" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
+                                <i class="fas fa-certificate" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                                <span style="color: var(--primary-color); font-weight: bold;">${certificate.title.substring(0, 30)}${certificate.title.length > 30 ? '...' : ''}</span>
+                            </div>
+                        </div>
+                        <div class="certificate-info">
+                            <h3>${certificate.title}</h3>
+                            <p>${certificate.description}</p>
+                            <div class="certificate-actions">
+                                <a href="#" class="view-certificate" data-id="${certificate.id}">Visualizar</a>
+                                ${certificate.download ? `<a href="${certificate.download}" download>Download</a>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                carouselContainer.appendChild(slide);
+                
+                // Criar dots
+                const dot = document.createElement('div');
+                dot.className = 'carousel-dot';
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(index));
+                carouselNav.appendChild(dot);
+            });
+            
+            updateCarousel();
+            setupCertificateModal();
+        }
+
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            updateCarousel();
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const carouselContainer = document.getElementById('carousel-container');
+            const dots = document.querySelectorAll('.carousel-dot');
+            
+            carouselContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
         }
 
         function loadCertificatesAdmin() {
@@ -2200,6 +2992,7 @@
             localStorage.setItem('certificates', JSON.stringify(certificates));
             loadCertificates();
             loadCertificatesAdmin();
+            filterCertificates('all');
         }
 
         function editCertificate(id) {
@@ -2220,6 +3013,7 @@
                 localStorage.setItem('certificates', JSON.stringify(certificates));
                 loadCertificates();
                 loadCertificatesAdmin();
+                filterCertificates('all');
             }
         }
 
@@ -2232,7 +3026,8 @@
                 title: document.getElementById('certificate-title').value,
                 description: document.getElementById('certificate-description').value,
                 image: document.getElementById('certificate-image').value,
-                download: document.getElementById('certificate-download').value
+                download: document.getElementById('certificate-download').value,
+                category: 'programming' // Categoria padrão
             };
             
             if (certificate.id) {
@@ -2252,6 +3047,7 @@
             document.getElementById('certificate-id').value = '';
             loadCertificates();
             loadCertificatesAdmin();
+            filterCertificates('all');
         });
 
         // Funções para gerenciar projetos
@@ -2272,10 +3068,16 @@
                 let icon = 'fas fa-laptop-code';
                 let placeholderText = 'Projeto Web';
                 
-                if (project.title.toLowerCase().includes('avatar')) {
+                if (project.title.toLowerCase().includes('chatbot') || project.title.toLowerCase().includes('ia')) {
+                    icon = 'fas fa-robot';
+                    placeholderText = 'Chatbot IA';
+                } else if (project.title.toLowerCase().includes('pet') || project.title.toLowerCase().includes('shop')) {
+                    icon = 'fas fa-paw';
+                    placeholderText = 'Pet Shop';
+                } else if (project.title.toLowerCase().includes('avatar')) {
                     icon = 'fas fa-user-astronaut';
                     placeholderText = 'Portfólio Avatar';
-                } else if (project.title.toLowerCase().includes('chatbot') || project.title.toLowerCase().includes('assistente')) {
+                } else if (project.title.toLowerCase().includes('assistente')) {
                     icon = 'fas fa-robot';
                     placeholderText = 'Assistente Virtual';
                 } else if (project.title.toLowerCase().includes('e-book') || project.title.toLowerCase().includes('afiliação')) {
@@ -2326,6 +3128,41 @@
             // Reaplicar animações
             document.querySelectorAll('.animate-on-scroll').forEach(element => {
                 observer.observe(element);
+            });
+            
+            // Carregar grid para mobile
+            loadMobileProjects();
+        }
+
+        function loadMobileProjects() {
+            const container = document.getElementById('mobile-projects-grid');
+            container.innerHTML = '';
+            
+            if (projects.length === 0) return;
+            
+            // Mostrar apenas os primeiros 6 projetos no mobile
+            const mobileProjects = projects.slice(0, 6);
+            
+            mobileProjects.forEach(project => {
+                const item = document.createElement('div');
+                item.className = 'mobile-project-item';
+                
+                let icon = 'fas fa-laptop-code';
+                
+                if (project.title.toLowerCase().includes('chatbot') || project.title.toLowerCase().includes('ia')) {
+                    icon = 'fas fa-robot';
+                } else if (project.title.toLowerCase().includes('pet')) {
+                    icon = 'fas fa-paw';
+                } else if (project.title.toLowerCase().includes('avatar')) {
+                    icon = 'fas fa-user-astronaut';
+                }
+                
+                item.innerHTML = `
+                    <i class="${icon}"></i>
+                    <h4>${project.title.substring(0, 20)}${project.title.length > 20 ? '...' : ''}</h4>
+                    ${project.link ? `<a href="${project.link}" target="_blank">Ver Projeto</a>` : ''}
+                `;
+                container.appendChild(item);
             });
         }
 
@@ -2419,8 +3256,42 @@
         // Inicializar
         function init() {
             createMatrix();
+            
+            // Inicializar filtros
+            filteredCertificates = [...certificates];
+            
+            // Configurar filtros
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    filterCertificates(filter);
+                });
+            });
+            
             loadCertificates();
             loadProjects();
+            
+            // Configurar carousel para mobile
+            if (window.innerWidth <= 768) {
+                loadCarousel();
+                
+                // Event listeners para setas do carousel
+                document.getElementById('carousel-prev').addEventListener('click', prevSlide);
+                document.getElementById('carousel-next').addEventListener('click', nextSlide);
+                
+                // Auto-rotate do carousel
+                setInterval(nextSlide, 5000);
+            }
+            
+            // Atualizar layout quando redimensionar
+            window.addEventListener('resize', function() {
+                createMatrix();
+                
+                if (window.innerWidth <= 768) {
+                    loadCarousel();
+                }
+            });
+            
             setTimeout(type, 1000);
         }
 
