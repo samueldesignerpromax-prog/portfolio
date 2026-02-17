@@ -487,8 +487,8 @@
             <h2 class="section-title">Meus Certificados</h2>
             
             <div class="filters">
-                <button class="filter-btn active" data-filter="all">Todos (77)</button>
-                <button class="filter-btn" data-filter="pdf">PDFs (25)</button>
+                <button class="filter-btn active" data-filter="all">Todos (122)</button>
+                <button class="filter-btn" data-filter="pdf">PDFs (70)</button>
                 <button class="filter-btn" data-filter="ml">Machine Learning (31)</button>
                 <button class="filter-btn" data-filter="programacao">Programação (15)</button>
                 <button class="filter-btn" data-filter="office">Office (6)</button>
@@ -507,7 +507,7 @@
     </section>
 
     <script>
-        // ===== 77 CERTIFICADOS =====
+        // ===== 77 CERTIFICADOS ORIGINAIS =====
         const certificates = [
             // PDFs (25)
             { id: 1, title: 'Bradesco - GenAI & Dados', category: 'pdf', hours: 52, date: '2026-02-17', description: 'Bootcamp completo de IA Generativa e Dados', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Bradesco+GenAI' },
@@ -534,7 +534,7 @@
             { id: 22, title: 'Microsoft Copilot', category: 'pdf', hours: 1, date: '2026-01-30', description: 'Trabalhando com Copilot', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Microsoft+Copilot' },
             { id: 23, title: 'Excel 365', category: 'pdf', hours: 1, date: '2026-01-30', description: 'Introdução ao Excel 365', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Excel+365' },
             
-            // ML (31) - Resumido para economia de espaço
+            // ML (31)
             { id: 24, title: 'ML Não-Supervisionado', category: 'ml', hours: 1, date: '2026-01-17', description: 'Treinamento não-supervisionado', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=ML+Não-Supervisionado' },
             { id: 25, title: 'ML Supervisionado', category: 'ml', hours: 2, date: '2026-01-17', description: 'Treinamento supervisionado', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=ML+Supervisionado' },
             { id: 26, title: 'Aprendizado por Reforço', category: 'ml', hours: 1, date: '2026-01-17', description: 'Reinforcement Learning', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Aprendizado+Reforço' },
@@ -599,8 +599,63 @@
             { id: 77, title: 'Gerenciamento Pacotes', category: 'programacao', hours: 1, date: '2025-12-20', description: 'Boas práticas Python', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Pacotes+Python' }
         );
 
-        // Marcar o primeiro como especial
-        certificates[0].special = true;
+        // ===== 45 CERTIFICADOS DOS PDFs PARA ADICIONAR =====
+        const pdfCertificates = [
+            { id: 78, title: 'BairesDev - Machine Learning Practitioner', category: 'pdf', hours: 96, date: '2026-02-17', description: 'Bootcamp completo de Machine Learning com 96 horas - DIO', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=BairesDev+ML+Practitioner', special: true },
+            { id: 79, title: 'Avalie este Bootcamp', category: 'pdf', hours: 1, date: '2026-02-17', description: 'Curso de avaliação de Bootcamp', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Avalie+este+Bootcamp' },
+            { id: 80, title: 'Materiais Complementares: Visão Computacional com ML', category: 'pdf', hours: 1, date: '2026-02-16', description: 'Materiais complementares de Visão Computacional', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Visão+Computacional+ML' },
+            { id: 81, title: 'Materiais Complementares: Visão Computacional com ML', category: 'pdf', hours: 1, date: '2026-02-16', description: 'Materiais complementares de Visão Computacional', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Visão+Computacional+ML' },
+            { id: 82, title: 'Criando um sistema de assistência virtual do zero', category: 'pdf', hours: 3, date: '2026-02-17', description: 'Projeto de assistência virtual', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Assistência+Virtual' },
+            { id: 83, title: 'Algoritmos para Processamento de Linguagem Natural', category: 'pdf', hours: 1, date: '2026-02-16', description: 'Algoritmos para PLN', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Algoritmos+PLN' },
+            { id: 84, title: 'Visão Computacional 3D e seus algoritmos', category: 'pdf', hours: 1, date: '2026-02-14', description: 'Visão Computacional 3D', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Visão+3D' },
+            { id: 85, title: 'Algoritmos para Rastreamento de Objetos em Imagens', category: 'pdf', hours: 1, date: '2026-02-14', description: 'Rastreamento de objetos', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Rastreamento+Objetos' },
+            { id: 86, title: 'Introdução à Visão Computacional', category: 'pdf', hours: 1, date: '2026-02-14', description: 'Introdução à Visão Computacional', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Introdução+Visão' },
+            { id: 87, title: 'Materiais Complementares: Processamento de Imagens com ML', category: 'pdf', hours: 1, date: '2026-02-14', description: 'Processamento de Imagens com ML', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Processamento+Imagens' },
+            { id: 88, title: 'Criando um Sistema de Recomendação por Imagens Digitais', category: 'pdf', hours: 3, date: '2026-02-17', description: 'Sistema de recomendação por imagens', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Recomendação+Imagens' },
+            { id: 89, title: 'Programando Com OpenCV: Abordagens práticas', category: 'pdf', hours: 2, date: '2026-02-13', description: 'OpenCV abordagens práticas', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=OpenCV+Prático' },
+            { id: 90, title: 'Métodos de Segmentação Com OpenCV', category: 'pdf', hours: 2, date: '2026-02-13', description: 'Segmentação com OpenCV', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Segmentação+OpenCV' },
+            { id: 91, title: 'Métodos de Segmentação Com OpenCV', category: 'pdf', hours: 2, date: '2026-02-13', description: 'Segmentação com OpenCV', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Segmentação+OpenCV' },
+            { id: 92, title: 'Aplicações de Processamento De Imagens Digitais', category: 'pdf', hours: 2, date: '2026-02-05', description: 'Aplicações de processamento de imagens', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Aplicações+Imagens' },
+            { id: 93, title: 'Introdução ao Processamento De Imagens Digitais', category: 'pdf', hours: 2, date: '2026-02-05', description: 'Introdução ao processamento de imagens', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Introdução+Imagens' },
+            { id: 94, title: 'Materiais Complementares: Frameworks de Deep Learning', category: 'pdf', hours: 1, date: '2026-02-04', description: 'Frameworks de Deep Learning', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Frameworks+DL' },
+            { id: 95, title: 'Criando um Sistema de Reconhecimento Facial do Zero', category: 'pdf', hours: 5, date: '2026-02-17', description: 'Sistema de reconhecimento facial', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Reconhecimento+Facial' },
+            { id: 96, title: 'Criando um Sistema de Reconhecimento Facial do Zero', category: 'pdf', hours: 5, date: '2026-02-17', description: 'Sistema de reconhecimento facial', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Reconhecimento+Facial' },
+            { id: 97, title: 'Ambientes de Projetos Colaborativos de ML', category: 'pdf', hours: 1, date: '2026-02-04', description: 'Ambientes colaborativos de ML', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Ambientes+ML' },
+            { id: 98, title: 'Desenvolvimento de Algoritmos no Keras', category: 'pdf', hours: 1, date: '2026-02-03', description: 'Algoritmos com Keras', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Keras' },
+            { id: 99, title: 'Frameworks para Machine Learning', category: 'pdf', hours: 1, date: '2026-02-03', description: 'Frameworks para ML', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Frameworks+ML' },
+            { id: 100, title: 'Conhecendo as Bibliotecas Pandas e Scikit-Learn', category: 'pdf', hours: 1, date: '2026-01-26', description: 'Pandas e Scikit-Learn', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Pandas+Scikit' },
+            { id: 101, title: 'Introdução às Bibliotecas de Machine Learning', category: 'pdf', hours: 1, date: '2026-01-26', description: 'Bibliotecas de ML', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Bibliotecas+ML' },
+            { id: 102, title: 'Materiais Complementares: Fundamentos e Práticas de DL', category: 'pdf', hours: 1, date: '2026-01-25', description: 'Fundamentos de Deep Learning', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Fundamentos+DL' },
+            { id: 103, title: 'Criação de Uma Base de Dados e Treinamento da Rede YOLO', category: 'pdf', hours: 2, date: '2026-02-17', description: 'Treinamento da rede YOLO', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Rede+YOLO' },
+            { id: 104, title: 'Aplicações Práticas com Deep Learning', category: 'pdf', hours: 1, date: '2026-01-25', description: 'Aplicações práticas de DL', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Aplicações+DL' },
+            { id: 105, title: 'Redes de Segmentação em Deep Learning', category: 'pdf', hours: 1, date: '2026-01-25', description: 'Redes de segmentação', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Redes+Segmentação' },
+            { id: 106, title: 'Redes de Segmentação em Deep Learning', category: 'pdf', hours: 1, date: '2026-01-25', description: 'Redes de segmentação', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Redes+Segmentação' },
+            { id: 107, title: 'Redes de Detecção em Deep Learning', category: 'pdf', hours: 2, date: '2026-01-25', description: 'Redes de detecção', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Redes+Detecção' },
+            { id: 108, title: 'Redes de Classificação para Deep Learning', category: 'pdf', hours: 2, date: '2026-01-23', description: 'Redes de classificação', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Redes+Classificação' },
+            { id: 109, title: 'Tipos de Redes de Deep Learning', category: 'pdf', hours: 2, date: '2026-01-22', description: 'Tipos de redes neurais', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Tipos+Redes+DL' },
+            { id: 110, title: 'Materiais Complementares: Teoria do Aprendizado Estatístico', category: 'pdf', hours: 1, date: '2026-01-21', description: 'Teoria do aprendizado', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Teoria+Aprendizado' },
+            { id: 111, title: 'Cálculo de Métricas de Avaliação de Aprendizado', category: 'pdf', hours: 2, date: '2026-02-16', description: 'Métricas de avaliação', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Métricas+Avaliação' },
+            { id: 112, title: 'Modelos de ML: Métricas de Avaliação de Desempenho', category: 'pdf', hours: 1, date: '2026-01-21', description: 'Métricas de desempenho', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Métricas+ML' },
+            { id: 113, title: 'Otimização de Modelos em Hiperparâmetros', category: 'pdf', hours: 1, date: '2026-01-21', description: 'Otimização de hiperparâmetros', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Hiperparâmetros' },
+            { id: 114, title: 'Métodos de Otimização de Aprendizado', category: 'pdf', hours: 2, date: '2026-01-21', description: 'Otimização de aprendizado', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Otimização' },
+            { id: 115, title: 'Métodos de Validação de Treinamento', category: 'pdf', hours: 2, date: '2026-01-20', description: 'Validação de treinamento', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Validação' },
+            { id: 116, title: 'Materiais Complementares: Algoritmos de Treinamento em ML', category: 'pdf', hours: 1, date: '2026-01-20', description: 'Algoritmos de treinamento', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Algoritmos+ML' },
+            { id: 117, title: 'Redução de Dimensionalidade em Imagens para Redes Neurais', category: 'pdf', hours: 2, date: '2026-01-20', description: 'Redução de dimensionalidade', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Redução+Imagens' },
+            { id: 118, title: 'Extração de Features e Redução de Dimensionalidade', category: 'pdf', hours: 2, date: '2026-01-20', description: 'Extração de features', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Extração+Features' },
+            { id: 119, title: 'Algoritmos de Regressão para Machine Learning', category: 'pdf', hours: 1, date: '2026-01-17', description: 'Algoritmos de regressão', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Regressão+ML' },
+            { id: 120, title: 'Aprendizado por Reforço em Machine Learning', category: 'pdf', hours: 1, date: '2026-01-17', description: 'Aprendizado por reforço', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Aprendizado+Reforço' },
+            { id: 121, title: 'Treinamento Supervisionado para Machine Learning', category: 'pdf', hours: 2, date: '2026-01-17', description: 'Treinamento supervisionado', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Supervisionado' },
+            { id: 122, title: 'Treinamento Não-Supervisionado em Machine Learning', category: 'pdf', hours: 1, date: '2026-01-17', description: 'Treinamento não-supervisionado', image: 'https://via.placeholder.com/400x300/00ff41/000000?text=Não+Supervisionado' }
+        ];
+
+        // Combinar todos os certificados
+        const allCertificates = [...certificates, ...pdfCertificates];
+
+        // Contar certificados por categoria
+        const pdfCount = allCertificates.filter(c => c.category === 'pdf').length;
+        const mlCount = allCertificates.filter(c => c.category === 'ml').length;
+        const progCount = allCertificates.filter(c => c.category === 'programacao').length;
+        const officeCount = allCertificates.filter(c => c.category === 'office').length;
 
         let currentPage = 1;
         let itemsPerPage = 12;
@@ -632,7 +687,7 @@
                 card.className = `certificate-card animate-on-scroll ${cert.special ? 'special' : ''}`;
                 card.innerHTML = `
                     <div class="certificate-img">
-                        <img src="${cert.image}" alt="${cert.title}" onerror="this.style.display='none'; this.parentElement.innerHTML += '<i class=\'fas fa-certificate\'></i>'">
+                        <img src="${cert.image}" alt="${cert.title}" onerror="this.style.display='none'; this.parentElement.innerHTML += '<i class=\\'fas fa-certificate\\'></i>'">
                     </div>
                     <div class="certificate-info">
                         <h3>${cert.title}</h3>
@@ -652,7 +707,7 @@
         }
 
         function filterCertificates() {
-            return certificates.filter(cert => {
+            return allCertificates.filter(cert => {
                 const matchesFilter = currentFilter === 'all' || cert.category === currentFilter;
                 const matchesSearch = cert.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                                     cert.description.toLowerCase().includes(searchTerm.toLowerCase());
@@ -684,6 +739,13 @@
             document.getElementById('modal-image').src = imageSrc;
             document.getElementById('certificate-modal').style.display = 'flex';
         }
+
+        // Atualizar os textos dos filtros com as contagens
+        document.querySelector('[data-filter="all"]').textContent = `Todos (${allCertificates.length})`;
+        document.querySelector('[data-filter="pdf"]').textContent = `PDFs (${pdfCount})`;
+        document.querySelector('[data-filter="ml"]').textContent = `Machine Learning (${mlCount})`;
+        document.querySelector('[data-filter="programacao"]').textContent = `Programação (${progCount})`;
+        document.querySelector('[data-filter="office"]').textContent = `Office (${officeCount})`;
 
         // Event Listeners
         document.querySelectorAll('.filter-btn').forEach(btn => {
