@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samuel Ciryaco de Andrade - Cursos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #00ff41;
+            --secondary-color: #0a0a0a;
+            --light-color: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 255, 65, 0.3);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .matrix-code {
+            position: absolute;
+            color: var(--primary-color);
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            background-color: rgba(10, 10, 10, 0.9);
+            color: var(--light-color);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+        }
+
+        header.scrolled {
+            padding: 0.5rem 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--light-color);
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--light-color);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .courses {
+            padding: 150px 0 100px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--light-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 10px auto;
+        }
+
+        .courses-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .course-category {
+            background-color: rgba(30, 30, 30, 0.8);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0, 255, 65, 0.2);
+            transition: var(--transition);
+        }
+
+        .course-category:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .course-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 255, 65, 0.3);
+            padding-bottom: 0.5rem;
+        }
+
+        .course-list {
+            list-style: none;
+        }
+
+        .course-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .course-list li:last-child {
+            border-bottom: none;
+        }
+
+        .course-list li i {
+            color: var(--primary-color);
+            width: 20px;
+        }
+
+        .course-list li span {
+            flex: 1;
+        }
+
+        .course-list li .badge {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 3rem;
+            padding: 2rem;
+            background-color: rgba(30, 30, 30, 0.8);
+            border-radius: 10px;
+            border: 1px solid rgba(0, 255, 65, 0.2);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #ccc;
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(10, 10, 10, 0.95);
+                flex-direction: column;
+                padding: 1rem 0;
+                text-align: center;
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .stats-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .courses-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="matrix-bg" id="matrix-bg"></div>
+
+    <header id="header">
+        <div class="container">
+            <nav>
+                <div class="logo">Samuel<span>Ciryaco</span></div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="habilidades.html">Habilidades</a></li>
+                    <li><a href="cursos.html" class="active">Cursos</a></li>
+                    <li><a href="certificados.html">Certificados</a></li>
+                    <li><a href="projetos.html">Projetos</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="courses">
+        <div class="container">
+            <h2 class="section-title">Meus Cursos</h2>
+            
+            <div class="stats-container animate-on-scroll">
+                <div class="stat-item">
+                    <div class="stat-number">77</div>
+                    <div class="stat-label">Certificados</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">52</div>
+                    <div class="stat-label">Horas (Bootcamp)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">31</div>
+                    <div class="stat-label">Cursos ML</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Categorias</div>
+                </div>
+            </div>
+
+            <div class="courses-container">
+                <div class="course-category animate-on-scroll">
+                    <h3>Web Design</h3>
+                    <ul class="course-list">
+                        <li><i class="fas fa-check"></i> <span>HTML5 Completo</span> <span class="badge">40h</span></li>
+                        <li><i class="fas fa-check"></i> <span>CSS3 Avançado</span> <span class="badge">35h</span></li>
+                        <li><i class="fas fa-check"></i> <span>JavaScript Moderno</span> <span class="badge">45h</span></li>
+                        <li><i class="fas fa-check"></i> <span>WordPress Development</span> <span class="badge">30h</span></li>
+                        <li><i class="fas fa-check"></i> <span>Responsive Design</span> <span class="badge">25h</span></li>
+                        <li><i class="fas fa-check"></i> <span>UI/UX Fundamentals</span> <span class="badge">20h</span></li>
+                    </ul>
+                </div>
+
+                <div class="course-category animate-on-scroll">
+                    <h3>Programação</h3>
+                    <ul class="course-list">
+                        <li><i class="fas fa-check"></i> <span>Lógica de Programação</span> <span class="badge">40h</span></li>
+                        <li><i class="fas fa-check"></i> <span>Banco de Dados SQL</span> <span class="badge">35h</span></li>
+                        <li><i class="fas fa-check"></i> <span>C# Nível 1</span> <span class="badge">20h</span></li>
+                        <li><i class="fas fa-check"></i> <span>C# Nível 2</span> <span class="badge">25h</span></li>
+                        <li><i class="fas fa-check"></i> <span>C# Nível 3</span> <span class="badge">30h</span></li>
+                        <li><i class="fas fa-check"></i> <span>C# Nível 4</span> <span class="badge">35h</span></li>
+                        <li><i class="fas fa-check"></i> <span>Python - Bootcamp Backend</span> <span class="badge">60h</span></li>
+                        <li><i class="fas fa-check"></i> <span>FastAPI & APIs REST</span> <span class="badge">25h</span></li>
+                    </ul>
+                </div>
+
+                <div class="course-category animate-on-scroll">
+                    <h3>Pacote Office</h3>
+                    <ul class="course-list">
+                        <li><i class="fas fa-check"></i> <span>Word</span> <span class="badge">20h</span></li>
+                        <li><i class="fas fa-check"></i> <span>Excel</span> <span class="badge">25h</span></li>
+                        <li><i class="fas fa-check"></i> <span>PowerPoint</span> <span class="badge">15h</span></li>
+                        <li><i class="fas fa-check"></i> <span>Outlook</span> <span class="badge">10h</span></li>
+                        <li><i class="fas fa-check"></i> <span>Access</span> <span class="badge">20h</span></li>
+                        <li><i class="fas fa-check"></i> <span>Power BI</span> <span class="badge">30h</span></li>
+                        <li><i class="fas fa-check"></i> <span>Excel Avançado 1</span> <span class="badge">20h</span></li>
+                        <li><i class="fas fa-check"></i> <span>Excel Avançado 2</span> <span class="badge">25h</span></li>
+                    </ul>
+                </div>
+
+                <div class="course-category animate-on-scroll">
+                    <h3>Machine Learning & IA</h3>
+                    <ul class="course-list">
+                        <li><i class="fas fa-check"></i> <span>Bradesco - GenAI & Dados</span> <span class="badge">52h</span></li>
+                        <li><i class="fas fa-check"></i> <span>BairesDev - ML Practitioner</span> <span class="badge">40h</span></li>
+                        <li><i class="fas fa-check"></i> <span>ML Supervisionado</span> <span class="badge">15h</span></li>
+                        <li><i class="fas fa-check"></i> <span>ML Não-Supervisionado</span> <span class="badge">15h</span></li>
+                        <li><i class="fas fa-check"></i> <span>Aprendizado por Reforço</span> <span class="badge">10h</span></li>
+                        <li><i class="fas fa-check"></i> <span>Redes Neurais Artificiais</span> <span class="badge">20h</span></li>
+                        <li><i class="fas fa-check"></i> <span>Algoritmos Genéticos</span> <span class="badge">15h</span></li>
+                        <li><i class="fas fa-check"></i> <span>SVM</span> <span class="badge">10h</span></li>
+                        <li><i class="fas fa-check"></i> <span>Deep Learning</span> <span class="badge">25h</span></li>
+                        <li><i class="fas fa-check"></i> <span>Processamento de Linguagem Natural</span> <span class="badge">20h</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function createMatrix() {
+            const matrixBg = document.getElementById('matrix-bg');
+            const chars = '01';
+            const fontSize = 18;
+            const columns = Math.floor(window.innerWidth / fontSize);
+            
+            for (let i = 0; i < columns; i++) {
+                const code = document.createElement('div');
+                code.className = 'matrix-code';
+                code.style.left = `${i * fontSize}px`;
+                code.style.animationDuration = `${Math.random() * 5 + 5}s`;
+                code.style.animationDelay = `${Math.random() * 5}s`;
+                
+                let content = '';
+                const rows = Math.floor(window.innerHeight / fontSize);
+                for (let j = 0; j < rows; j++) {
+                    content += chars.charAt(Math.floor(Math.random() * chars.length));
+                }
+                
+                code.textContent = content;
+                matrixBg.appendChild(code);
+            }
+        }
+
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(element => {
+            observer.observe(element);
+        });
+
+        window.addEventListener('DOMContentLoaded', createMatrix);
+    </script>
+</body>
+</html>
