@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samuel Ciryaco de Andrade - Sobre</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #00ff41;
+            --secondary-color: #0a0a0a;
+            --light-color: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 255, 65, 0.3);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .matrix-code {
+            position: absolute;
+            color: var(--primary-color);
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            background-color: rgba(10, 10, 10, 0.9);
+            color: var(--light-color);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+        }
+
+        header.scrolled {
+            padding: 0.5rem 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--light-color);
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--light-color);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .about {
+            padding: 150px 0 100px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--light-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 10px auto;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .profile-img {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-img::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: 10px;
+            bottom: 10px;
+            border: 3px solid var(--primary-color);
+            z-index: -1;
+            border-radius: 50%;
+        }
+
+        .profile-img-container {
+            width: 350px;
+            height: 450px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 15px;
+            border: 5px solid var(--secondary-color);
+            box-shadow: var(--shadow);
+            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: var(--primary-color);
+        }
+
+        .profile-img-container i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .profile-img-container:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-text {
+            flex: 2;
+        }
+
+        .about-text h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .personal-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .info-item i {
+            color: var(--primary-color);
+            width: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            border: 2px solid var(--primary-color);
+            margin-top: 2rem;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 255, 65, 0.3);
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(10, 10, 10, 0.95);
+                flex-direction: column;
+                padding: 1rem 0;
+                text-align: center;
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .profile-img-container {
+                width: 280px;
+                height: 350px;
+            }
+
+            .personal-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="matrix-bg" id="matrix-bg"></div>
+
+    <header id="header">
+        <div class="container">
+            <nav>
+                <div class="logo">Samuel<span>Ciryaco</span></div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="sobre.html" class="active">Sobre</a></li>
+                    <li><a href="habilidades.html">Habilidades</a></li>
+                    <li><a href="cursos.html">Cursos</a></li>
+                    <li><a href="certificados.html">Certificados</a></li>
+                    <li><a href="projetos.html">Projetos</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="about">
+        <div class="container">
+            <h2 class="section-title">Sobre Mim</h2>
+            <div class="about-content">
+                <div class="profile-img">
+                    <div class="profile-img-container" id="profile-container">
+                        <img id="profile-picture" 
+                             src="https://i.ibb.co/yc6hTkHb/Captura-de-Tela-15.png" 
+                             alt="Samuel Ciryaco de Andrade"
+                             onerror="this.src='https://via.placeholder.com/350x450/00ff41/000000?text=Samuel+Ciryaco'">
+                    </div>
+                </div>
+                <div class="about-text animate-on-scroll">
+                    <h3>Desenvolvedor Web & Programador</h3>
+                    <p>Sou Samuel Ciryaco de Andrade, nascido em 23 de dezembro de 2005. Sou um desenvolvedor apaixonado por tecnologia e programação, sempre buscando aprender novas tecnologias e aprimorar minhas habilidades.</p>
+                    <p>Meu objetivo é criar soluções digitais inovadoras que atendam às necessidades dos usuários e proporcionem experiências excepcionais. Com mais de 77 certificados e 12 projetos concluídos, estou sempre em busca de novos desafios.</p>
+                    
+                    <div class="personal-info">
+                        <div class="info-item">
+                            <i class="fas fa-user"></i>
+                            <span><strong>Nome:</strong> Samuel Ciryaco de Andrade</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-birthday-cake"></i>
+                            <span><strong>Nascimento:</strong> 23/12/2005</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span><strong>Localização:</strong> Brasil</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-laptop-code"></i>
+                            <span><strong>Interesses:</strong> Web Design, Programação, IA</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-certificate"></i>
+                            <span><strong>Certificações:</strong> 77 certificados</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-project-diagram"></i>
+                            <span><strong>Projetos:</strong> 12 concluídos</span>
+                        </div>
+                    </div>
+                    
+                    <a href="cursos.html" class="btn">Ver Meus Cursos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function createMatrix() {
+            const matrixBg = document.getElementById('matrix-bg');
+            const chars = '01';
+            const fontSize = 18;
+            const columns = Math.floor(window.innerWidth / fontSize);
+            
+            for (let i = 0; i < columns; i++) {
+                const code = document.createElement('div');
+                code.className = 'matrix-code';
+                code.style.left = `${i * fontSize}px`;
+                code.style.animationDuration = `${Math.random() * 5 + 5}s`;
+                code.style.animationDelay = `${Math.random() * 5}s`;
+                
+                let content = '';
+                const rows = Math.floor(window.innerHeight / fontSize);
+                for (let j = 0; j < rows; j++) {
+                    content += chars.charAt(Math.floor(Math.random() * chars.length));
+                }
+                
+                code.textContent = content;
+                matrixBg.appendChild(code);
+            }
+        }
+
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(element => {
+            observer.observe(element);
+        });
+
+        window.addEventListener('DOMContentLoaded', createMatrix);
+    </script>
+</body>
+</html>
