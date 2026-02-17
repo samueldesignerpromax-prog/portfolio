@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samuel Ciryaco de Andrade - Certificados</title>
+    <title>Samuel Ciryaco de Andrade - Todos os Certificados</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -24,7 +24,6 @@
         body {
             background-color: var(--secondary-color);
             color: var(--light-color);
-            line-height: 1.6;
         }
 
         .container {
@@ -36,13 +35,11 @@
 
         header {
             background-color: var(--secondary-color);
-            color: var(--light-color);
             padding: 1rem 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: var(--shadow);
             border-bottom: 2px solid var(--primary-color);
         }
 
@@ -71,7 +68,6 @@
         .nav-links a {
             color: var(--light-color);
             text-decoration: none;
-            transition: color 0.3s;
             font-weight: 500;
         }
 
@@ -88,13 +84,11 @@
 
         .certificates {
             padding: 150px 0 50px;
-            min-height: 100vh;
         }
 
         .section-title {
             text-align: center;
             margin-bottom: 2rem;
-            color: var(--light-color);
             font-size: 2.5rem;
         }
 
@@ -147,12 +141,10 @@
             border-radius: 50px;
             color: var(--light-color);
             font-size: 1rem;
-            transition: var(--transition);
         }
 
         .search-box input:focus {
             outline: none;
-            background: rgba(255, 255, 255, 0.1);
             box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
         }
 
@@ -164,16 +156,15 @@
         }
 
         .certificate-card {
-            background: linear-gradient(145deg, #111111, #1a1a1a);
+            background: linear-gradient(145deg, #111, #1a1a1a);
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            transition: var(--transition);
             border: 1px solid rgba(0, 255, 65, 0.1);
             cursor: pointer;
-            text-decoration: none;
-            color: inherit;
-            display: block;
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .certificate-card:hover {
@@ -209,18 +200,6 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            overflow: hidden;
-        }
-
-        .certificate-preview::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent, rgba(0, 255, 65, 0.1));
-            pointer-events: none;
         }
 
         .certificate-preview i {
@@ -230,32 +209,10 @@
             filter: drop-shadow(0 0 20px rgba(0, 255, 65, 0.5));
         }
 
-        .pdf-badge {
-            position: absolute;
-            bottom: 15px;
-            right: 15px;
-            background: var(--primary-color);
-            color: var(--secondary-color);
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            z-index: 10;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .pdf-badge i {
-            font-size: 1rem;
-            color: var(--secondary-color);
-            margin: 0;
-        }
-
         .certificate-info {
             padding: 1.5rem;
             border-top: 1px solid rgba(0, 255, 65, 0.2);
+            flex: 1;
         }
 
         .certificate-info h3 {
@@ -268,7 +225,6 @@
         .certificate-meta {
             display: flex;
             justify-content: space-between;
-            align-items: center;
             margin: 0.8rem 0;
             color: #aaa;
             font-size: 0.9rem;
@@ -293,9 +249,8 @@
             display: inline-block;
             margin-top: 1rem;
             color: var(--primary-color);
-            font-size: 0.9rem;
             font-weight: 600;
-            transition: var(--transition);
+            font-size: 0.9rem;
         }
 
         .view-link i {
@@ -305,6 +260,109 @@
 
         .certificate-card:hover .view-link i {
             transform: translateX(5px);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.98);
+            z-index: 2000;
+            padding: 20px;
+        }
+
+        .modal-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .modal-header {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .modal-header h3 {
+            font-size: 1.2rem;
+            max-width: 80%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0 15px;
+        }
+
+        .close-modal:hover {
+            color: var(--light-color);
+        }
+
+        .modal-body {
+            flex: 1;
+            background: #f0f0f0;
+            overflow: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .certificate-image {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .download-btn {
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            transition: var(--transition);
+            border: 2px solid var(--primary-color);
+        }
+
+        .download-btn:hover {
+            background: transparent;
+            color: var(--primary-color);
+        }
+
+        .no-pdf {
+            text-align: center;
+            padding: 50px;
+            color: #666;
+        }
+
+        .no-pdf i {
+            font-size: 5rem;
+            color: #999;
+            margin-bottom: 20px;
         }
 
         .pagination {
@@ -326,9 +384,8 @@
             color: var(--primary-color);
             border-radius: 50%;
             cursor: pointer;
-            transition: var(--transition);
             font-weight: 600;
-            font-size: 1rem;
+            transition: var(--transition);
         }
 
         .page-btn:hover,
@@ -364,7 +421,7 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background-color: var(--secondary-color);
+                background: var(--secondary-color);
                 flex-direction: column;
                 padding: 1rem 0;
                 text-align: center;
@@ -375,23 +432,53 @@
                 display: flex;
             }
 
+            .hamburger {
+                display: block;
+            }
+
+            .filters {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
+
             .certificates-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .modal-header h3 {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <header id="header">
+    <!-- Modal -->
+    <div class="modal" id="certModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Certificado</h3>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Conteúdo será carregado aqui -->
+            </div>
+        </div>
+    </div>
+
+    <header>
         <div class="container">
             <nav>
                 <a href="#" class="logo">Samuel<span>Ciryaco</span></a>
                 <ul class="nav-links">
-                    <li><a href="#">Início</a></li>
+                    <li><a href="#" class="active">Início</a></li>
                     <li><a href="#">Sobre</a></li>
                     <li><a href="#">Habilidades</a></li>
                     <li><a href="#">Cursos</a></li>
-                    <li><a href="#" class="active">Certificados</a></li>
+                    <li><a href="#">Certificados</a></li>
                     <li><a href="#">Projetos</a></li>
                     <li><a href="#">Contato</a></li>
                 </ul>
@@ -404,10 +491,11 @@
 
     <section class="certificates">
         <div class="container">
-            <h1 class="section-title">Meus Certificados</h1>
+            <h1 class="section-title">Todos os Certificados (122)</h1>
             
             <div class="filters">
                 <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="destaques">⭐ Destaques</button>
                 <button class="filter-btn" data-filter="pdf">PDFs</button>
                 <button class="filter-btn" data-filter="ml">Machine Learning</button>
                 <button class="filter-btn" data-filter="programacao">Programação</button>
@@ -415,7 +503,7 @@
             </div>
 
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="🔍 Buscar certificados...">
+                <input type="text" id="searchInput" placeholder="🔍 Buscar certificados por título ou descrição...">
             </div>
 
             <div class="certificates-grid" id="certificatesGrid"></div>
@@ -425,56 +513,163 @@
     </section>
 
     <script>
-        // LISTA COMPLETA COM TODOS OS 122 CERTIFICADOS
+        // LISTA COMPLETA - 122 CERTIFICADOS
         const certificates = [
-            // ===== 45 CERTIFICADOS DOS PDFs (com links para visualização) =====
-            { id: 1, title: 'BairesDev - Machine Learning Practitioner', category: 'pdf', hours: 96, date: '2026-02-17', description: 'Bootcamp completo de Machine Learning com 96 horas - DIO', pdfUrl: '45.pdf', special: true },
-            { id: 2, title: 'Avalie este Bootcamp', category: 'pdf', hours: 1, date: '2026-02-17', description: 'Curso de avaliação de Bootcamp', pdfUrl: '44.pdf' },
-            { id: 3, title: 'Materiais Complementares: Visão Computacional com ML', category: 'pdf', hours: 1, date: '2026-02-16', description: 'Materiais complementares de Visão Computacional', pdfUrl: '43.pdf' },
-            { id: 4, title: 'Materiais Complementares: Visão Computacional com ML', category: 'pdf', hours: 1, date: '2026-02-16', description: 'Materiais complementares de Visão Computacional', pdfUrl: '42.pdf' },
-            { id: 5, title: 'Criando um sistema de assistência virtual do zero', category: 'pdf', hours: 3, date: '2026-02-17', description: 'Projeto de assistência virtual', pdfUrl: '41.pdf' },
-            { id: 6, title: 'Algoritmos para Processamento de Linguagem Natural', category: 'pdf', hours: 1, date: '2026-02-16', description: 'Algoritmos para PLN', pdfUrl: '40.pdf' },
-            { id: 7, title: 'Visão Computacional 3D e seus algoritmos', category: 'pdf', hours: 1, date: '2026-02-14', description: 'Visão Computacional 3D', pdfUrl: '39.pdf' },
-            { id: 8, title: 'Algoritmos para Rastreamento de Objetos em Imagens', category: 'pdf', hours: 1, date: '2026-02-14', description: 'Rastreamento de objetos', pdfUrl: '38.pdf' },
-            { id: 9, title: 'Introdução à Visão Computacional', category: 'pdf', hours: 1, date: '2026-02-14', description: 'Introdução à Visão Computacional', pdfUrl: '37.pdf' },
-            { id: 10, title: 'Materiais Complementares: Processamento de Imagens com ML', category: 'pdf', hours: 1, date: '2026-02-14', description: 'Processamento de Imagens com ML', pdfUrl: '36.pdf' },
-            { id: 11, title: 'Criando um Sistema de Recomendação por Imagens Digitais', category: 'pdf', hours: 3, date: '2026-02-17', description: 'Sistema de recomendação por imagens', pdfUrl: '35.pdf' },
-            { id: 12, title: 'Programando Com OpenCV: Abordagens práticas', category: 'pdf', hours: 2, date: '2026-02-13', description: 'OpenCV abordagens práticas', pdfUrl: '34.pdf' },
-            { id: 13, title: 'Métodos de Segmentação Com OpenCV', category: 'pdf', hours: 2, date: '2026-02-13', description: 'Segmentação com OpenCV', pdfUrl: '33.pdf' },
-            { id: 14, title: 'Métodos de Segmentação Com OpenCV', category: 'pdf', hours: 2, date: '2026-02-13', description: 'Segmentação com OpenCV', pdfUrl: '32.pdf' },
-            { id: 15, title: 'Aplicações de Processamento De Imagens Digitais', category: 'pdf', hours: 2, date: '2026-02-05', description: 'Aplicações de processamento de imagens', pdfUrl: '31.pdf' },
-            { id: 16, title: 'Introdução ao Processamento De Imagens Digitais', category: 'pdf', hours: 2, date: '2026-02-05', description: 'Introdução ao processamento de imagens', pdfUrl: '30.pdf' },
-            { id: 17, title: 'Materiais Complementares: Frameworks de Deep Learning', category: 'pdf', hours: 1, date: '2026-02-04', description: 'Frameworks de Deep Learning', pdfUrl: '29.pdf' },
-            { id: 18, title: 'Criando um Sistema de Reconhecimento Facial do Zero', category: 'pdf', hours: 5, date: '2026-02-17', description: 'Sistema de reconhecimento facial', pdfUrl: '28.pdf' },
-            { id: 19, title: 'Criando um Sistema de Reconhecimento Facial do Zero', category: 'pdf', hours: 5, date: '2026-02-17', description: 'Sistema de reconhecimento facial', pdfUrl: '27.pdf' },
-            { id: 20, title: 'Ambientes de Projetos Colaborativos de ML', category: 'pdf', hours: 1, date: '2026-02-04', description: 'Ambientes colaborativos de ML', pdfUrl: '26.pdf' },
-            { id: 21, title: 'Desenvolvimento de Algoritmos no Keras', category: 'pdf', hours: 1, date: '2026-02-03', description: 'Algoritmos com Keras', pdfUrl: '25.pdf' },
-            { id: 22, title: 'Frameworks para Machine Learning', category: 'pdf', hours: 1, date: '2026-02-03', description: 'Frameworks para ML', pdfUrl: '24.pdf' },
-            { id: 23, title: 'Conhecendo as Bibliotecas Pandas e Scikit-Learn', category: 'pdf', hours: 1, date: '2026-01-26', description: 'Pandas e Scikit-Learn', pdfUrl: '23.pdf' },
-            { id: 24, title: 'Introdução às Bibliotecas de Machine Learning', category: 'pdf', hours: 1, date: '2026-01-26', description: 'Bibliotecas de ML', pdfUrl: '22.pdf' },
-            { id: 25, title: 'Materiais Complementares: Fundamentos e Práticas de DL', category: 'pdf', hours: 1, date: '2026-01-25', description: 'Fundamentos de Deep Learning', pdfUrl: '21.pdf' },
-            { id: 26, title: 'Criação de Uma Base de Dados e Treinamento da Rede YOLO', category: 'pdf', hours: 2, date: '2026-02-17', description: 'Treinamento da rede YOLO', pdfUrl: '20.pdf' },
-            { id: 27, title: 'Aplicações Práticas com Deep Learning', category: 'pdf', hours: 1, date: '2026-01-25', description: 'Aplicações práticas de DL', pdfUrl: '19.pdf' },
-            { id: 28, title: 'Redes de Segmentação em Deep Learning', category: 'pdf', hours: 1, date: '2026-01-25', description: 'Redes de segmentação', pdfUrl: '18.pdf' },
-            { id: 29, title: 'Redes de Segmentação em Deep Learning', category: 'pdf', hours: 1, date: '2026-01-25', description: 'Redes de segmentação', pdfUrl: '17.pdf' },
-            { id: 30, title: 'Redes de Detecção em Deep Learning', category: 'pdf', hours: 2, date: '2026-01-25', description: 'Redes de detecção', pdfUrl: '16.pdf' },
-            { id: 31, title: 'Redes de Classificação para Deep Learning', category: 'pdf', hours: 2, date: '2026-01-23', description: 'Redes de classificação', pdfUrl: '15.pdf' },
-            { id: 32, title: 'Tipos de Redes de Deep Learning', category: 'pdf', hours: 2, date: '2026-01-22', description: 'Tipos de redes neurais', pdfUrl: '14.pdf' },
-            { id: 33, title: 'Materiais Complementares: Teoria do Aprendizado Estatístico', category: 'pdf', hours: 1, date: '2026-01-21', description: 'Teoria do aprendizado', pdfUrl: '13.pdf' },
-            { id: 34, title: 'Cálculo de Métricas de Avaliação de Aprendizado', category: 'pdf', hours: 2, date: '2026-02-16', description: 'Métricas de avaliação', pdfUrl: '12.pdf' },
-            { id: 35, title: 'Modelos de ML: Métricas de Avaliação de Desempenho', category: 'pdf', hours: 1, date: '2026-01-21', description: 'Métricas de desempenho', pdfUrl: '11.pdf' },
-            { id: 36, title: 'Otimização de Modelos em Hiperparâmetros', category: 'pdf', hours: 1, date: '2026-01-21', description: 'Otimização de hiperparâmetros', pdfUrl: '10.pdf' },
-            { id: 37, title: 'Métodos de Otimização de Aprendizado', category: 'pdf', hours: 2, date: '2026-01-21', description: 'Otimização de aprendizado', pdfUrl: '9.pdf' },
-            { id: 38, title: 'Métodos de Validação de Treinamento', category: 'pdf', hours: 2, date: '2026-01-20', description: 'Validação de treinamento', pdfUrl: '8.pdf' },
-            { id: 39, title: 'Materiais Complementares: Algoritmos de Treinamento em ML', category: 'pdf', hours: 1, date: '2026-01-20', description: 'Algoritmos de treinamento', pdfUrl: '7.pdf' },
-            { id: 40, title: 'Redução de Dimensionalidade em Imagens para Redes Neurais', category: 'pdf', hours: 2, date: '2026-01-20', description: 'Redução de dimensionalidade', pdfUrl: '6.pdf' },
-            { id: 41, title: 'Extração de Features e Redução de Dimensionalidade', category: 'pdf', hours: 2, date: '2026-01-20', description: 'Extração de features', pdfUrl: '5.pdf' },
-            { id: 42, title: 'Algoritmos de Regressão para Machine Learning', category: 'pdf', hours: 1, date: '2026-01-17', description: 'Algoritmos de regressão', pdfUrl: '4.pdf' },
-            { id: 43, title: 'Aprendizado por Reforço em Machine Learning', category: 'pdf', hours: 1, date: '2026-01-17', description: 'Aprendizado por reforço', pdfUrl: '3.pdf' },
-            { id: 44, title: 'Treinamento Supervisionado para Machine Learning', category: 'pdf', hours: 2, date: '2026-01-17', description: 'Treinamento supervisionado', pdfUrl: '2.pdf' },
-            { id: 45, title: 'Treinamento Não-Supervisionado em Machine Learning', category: 'pdf', hours: 1, date: '2026-01-17', description: 'Treinamento não-supervisionado', pdfUrl: '1.pdf' },
+            // ===== 45 CERTIFICADOS COM IMAGENS (1-45) - TODOS OS NOVOS LINKS ADICIONADOS =====
+            // ID 1
+            { id: 1, title: 'Treinamento Não-Supervisionado em Machine Learning', category: 'pdf', hours: 1, date: '2026-01-17', description: 'Treinamento não-supervisionado - DIO', image: 'https://i.postimg.cc/p9fDg6j9/1.png' },
             
-            // ===== 31 CERTIFICADOS DE MACHINE LEARNING =====
+            // ID 2 (temos duas opções, vou usar a .png)
+            { id: 2, title: 'Treinamento Supervisionado para Machine Learning', category: 'pdf', hours: 2, date: '2026-01-17', description: 'Treinamento supervisionado - DIO', image: 'https://i.postimg.cc/jWHzGFfD/2.png' },
+            
+            // ID 3
+            { id: 3, title: 'Aprendizado por Reforço em Machine Learning', category: 'pdf', hours: 1, date: '2026-01-17', description: 'Aprendizado por reforço - DIO', image: 'https://i.postimg.cc/qts895KR/3.webp' },
+            
+            // ID 4 (não veio novo link, mantendo o antigo)
+            { id: 4, title: 'Algoritmos de Regressão para Machine Learning', category: 'pdf', hours: 1, date: '2026-01-17', description: 'Algoritmos de regressão - DIO', image: 'https://i.postimg.cc/hfLV5wRr/4.png' },
+            
+            // ID 5
+            { id: 5, title: 'Extração de Features e Redução de Dimensionalidade', category: 'pdf', hours: 2, date: '2026-01-20', description: 'Extração de features - DIO', image: 'https://i.postimg.cc/q6hgdNFQ/5.webp' },
+            
+            // ID 6
+            { id: 6, title: 'Redução de Dimensionalidade em Imagens para Redes Neurais', category: 'pdf', hours: 2, date: '2026-01-20', description: 'Redução de dimensionalidade - DIO', image: 'https://i.postimg.cc/2Lb3f1t2/6.webp' },
+            
+            // ID 7
+            { id: 7, title: 'Materiais Complementares: Algoritmos de Treinamento em ML', category: 'pdf', hours: 1, date: '2026-01-20', description: 'Algoritmos de treinamento - DIO', image: 'https://i.postimg.cc/jnwCrD1X/7.webp' },
+            
+            // ID 8
+            { id: 8, title: 'Métodos de Validação de Treinamento', category: 'pdf', hours: 2, date: '2026-01-20', description: 'Validação de treinamento - DIO', image: 'https://i.postimg.cc/jnwCrD14/8.webp' },
+            
+            // ID 9
+            { id: 9, title: 'Métodos de Otimização de Aprendizado', category: 'pdf', hours: 2, date: '2026-01-21', description: 'Métodos de otimização - DIO', image: 'https://i.postimg.cc/2Lb3f1td/9.webp' },
+            
+            // ID 10
+            { id: 10, title: 'Otimização de Modelos em Hiperparâmetros', category: 'pdf', hours: 1, date: '2026-01-21', description: 'Otimização de hiperparâmetros - DIO', image: 'https://i.postimg.cc/hQzhqXYb/10.webp' },
+            
+            // ID 11
+            { id: 11, title: 'Modelos de ML: Métricas de Avaliação de Desempenho', category: 'pdf', hours: 1, date: '2026-01-21', description: 'Métricas de desempenho - DIO', image: 'https://i.postimg.cc/BPLtGjzT/11.webp' },
+            
+            // ID 12
+            { id: 12, title: 'Cálculo de Métricas de Avaliação de Aprendizado', category: 'pdf', hours: 2, date: '2026-02-16', description: 'Métricas de avaliação - DIO', image: 'https://i.postimg.cc/GT8914fG/12.webp' },
+            
+            // ID 13
+            { id: 13, title: 'Materiais Complementares: Teoria do Aprendizado Estatístico', category: 'pdf', hours: 1, date: '2026-01-21', description: 'Teoria do aprendizado - DIO', image: 'https://i.postimg.cc/hQzhqXYx/13.webp' },
+            
+            // ID 14
+            { id: 14, title: 'Tipos de Redes de Deep Learning', category: 'pdf', hours: 2, date: '2026-01-22', description: 'Tipos de redes neurais - DIO', image: 'https://i.postimg.cc/ZvB0hWQN/14.webp' },
+            
+            // ID 15
+            { id: 15, title: 'Redes de Classificação para Deep Learning', category: 'pdf', hours: 2, date: '2026-01-23', description: 'Redes de classificação - DIO', image: 'https://i.postimg.cc/9wRzjDk7/15.webp' },
+            
+            // ID 16
+            { id: 16, title: 'Redes de Detecção em Deep Learning', category: 'pdf', hours: 2, date: '2026-01-25', description: 'Redes de detecção - DIO', image: 'https://i.postimg.cc/PpFNcWSK/16.webp' },
+            
+            // ID 17
+            { id: 17, title: 'Redes de Segmentação em Deep Learning', category: 'pdf', hours: 1, date: '2026-01-25', description: 'Redes de segmentação - DIO', image: 'https://i.postimg.cc/ph1y7fsC/17.webp' },
+            
+            // ID 18
+            { id: 18, title: 'Redes de Segmentação em Deep Learning', category: 'pdf', hours: 1, date: '2026-01-25', description: 'Redes de segmentação - DIO', image: 'https://i.postimg.cc/JDdtgNpq/18.webp' },
+            
+            // ID 19
+            { id: 19, title: 'Aplicações Práticas com Deep Learning', category: 'pdf', hours: 1, date: '2026-01-25', description: 'Aplicações práticas de DL - DIO', image: 'https://i.postimg.cc/ygrW5mLy/19.webp' },
+            
+            // ID 20
+            { id: 20, title: 'Criação de Uma Base de Dados e Treinamento da Rede YOLO', category: 'pdf', hours: 2, date: '2026-02-17', description: 'Treinamento da rede YOLO - DIO', image: 'https://i.postimg.cc/N9PLV6d8/20.webp' },
+            
+            // ID 21
+            { id: 21, title: 'Materiais Complementares: Fundamentos e Práticas de DL', category: 'pdf', hours: 1, date: '2026-01-25', description: 'Fundamentos de Deep Learning - DIO', image: 'https://i.postimg.cc/VrH5TqKB/21.webp' },
+            
+            // ID 22
+            { id: 22, title: 'Introdução às Bibliotecas de Machine Learning', category: 'pdf', hours: 1, date: '2026-01-26', description: 'Bibliotecas de ML - DIO', image: 'https://i.postimg.cc/0MHr3YVY/22.webp' },
+            
+            // ID 23
+            { id: 23, title: 'Conhecendo as Bibliotecas Pandas e Scikit-Learn', category: 'pdf', hours: 1, date: '2026-01-26', description: 'Pandas e Scikit-Learn - DIO', image: 'https://i.postimg.cc/34bW6XtG/23.webp' },
+            
+            // ID 24
+            { id: 24, title: 'Frameworks para Machine Learning', category: 'pdf', hours: 1, date: '2026-02-03', description: 'Frameworks para ML - DIO', image: 'https://i.postimg.cc/0MHr3YVw/24.webp' },
+            
+            // ID 25
+            { id: 25, title: 'Desenvolvimento de Algoritmos no Keras', category: 'pdf', hours: 1, date: '2026-02-03', description: 'Algoritmos com Keras - DIO', image: 'https://i.postimg.cc/r0Yzb1f5/25.webp' },
+            
+            // ID 26
+            { id: 26, title: 'Ambientes de Projetos Colaborativos de ML', category: 'pdf', hours: 1, date: '2026-02-04', description: 'Ambientes colaborativos - DIO', image: 'https://i.postimg.cc/ph1y7fsn/26.webp' },
+            
+            // ID 27
+            { id: 27, title: 'Criando um Sistema de Reconhecimento Facial do Zero', category: 'pdf', hours: 5, date: '2026-02-17', description: 'Reconhecimento facial - DIO', image: 'https://i.postimg.cc/XGDXhfsr/27.webp' },
+            
+            // ID 28
+            { id: 28, title: 'Criando um Sistema de Reconhecimento Facial do Zero', category: 'pdf', hours: 5, date: '2026-02-17', description: 'Reconhecimento facial - DIO', image: 'https://i.postimg.cc/qhZgYs1t/28.webp' },
+            
+            // ID 29
+            { id: 29, title: 'Materiais Complementares: Frameworks de Deep Learning', category: 'pdf', hours: 1, date: '2026-02-04', description: 'Frameworks de Deep Learning - DIO', image: 'https://i.postimg.cc/1nY4TGvf/29.webp' },
+            
+            // ID 30 (não veio novo, mantendo antigo)
+            { id: 30, title: 'Introdução ao Processamento De Imagens Digitais', category: 'pdf', hours: 2, date: '2026-02-05', description: 'Introdução ao processamento de imagens - DIO', image: 'https://i.postimg.cc/jnNyK3wD/31.png' },
+            
+            // ID 31
+            { id: 31, title: 'Aplicações de Processamento De Imagens Digitais', category: 'pdf', hours: 2, date: '2026-02-05', description: 'Aplicações de processamento de imagens - DIO', image: 'https://i.postimg.cc/TLHhSVt2/31.webp' },
+            
+            // ID 32
+            { id: 32, title: 'Métodos de Segmentação Com OpenCV', category: 'pdf', hours: 2, date: '2026-02-13', description: 'Segmentação com OpenCV - DIO', image: 'https://i.postimg.cc/dkSDX25t/32.webp' },
+            
+            // ID 33
+            { id: 33, title: 'Métodos de Segmentação Com OpenCV', category: 'pdf', hours: 2, date: '2026-02-13', description: 'Segmentação com OpenCV - DIO', image: 'https://i.postimg.cc/5YkjGBs2/33.webp' },
+            
+            // ID 34 (não veio novo, mantendo antigo)
+            { id: 34, title: 'Programando Com OpenCV: Abordagens práticas', category: 'pdf', hours: 2, date: '2026-02-13', description: 'OpenCV abordagens práticas - DIO', image: 'https://i.postimg.cc/RJfw9p6V/35.png' },
+            
+            // ID 35
+            { id: 35, title: 'Criando um Sistema de Recomendação por Imagens Digitais', category: 'pdf', hours: 3, date: '2026-02-17', description: 'Sistema de recomendação por imagens - DIO', image: 'https://i.postimg.cc/PpFNcWSX/35.webp' },
+            
+            // ID 36
+            { id: 36, title: 'Materiais Complementares: Processamento de Imagens com ML', category: 'pdf', hours: 1, date: '2026-02-14', description: 'Processamento de Imagens com ML - DIO', image: 'https://i.postimg.cc/dkSDX25F/36.webp' },
+            
+            // ID 37
+            { id: 37, title: 'Introdução à Visão Computacional', category: 'pdf', hours: 1, date: '2026-02-14', description: 'Introdução à Visão Computacional - DIO', image: 'https://i.postimg.cc/VrNdDGWd/37.webp' },
+            
+            // ID 38
+            { id: 38, title: 'Algoritmos para Rastreamento de Objetos em Imagens', category: 'pdf', hours: 1, date: '2026-02-14', description: 'Rastreamento de objetos - DIO', image: 'https://i.postimg.cc/phdpqGJy/38.webp' },
+            
+            // ID 39
+            { id: 39, title: 'Visão Computacional 3D e seus algoritmos', category: 'pdf', hours: 1, date: '2026-02-14', description: 'Visão Computacional 3D - DIO', image: 'https://i.postimg.cc/PpqP23QJ/39.webp' },
+            
+            // ID 40
+            { id: 40, title: 'Algoritmos para Processamento de Linguagem Natural', category: 'pdf', hours: 1, date: '2026-02-16', description: 'Algoritmos para PLN - DIO', image: 'https://i.postimg.cc/r0pKQnNp/40.webp' },
+            
+            // ID 41
+            { id: 41, title: 'Criando um sistema de assistência virtual do zero', category: 'pdf', hours: 3, date: '2026-02-17', description: 'Projeto de assistência virtual - DIO', image: 'https://i.postimg.cc/r0pKQnNy/41.webp' },
+            
+            // ID 42 (não veio novo, mantendo antigo)
+            { id: 42, title: 'Materiais Complementares: Visão Computacional com ML', category: 'pdf', hours: 1, date: '2026-02-16', description: 'Materiais complementares - DIO', image: 'https://i.postimg.cc/PCn2LYdt/40.png' },
+            
+            // ID 43
+            { id: 43, title: 'Materiais Complementares: Visão Computacional com ML', category: 'pdf', hours: 1, date: '2026-02-16', description: 'Materiais complementares - DIO', image: 'https://i.postimg.cc/CBKzmPsx/43.webp' },
+            
+            // ID 44 - DESTAQUE
+            { 
+                id: 44, 
+                title: 'Avalie este Bootcamp', 
+                category: 'pdf', 
+                hours: 1, 
+                date: '2026-02-17', 
+                description: 'Curso de avaliação de Bootcamp - DIO', 
+                image: 'https://i.postimg.cc/prBbPVYy/46.png',
+                special: true 
+            },
+            
+            // ID 45 - DESTAQUE
+            { 
+                id: 45, 
+                title: 'BairesDev - Machine Learning Practitioner', 
+                category: 'pdf', 
+                hours: 96, 
+                date: '2026-02-17', 
+                description: 'Bootcamp completo de Machine Learning - DIO',
+                image: 'https://i.postimg.cc/XqqXCPHp/45.png',
+                special: true 
+            },
+            
+            // ===== 31 CERTIFICADOS ML (mantidos) =====
             { id: 46, title: 'ML Não-Supervisionado', category: 'ml', hours: 1, date: '2026-01-17', description: 'Treinamento não-supervisionado' },
             { id: 47, title: 'ML Supervisionado', category: 'ml', hours: 2, date: '2026-01-17', description: 'Treinamento supervisionado' },
             { id: 48, title: 'Aprendizado por Reforço', category: 'ml', hours: 1, date: '2026-01-17', description: 'Reinforcement Learning' },
@@ -502,12 +697,12 @@
             { id: 70, title: 'Intro ML Complementar', category: 'ml', hours: 1, date: '2026-01-12', description: 'Materiais complementares' },
             { id: 71, title: 'Linguagens para ML', category: 'ml', hours: 1, date: '2026-01-12', description: 'Programação para ML' },
             { id: 72, title: 'Python para ML', category: 'ml', hours: 2, date: '2026-01-13', description: 'ML na prática' },
-            { id: 73, title: 'Scilab para ML', category: 'ml', hours: 2, date: '2026-01-14', description: 'Machine Learning com Scilab' },
-            { id: 74, title: 'R para ML', category: 'ml', hours: 2, date: '2026-01-14', description: 'Machine Learning com R' },
+            { id: 73, title: 'Scilab para ML', category: 'ml', hours: 2, date: '2026-01-14', description: 'ML com Scilab' },
+            { id: 74, title: 'R para ML', category: 'ml', hours: 2, date: '2026-01-14', description: 'ML com R' },
             { id: 75, title: 'Anaconda e TensorFlow', category: 'ml', hours: 1, date: '2026-01-16', description: 'Ferramentas de ML' },
             { id: 76, title: 'Introdução ao COLAB', category: 'ml', hours: 2, date: '2026-01-16', description: 'Google Colab' },
             
-            // ===== 15 CERTIFICADOS DE PROGRAMAÇÃO =====
+            // ===== 15 CERTIFICADOS PROGRAMAÇÃO =====
             { id: 77, title: 'Desafios de Código', category: 'programacao', hours: 1, date: '2025-12-20', description: 'Lógica avançada' },
             { id: 78, title: 'Sistema Bancário POO', category: 'programacao', hours: 1, date: '2026-01-08', description: 'POO com Python' },
             { id: 79, title: 'FastAPI com Docker', category: 'programacao', hours: 3, date: '2026-01-08', description: 'API com FastAPI' },
@@ -523,10 +718,10 @@
             { id: 89, title: 'Prompt Engineering', category: 'programacao', hours: 2, date: '2026-01-07', description: 'Bases de prompt' },
             { id: 90, title: 'Técnicas de Prompt', category: 'programacao', hours: 2, date: '2026-01-08', description: 'Engenharia de prompt' },
             { id: 91, title: 'GitHub Algoritmos', category: 'programacao', hours: 1, date: '2026-01-08', description: 'Algoritmos em Python' },
-            { id: 92, title: 'Decoradores Python', category: 'programacao', hours: 1, date: '2025-12-13', description: 'Decoradores e geradores' },
-            { id: 93, title: 'Gerenciamento Pacotes', category: 'programacao', hours: 1, date: '2025-12-20', description: 'Boas práticas Python' },
+            { id: 92, title: 'Decoradores Python', category: 'programacao', hours: 1, date: '2025-12-13', description: 'Decoradores' },
+            { id: 93, title: 'Gerenciamento Pacotes', category: 'programacao', hours: 1, date: '2025-12-20', description: 'Boas práticas' },
             
-            // ===== 6 CERTIFICADOS DE OFFICE =====
+            // ===== 6 CERTIFICADOS OFFICE =====
             { id: 94, title: 'AI Builders Day', category: 'office', hours: 4, date: '2025-01-01', description: 'Evento Tera' },
             { id: 95, title: 'Bootcamp Python', category: 'office', hours: 1, date: '2025-01-01', description: 'Introdução' },
             { id: 96, title: 'Git e GitHub', category: 'office', hours: 2, date: '2025-01-01', description: 'Versionamento' },
@@ -534,47 +729,103 @@
             { id: 98, title: 'SOS Project', category: 'office', hours: 1, date: '2025-01-01', description: 'Participação' },
             { id: 99, title: 'SOS Avançado', category: 'office', hours: 2, date: '2025-01-01', description: 'Curso avançado' },
             
-            // ===== CERTIFICADOS EXTRAS PARA COMPLETAR 122 =====
-            { id: 100, title: 'Introdução ao Python', category: 'programacao', hours: 2, date: '2025-10-29', description: 'Fundamentos da linguagem' },
-            { id: 101, title: 'Ambiente Python', category: 'programacao', hours: 1, date: '2025-10-26', description: 'Configuração de ambiente' },
+            // ===== 23 CERTIFICADOS EXTRAS =====
+            { id: 100, title: 'Introdução ao Python', category: 'programacao', hours: 2, date: '2025-10-29', description: 'Fundamentos' },
+            { id: 101, title: 'Ambiente Python', category: 'programacao', hours: 1, date: '2025-10-26', description: 'Configuração' },
             { id: 102, title: 'ETL com Excel', category: 'office', hours: 1, date: '2026-02-07', description: 'Processo de ETL' },
             { id: 103, title: 'Fundamentos de BI', category: 'office', hours: 2, date: '2026-02-07', description: 'Business Intelligence' },
-            { id: 104, title: 'Microsoft Copilot SQL', category: 'office', hours: 2, date: '2026-02-02', description: 'Consultas SQL com Copilot' },
+            { id: 104, title: 'Microsoft Copilot SQL', category: 'office', hours: 2, date: '2026-02-02', description: 'Consultas SQL' },
             { id: 105, title: 'Banco de Dados SQL', category: 'programacao', hours: 3, date: '2026-02-01', description: 'Introdução a SQL' },
             { id: 106, title: 'Microsoft Copilot', category: 'office', hours: 1, date: '2026-01-30', description: 'Trabalhando com Copilot' },
-            { id: 107, title: 'Excel 365', category: 'office', hours: 1, date: '2026-01-30', description: 'Introdução ao Excel 365' },
-            { id: 108, title: 'Dominando Funções Python', category: 'programacao', hours: 1, date: '2025-11-26', description: 'Aprofundamento em funções' },
-            { id: 109, title: 'Dicionários em Python', category: 'programacao', hours: 1, date: '2025-11-25', description: 'Manipulação de dicionários' },
-            { id: 110, title: 'Tuplas em Python', category: 'programacao', hours: 1, date: '2025-11-25', description: 'Estudo de tuplas' },
-            { id: 111, title: 'Listas em Python', category: 'programacao', hours: 1, date: '2025-11-24', description: 'Manipulação de listas' },
-            { id: 112, title: 'Manipulando Strings', category: 'programacao', hours: 2, date: '2025-11-08', description: 'Técnicas de strings' },
-            { id: 113, title: 'Estruturas Condicionais', category: 'programacao', hours: 2, date: '2025-11-05', description: 'Condicionais e loops' },
-            { id: 114, title: 'Operadores Python', category: 'programacao', hours: 2, date: '2025-11-05', description: 'Tipos de operadores' },
-            { id: 115, title: 'Bradesco - GenAI', category: 'ml', hours: 52, date: '2026-02-17', description: 'IA Generativa e Dados' },
-            { id: 116, title: 'Assistente Virtual IA', category: 'ml', hours: 1, date: '2026-02-16', description: 'Projeto de assistente virtual' },
-            { id: 117, title: 'ChatGPT com Whisper', category: 'ml', hours: 1, date: '2026-02-17', description: 'Integração de voz' },
-            { id: 118, title: 'IAs Generativas', category: 'ml', hours: 1, date: '2026-02-12', description: 'Introdução a IAs Generativas' },
-            { id: 119, title: 'Visão Computacional', category: 'ml', hours: 1, date: '2026-02-12', description: 'Fundamentos de visão' },
-            { id: 120, title: 'Processamento de Linguagem Natural', category: 'ml', hours: 1, date: '2026-02-11', description: 'Técnicas de PLN' },
-            { id: 121, title: 'Algoritmos e ML', category: 'ml', hours: 1, date: '2026-02-11', description: 'Fundamentos de ML' },
-            { id: 122, title: 'Desafios de Código Iniciais', category: 'programacao', hours: 1, date: '2025-12-20', description: 'Lógica e pensamento computacional' }
+            { id: 107, title: 'Excel 365', category: 'office', hours: 1, date: '2026-01-30', description: 'Introdução ao Excel' },
+            { id: 108, title: 'Dominando Funções Python', category: 'programacao', hours: 1, date: '2025-11-26', description: 'Funções' },
+            { id: 109, title: 'Dicionários em Python', category: 'programacao', hours: 1, date: '2025-11-25', description: 'Dicionários' },
+            { id: 110, title: 'Tuplas em Python', category: 'programacao', hours: 1, date: '2025-11-25', description: 'Tuplas' },
+            { id: 111, title: 'Listas em Python', category: 'programacao', hours: 1, date: '2025-11-24', description: 'Listas' },
+            { id: 112, title: 'Manipulando Strings', category: 'programacao', hours: 2, date: '2025-11-08', description: 'Strings' },
+            { id: 113, title: 'Estruturas Condicionais', category: 'programacao', hours: 2, date: '2025-11-05', description: 'Condicionais' },
+            { id: 114, title: 'Operadores Python', category: 'programacao', hours: 2, date: '2025-11-05', description: 'Operadores' },
+            { id: 115, title: 'Bradesco - GenAI', category: 'ml', hours: 52, date: '2026-02-17', description: 'IA Generativa' },
+            { id: 116, title: 'Assistente Virtual IA', category: 'ml', hours: 1, date: '2026-02-16', description: 'Assistente virtual' },
+            { id: 117, title: 'ChatGPT com Whisper', category: 'ml', hours: 1, date: '2026-02-17', description: 'ChatGPT' },
+            { id: 118, title: 'IAs Generativas', category: 'ml', hours: 1, date: '2026-02-12', description: 'Introdução IAs' },
+            { id: 119, title: 'Visão Computacional', category: 'ml', hours: 1, date: '2026-02-12', description: 'Fundamentos visão' },
+            { id: 120, title: 'Processamento de Linguagem Natural', category: 'ml', hours: 1, date: '2026-02-11', description: 'PLN' },
+            { id: 121, title: 'Algoritmos e ML', category: 'ml', hours: 1, date: '2026-02-11', description: 'Fundamentos ML' },
+            { id: 122, title: 'Desafios de Código Iniciais', category: 'programacao', hours: 1, date: '2025-12-20', description: 'Lógica' }
         ];
 
-        // Configurações
-        const itemsPerPage = 12;
-        let currentPage = 1;
-        let currentFilter = 'all';
-        let searchTerm = '';
-
         // Elementos DOM
-        const certificatesGrid = document.getElementById('certificatesGrid');
+        const modal = document.getElementById('certModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+        const closeBtn = document.getElementById('closeModal');
+        const grid = document.getElementById('certificatesGrid');
         const paginationDiv = document.getElementById('pagination');
         const searchInput = document.getElementById('searchInput');
         const filterBtns = document.querySelectorAll('.filter-btn');
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
 
-        // Função para filtrar certificados
+        // Configurações
+        let currentPage = 1;
+        let currentFilter = 'all';
+        let searchTerm = '';
+        const itemsPerPage = 12;
+
+        // Função para abrir certificado
+        function openCertificate(cert) {
+            modalTitle.textContent = cert.title;
+            
+            if (cert.image) {
+                modalBody.innerHTML = `
+                    <a href="${cert.image}" class="download-btn" download="${cert.title}.png">
+                        <i class="fas fa-download"></i> Baixar Certificado
+                    </a>
+                    <img src="${cert.image}" class="certificate-image" alt="${cert.title}">
+                `;
+            } else {
+                modalBody.innerHTML = `
+                    <div class="no-pdf">
+                        <i class="fas fa-certificate"></i>
+                        <h3>Certificado não disponível</h3>
+                        <p>Este certificado não possui arquivo para download</p>
+                        <p style="margin-top: 20px; color: #00ff41;">${cert.title}</p>
+                        <p>${cert.description}</p>
+                        <p>Carga horária: ${cert.hours}h</p>
+                        <p>Data: ${new Date(cert.date).toLocaleDateString('pt-BR')}</p>
+                    </div>
+                `;
+            }
+            
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Fechar modal
+        function closeModal() {
+            modal.style.display = 'none';
+            modalBody.innerHTML = '';
+            document.body.style.overflow = 'auto';
+        }
+
+        closeBtn.onclick = closeModal;
+        window.onclick = (e) => {
+            if (e.target === modal) closeModal();
+        };
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.style.display === 'block') {
+                closeModal();
+            }
+        });
+
+        // Filtrar certificados
         function filterCertificates() {
             return certificates.filter(cert => {
+                if (currentFilter === 'destaques') {
+                    return cert.special === true;
+                }
                 const matchesFilter = currentFilter === 'all' || cert.category === currentFilter;
                 const matchesSearch = cert.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                                     cert.description.toLowerCase().includes(searchTerm.toLowerCase());
@@ -582,78 +833,57 @@
             });
         }
 
-        // Função para abrir PDF
-        function openPDF(pdfUrl, event) {
-            if (event) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-            if (pdfUrl) {
-                window.open(pdfUrl, '_blank');
-            }
-        }
-
-        // Função para exibir certificados
+        // Exibir certificados
         function displayCertificates() {
             const filtered = filterCertificates();
             const totalPages = Math.ceil(filtered.length / itemsPerPage);
             const start = (currentPage - 1) * itemsPerPage;
             const end = start + itemsPerPage;
-            const paginatedCerts = filtered.slice(start, end);
+            const pageCerts = filtered.slice(start, end);
 
-            certificatesGrid.innerHTML = '';
+            grid.innerHTML = '';
 
-            if (paginatedCerts.length === 0) {
-                certificatesGrid.innerHTML = `
+            if (pageCerts.length === 0) {
+                grid.innerHTML = `
                     <div class="no-results">
                         <i class="fas fa-search"></i>
                         <p>Nenhum certificado encontrado</p>
                     </div>
                 `;
-            } else {
-                paginatedCerts.forEach(cert => {
-                    const card = document.createElement('div');
-                    card.className = `certificate-card ${cert.special ? 'special' : ''}`;
-                    
-                    if (cert.pdfUrl) {
-                        card.style.cursor = 'pointer';
-                        card.onclick = (e) => openPDF(cert.pdfUrl, e);
-                    }
-                    
-                    card.innerHTML = `
-                        <div class="certificate-preview">
-                            <i class="fas fa-certificate"></i>
-                            ${cert.pdfUrl ? `
-                                <div class="pdf-badge">
-                                    <i class="fas fa-file-pdf"></i>
-                                    PDF
-                                </div>
-                            ` : ''}
-                        </div>
-                        <div class="certificate-info">
-                            <h3>${cert.title}</h3>
-                            <div class="certificate-meta">
-                                <span><i class="fas fa-calendar"></i> ${new Date(cert.date).toLocaleDateString('pt-BR')}</span>
-                                <span><i class="fas fa-clock"></i> ${cert.hours}h</span>
-                            </div>
-                            <p class="certificate-description">${cert.description}</p>
-                            ${cert.pdfUrl ? `
-                                <span class="view-link">
-                                    Clique para visualizar <i class="fas fa-external-link-alt"></i>
-                                </span>
-                            ` : ''}
-                        </div>
-                    `;
-                    
-                    certificatesGrid.appendChild(card);
-                });
+                paginationDiv.innerHTML = '';
+                return;
             }
+
+            pageCerts.forEach(cert => {
+                const card = document.createElement('div');
+                card.className = `certificate-card ${cert.special ? 'special' : ''}`;
+                card.onclick = () => openCertificate(cert);
+                
+                card.innerHTML = `
+                    <div class="certificate-preview">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="certificate-info">
+                        <h3>${cert.title}</h3>
+                        <div class="certificate-meta">
+                            <span><i class="fas fa-calendar"></i> ${new Date(cert.date).toLocaleDateString('pt-BR')}</span>
+                            <span><i class="fas fa-clock"></i> ${cert.hours}h</span>
+                        </div>
+                        <p class="certificate-description">${cert.description}</p>
+                        <span class="view-link">
+                            <i class="fas fa-eye"></i> Visualizar
+                        </span>
+                    </div>
+                `;
+                
+                grid.appendChild(card);
+            });
 
             updatePagination(totalPages);
             updateFilterCounts();
         }
 
-        // Função para atualizar paginação
+        // Atualizar paginação
         function updatePagination(totalPages) {
             paginationDiv.innerHTML = '';
 
@@ -678,8 +908,8 @@
             `;
         }
 
-        // Função para mudar de página
-        window.changePage = function(page) {
+        // Mudar página
+        window.changePage = (page) => {
             const filtered = filterCertificates();
             const totalPages = Math.ceil(filtered.length / itemsPerPage);
             
@@ -690,19 +920,21 @@
             }
         };
 
-        // Função para atualizar contadores dos filtros
+        // Atualizar contadores dos filtros
         function updateFilterCounts() {
             const total = certificates.length;
+            const destaquesCount = certificates.filter(c => c.special === true).length;
             const pdfCount = certificates.filter(c => c.category === 'pdf').length;
             const mlCount = certificates.filter(c => c.category === 'ml').length;
             const progCount = certificates.filter(c => c.category === 'programacao').length;
             const officeCount = certificates.filter(c => c.category === 'office').length;
             
             filterBtns[0].textContent = `Todos (${total})`;
-            filterBtns[1].textContent = `PDFs (${pdfCount})`;
-            filterBtns[2].textContent = `Machine Learning (${mlCount})`;
-            filterBtns[3].textContent = `Programação (${progCount})`;
-            filterBtns[4].textContent = `Office (${officeCount})`;
+            filterBtns[1].textContent = `⭐ Destaques (${destaquesCount})`;
+            filterBtns[2].textContent = `PDFs (${pdfCount})`;
+            filterBtns[3].textContent = `Machine Learning (${mlCount})`;
+            filterBtns[4].textContent = `Programação (${progCount})`;
+            filterBtns[5].textContent = `Office (${officeCount})`;
         }
 
         // Event listeners
@@ -723,13 +955,15 @@
         });
 
         // Menu hamburger
-        document.querySelector('.hamburger').addEventListener('click', () => {
-            document.querySelector('.nav-links').classList.toggle('active');
-        });
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
 
         // Header scroll
         window.addEventListener('scroll', () => {
-            const header = document.getElementById('header');
+            const header = document.querySelector('header');
             if (window.scrollY > 100) {
                 header.style.background = 'rgba(10, 10, 10, 0.95)';
                 header.style.backdropFilter = 'blur(10px)';
