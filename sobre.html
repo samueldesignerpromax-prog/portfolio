@@ -29,7 +29,7 @@
             position: relative;
         }
 
-        /* PROTECÃO ANTI-PRINT - Overlay que atrapalha capturas */
+        /* PROTEÇÃO ANTI-PRINT - Overlay que atrapalha a visualização no print */
         .anti-print-overlay {
             position: fixed;
             top: 0;
@@ -39,19 +39,46 @@
             pointer-events: none;
             z-index: 9999;
             opacity: 0;
-            transition: opacity 0.3s;
+            transition: opacity 0.1s;
             background: repeating-linear-gradient(
                 45deg,
-                rgba(0, 255, 65, 0.02) 0px,
-                rgba(0, 255, 65, 0.02) 10px,
-                transparent 10px,
-                transparent 20px
+                rgba(255, 0, 0, 0.3) 0px,
+                rgba(255, 0, 0, 0.3) 5px,
+                rgba(0, 255, 0, 0.3) 5px,
+                rgba(0, 255, 0, 0.3) 10px,
+                rgba(0, 0, 255, 0.3) 10px,
+                rgba(0, 0, 255, 0.3) 15px,
+                rgba(255, 255, 0, 0.3) 15px,
+                rgba(255, 255, 0, 0.3) 20px
+            );
+            mix-blend-mode: multiply;
+        }
+
+        /* Overlay de proteção permanente (sempre visível, mas sutil) */
+        .permanent-protection {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 255, 65, 0.03) 0px,
+                rgba(0, 255, 65, 0.03) 2px,
+                transparent 2px,
+                transparent 4px
             );
         }
 
-        /* Ativar overlay quando tentar print (via JS) */
+        /* Quando detectar print, overlay fica mais forte */
         body.print-attempt .anti-print-overlay {
-            opacity: 0.15;
+            opacity: 0.8;
+        }
+
+        body.print-attempt .content-wrapper {
+            filter: blur(2px);
         }
 
         /* Proteção para elementos específicos */
@@ -68,11 +95,6 @@
             -o-user-drag: none;
             pointer-events: auto;
             -webkit-touch-callout: none;
-        }
-
-        /* Desabilitar menu de contexto em elementos protegidos */
-        .no-context {
-            pointer-events: auto;
         }
 
         .matrix-bg {
@@ -107,6 +129,11 @@
             padding: 0 15px;
             position: relative;
             z-index: 1;
+        }
+
+        /* Wrapper para aplicar efeitos quando detectar print */
+        .content-wrapper {
+            transition: filter 0.2s;
         }
 
         header {
@@ -244,6 +271,7 @@
             position: relative;
         }
 
+        /* Proteção de imagem com camada de ruído */
         .profile-img-container::after {
             content: '';
             position: absolute;
@@ -251,23 +279,16 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: transparent;
+            background: repeating-radial-gradient(
+                circle at 30% 50%,
+                rgba(0, 255, 65, 0.1) 0px,
+                transparent 2px,
+                rgba(255, 0, 0, 0.1) 4px,
+                transparent 6px
+            );
             pointer-events: none;
-            z-index: 2;
-        }
-
-        /* PROTECÃO EXTRA - Camada invisível sobre a imagem */
-        .profile-img-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: transparent;
-            z-index: 10;
-            pointer-events: none;
-            box-shadow: inset 0 0 0 0 var(--primary-color);
+            z-index: 5;
+            mix-blend-mode: overlay;
         }
 
         .profile-img-container i {
@@ -282,7 +303,13 @@
             transition: transform 0.5s;
             position: relative;
             z-index: 1;
-            pointer-events: none; /* Impede interação direta com a imagem */
+            pointer-events: none;
+            filter: brightness(1) contrast(1);
+        }
+
+        /* Efeito extra quando detecta print */
+        body.print-attempt .profile-img-container img {
+            filter: blur(5px) grayscale(100%);
         }
 
         .profile-img-container:hover img {
@@ -357,27 +384,26 @@
         /* Aviso anti-print */
         .print-warning {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(255, 0, 0, 0.8);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 14px;
-            z-index: 10000;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: #ff0000;
+            padding: 20px 40px;
+            border-radius: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            z-index: 10001;
             display: none;
-            animation: pulse 1s infinite;
+            border: 3px solid #ff0000;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+            text-align: center;
         }
 
-        @keyframes pulse {
-            0% { opacity: 0.8; }
-            50% { opacity: 1; }
-            100% { opacity: 0.8; }
-        }
-
-        /* Esconder imagem de ferramentas de inspeção */
-        .hidden-from-bots {
-            display: none;
+        .print-warning i {
+            font-size: 48px;
+            margin-bottom: 10px;
+            display: block;
         }
 
         @media (max-width: 768px) {
@@ -422,12 +448,17 @@
     </style>
 </head>
 <body>
-    <!-- PROTECÃO ANTI-PRINT - Overlay invisível -->
+    <!-- PROTEÇÃO PERMANENTE - Overlay sutil mas que atrapalha prints -->
+    <div class="permanent-protection"></div>
+    
+    <!-- PROTEÇÃO ANTI-PRINT - Overlay forte quando detecta print -->
     <div class="anti-print-overlay" id="antiPrintOverlay"></div>
     
     <!-- Aviso de tentativa de print -->
     <div class="print-warning" id="printWarning">
-        <i class="fas fa-camera"></i> Print detectado! Conteúdo protegido.
+        <i class="fas fa-ban"></i>
+        PRINT BLOQUEADO<br>
+        <small style="font-size: 14px; color: #fff;">Conteúdo protegido</small>
     </div>
 
     <div class="matrix-bg" id="matrix-bg"></div>
@@ -452,63 +483,64 @@
         </div>
     </header>
 
-    <section class="about">
-        <div class="container">
-            <h2 class="section-title">Sobre Mim</h2>
-            <div class="about-content">
-                <div class="profile-img">
-                    <div class="profile-img-container" id="profile-container">
-                        <!-- Imagem principal (protegida) -->
-                        <img id="profile-picture" 
-                             src="https://i.postimg.cc/gjcvnLqD/Chat-GPT-Image-28-de-fev-de-2026-14-09-21.png" 
-                             alt="Samuel Ciryaco de Andrade - Full Stack Developer"
-                             class="no-context"
-                             onerror="this.src='https://via.placeholder.com/350x450/00ff41/000000?text=Samuel+Ciryaco'">
+    <!-- Wrapper para aplicar efeitos -->
+    <div class="content-wrapper" id="contentWrapper">
+        <section class="about">
+            <div class="container">
+                <h2 class="section-title">Sobre Mim</h2>
+                <div class="about-content">
+                    <div class="profile-img">
+                        <div class="profile-img-container" id="profile-container">
+                            <!-- Imagem principal -->
+                            <img id="profile-picture" 
+                                 src="https://i.postimg.cc/gjcvnLqD/Chat-GPT-Image-28-de-fev-de-2026-14-09-21.png" 
+                                 alt="Samuel Ciryaco de Andrade - Full Stack Developer"
+                                 onerror="this.src='https://via.placeholder.com/350x450/00ff41/000000?text=Samuel+Ciryaco'">
+                            
+                            <!-- Imagem falsa para enganar extratores -->
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3C/svg%3E" 
+                                 style="display:none" 
+                                 alt="">
+                        </div>
+                    </div>
+                    <div class="about-text animate-on-scroll">
+                        <h3>Desenvolvedor Web & Programador</h3>
+                        <p>Sou Samuel Ciryaco de Andrade, nascido em 23 de dezembro de 2005. Sou um desenvolvedor apaixonado por tecnologia e programação, sempre buscando aprender novas tecnologias e aprimorar minhas habilidades.</p>
+                        <p>Meu objetivo é criar soluções digitais inovadoras que atendam às necessidades dos usuários e proporcionem experiências excepcionais. Com mais de 77 certificados e 12 projetos concluídos, estou sempre em busca de novos desafios.</p>
                         
-                        <!-- Imagem falsa para enganar bots/copy (invisível) -->
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3C/svg%3E" 
-                             style="display:none" 
-                             alt=""
-                             aria-hidden="true">
+                        <div class="personal-info">
+                            <div class="info-item">
+                                <i class="fas fa-user"></i>
+                                <span><strong>Nome:</strong> Samuel Ciryaco de Andrade</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-birthday-cake"></i>
+                                <span><strong>Nascimento:</strong> 23/12/2005</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span><strong>Localização:</strong> Brasil</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-laptop-code"></i>
+                                <span><strong>Interesses:</strong> Web Design, Programação, IA</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-certificate"></i>
+                                <span><strong>Certificações:</strong> 77 certificados</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-project-diagram"></i>
+                                <span><strong>Projetos:</strong> 12 concluídos</span>
+                            </div>
+                        </div>
+                        
+                        <a href="cursos.html" class="btn">Ver Meus Cursos</a>
                     </div>
-                </div>
-                <div class="about-text animate-on-scroll">
-                    <h3>Desenvolvedor Web & Programador</h3>
-                    <p>Sou Samuel Ciryaco de Andrade, nascido em 23 de dezembro de 2005. Sou um desenvolvedor apaixonado por tecnologia e programação, sempre buscando aprender novas tecnologias e aprimorar minhas habilidades.</p>
-                    <p>Meu objetivo é criar soluções digitais inovadoras que atendam às necessidades dos usuários e proporcionem experiências excepcionais. Com mais de 77 certificados e 12 projetos concluídos, estou sempre em busca de novos desafios.</p>
-                    
-                    <div class="personal-info">
-                        <div class="info-item">
-                            <i class="fas fa-user"></i>
-                            <span><strong>Nome:</strong> Samuel Ciryaco de Andrade</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-birthday-cake"></i>
-                            <span><strong>Nascimento:</strong> 23/12/2005</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span><strong>Localização:</strong> Brasil</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-laptop-code"></i>
-                            <span><strong>Interesses:</strong> Web Design, Programação, IA</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-certificate"></i>
-                            <span><strong>Certificações:</strong> 77 certificados</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-project-diagram"></i>
-                            <span><strong>Projetos:</strong> 12 concluídos</span>
-                        </div>
-                    </div>
-                    
-                    <a href="cursos.html" class="btn">Ver Meus Cursos</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <script>
         function createMatrix() {
@@ -566,83 +598,115 @@
 
         window.addEventListener('DOMContentLoaded', createMatrix);
 
-        // ========== PROTEÇÕES ANTI-PRINT E ANTI-CÓPIA ==========
+        // ========== PROTEÇÕES ANTI-PRINT AVANÇADAS ==========
         
-        // 1. Bloquear teclas de print e cópia
+        let printDetected = false;
+        let protectionActive = false;
+        
+        // 1. Detectar tentativas de print via teclas
         document.addEventListener('keydown', function(e) {
-            // Tecla Print Screen
+            // Print Screen
             if (e.key === 'PrintScreen' || e.keyCode === 44) {
                 e.preventDefault();
-                showPrintWarning();
-                activateOverlay();
+                activateFullProtection();
                 return false;
             }
             
             // Ctrl+P
             if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
                 e.preventDefault();
-                showPrintWarning();
-                activateOverlay();
+                activateFullProtection();
                 return false;
             }
             
-            // Ctrl+C (cópia)
-            if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
-                // Verifica se está tentando copiar a imagem
-                const selection = window.getSelection().toString();
-                if (!selection) {
-                    e.preventDefault();
-                    showCopyWarning();
-                    return false;
-                }
-            }
-            
-            // Ctrl+S (salvar)
-            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+            // Atalhos de Mac
+            if (e.metaKey && e.shiftKey && (e.key === '3' || e.key === '4' || e.key === '5')) {
                 e.preventDefault();
-                return false;
-            }
-            
-            // Ctrl+U (ver código fonte)
-            if ((e.ctrlKey || e.metaKey) && e.key === 'u') {
-                e.preventDefault();
-                return false;
-            }
-            
-            // F12
-            if (e.key === 'F12') {
-                e.preventDefault();
+                activateFullProtection();
                 return false;
             }
         });
 
-        // 2. Bloquear menu de contexto completamente
+        // 2. Detectar combinações de teclas com Shift (alguns prints usam Shift+PrtSc)
+        document.addEventListener('keyup', function(e) {
+            if (e.key === 'PrintScreen' || e.keyCode === 44) {
+                activateFullProtection();
+            }
+        });
+
+        // 3. Detectar mudança de foco (pode indicar gravação de tela)
+        let tabVisible = true;
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                tabVisible = false;
+            } else {
+                tabVisible = true;
+                // Se voltar e estava oculto, pode ter gravado
+                if (!tabVisible) {
+                    activateFullProtection();
+                }
+            }
+        });
+
+        // 4. Overlay de proteção total
+        function activateFullProtection() {
+            if (protectionActive) return;
+            protectionActive = true;
+            
+            const overlay = document.getElementById('antiPrintOverlay');
+            const warning = document.getElementById('printWarning');
+            const content = document.getElementById('contentWrapper');
+            
+            // Ativar overlays
+            document.body.classList.add('print-attempt');
+            
+            // Mostrar aviso gigante
+            warning.style.display = 'block';
+            
+            // Borrar conteúdo
+            content.style.filter = 'blur(10px)';
+            
+            // Piscar a tela
+            document.body.style.backgroundColor = '#ff0000';
+            setTimeout(() => {
+                document.body.style.backgroundColor = '';
+            }, 100);
+            
+            // Reproduzir som de alerta (opcional - requer interação do usuário)
+            // const audio = new Audio('data:audio/wav;base64,//uQZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...');
+            // audio.play().catch(e => {});
+            
+            // Desativar após alguns segundos
+            setTimeout(() => {
+                document.body.classList.remove('print-attempt');
+                warning.style.display = 'none';
+                content.style.filter = '';
+                protectionActive = false;
+            }, 5000);
+        }
+
+        // 5. Detectar tentativa de screenshot via eventos de mouse
+        let mouseDownTime = 0;
+        document.addEventListener('mousedown', function(e) {
+            mouseDownTime = Date.now();
+        });
+        
+        document.addEventListener('mouseup', function(e) {
+            // Se clicou e segurou por muito tempo (pode estar selecionando área para print)
+            if (Date.now() - mouseDownTime > 2000) {
+                activateFullProtection();
+            }
+        });
+
+        // 6. Bloquear completamente menu de contexto
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
             return false;
         });
 
-        // 3. Detectar atalhos de Mac
-        document.addEventListener('keydown', function(e) {
-            // Cmd+Shift+3, Cmd+Shift+4, Cmd+Shift+5
-            if (e.metaKey && e.shiftKey && (e.key === '3' || e.key === '4' || e.key === '5')) {
-                e.preventDefault();
-                showPrintWarning();
-                activateOverlay();
-                return false;
-            }
-        });
-
-        // 4. Proteger contra cópia de imagem via arrasto
-        document.querySelectorAll('img').forEach(img => {
-            img.addEventListener('dragstart', (e) => e.preventDefault());
-            img.addEventListener('mousedown', (e) => e.preventDefault());
-            img.addEventListener('mouseup', (e) => e.preventDefault());
-        });
-
-        // 5. Sobrescrever métodos de cópia
+        // 7. Proteger contra cópia
         document.addEventListener('copy', function(e) {
-            e.clipboardData.setData('text/plain', 'Conteúdo protegido por direitos autorais');
+            e.clipboardData.setData('text/plain', 'Conteúdo protegido');
             e.preventDefault();
         });
 
@@ -650,67 +714,27 @@
             e.preventDefault();
         });
 
-        // 6. Desabilitar seleção de texto em toda a página
+        // 8. Desabilitar seleção
         document.body.style.userSelect = 'none';
         document.body.style.webkitUserSelect = 'none';
-        document.body.style.mozUserSelect = 'none';
-        document.body.style.msUserSelect = 'none';
 
-        // 7. Funções auxiliares
-        function activateOverlay() {
-            const overlay = document.getElementById('antiPrintOverlay');
-            document.body.classList.add('print-attempt');
-            
-            setTimeout(() => {
-                document.body.classList.remove('print-attempt');
-            }, 2000);
-        }
-
-        function showPrintWarning() {
-            const warning = document.getElementById('printWarning');
-            warning.style.display = 'block';
-            warning.innerHTML = '<i class="fas fa-camera"></i> Print bloqueado! Conteúdo protegido.';
-            
-            setTimeout(() => {
-                warning.style.display = 'none';
-            }, 3000);
-        }
-
-        function showCopyWarning() {
-            const warning = document.getElementById('printWarning');
-            warning.style.display = 'block';
-            warning.innerHTML = '<i class="fas fa-copy"></i> Cópia bloqueada! Conteúdo protegido.';
-            warning.style.background = 'rgba(255, 165, 0, 0.8)';
-            
-            setTimeout(() => {
-                warning.style.display = 'none';
-                warning.style.background = 'rgba(255, 0, 0, 0.8)';
-            }, 3000);
-        }
-
-        // 8. Detectar DevTools (opcional)
-        const element = new Image();
-        Object.defineProperty(element, 'id', {
-            get: function() {
-                showDevToolsWarning();
+        // 9. Detectar se está em modo fullscreen (pode estar gravando)
+        document.addEventListener('fullscreenchange', function() {
+            if (document.fullscreenElement) {
+                // Em fullscreen, ativar proteção extra
             }
         });
-        console.log('%c', element);
 
-        function showDevToolsWarning() {
-            // Aviso opcional sobre DevTools
-        }
-
-        // 9. Limpar console
+        // 10. Limpar console e mostrar aviso
         console.clear();
-        console.log('%c🚫 Conteúdo protegido contra cópia e prints', 'color: #00ff41; font-size: 16px; font-weight: bold;');
+        console.log('%c🚫 PROTEÇÃO ANTI-PRINT ATIVA', 'color: #ff0000; font-size: 24px; font-weight: bold;');
+        console.log('%cQualquer tentativa de print será bloqueada', 'color: #00ff41; font-size: 16px;');
 
-        // 10. Proteger via CSSOM (dificulta inspeção)
+        // 11. Reaplicar proteções periodicamente
         setInterval(() => {
-            // Reaplicar proteções se alguém tentar remover via console
             document.body.style.userSelect = 'none';
             document.body.style.webkitUserSelect = 'none';
-        }, 1000);
+        }, 500);
     </script>
 </body>
 </html>
