@@ -29,6 +29,51 @@
             position: relative;
         }
 
+        /* PROTECÃO ANTI-PRINT - Overlay que atrapalha capturas */
+        .anti-print-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s;
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(0, 255, 65, 0.02) 0px,
+                rgba(0, 255, 65, 0.02) 10px,
+                transparent 10px,
+                transparent 20px
+            );
+        }
+
+        /* Ativar overlay quando tentar print (via JS) */
+        body.print-attempt .anti-print-overlay {
+            opacity: 0.15;
+        }
+
+        /* Proteção para elementos específicos */
+        .profile-img-container, 
+        .certificate-card,
+        img {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            pointer-events: auto;
+        }
+
+        /* Desabilitar menu de contexto em elementos protegidos */
+        .no-context {
+            pointer-events: auto;
+        }
+
         .matrix-bg {
             position: fixed;
             top: 0;
@@ -195,6 +240,19 @@
             justify-content: center;
             flex-direction: column;
             color: var(--primary-color);
+            position: relative;
+        }
+
+        .profile-img-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            pointer-events: none;
+            z-index: 2;
         }
 
         .profile-img-container i {
@@ -207,6 +265,8 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s;
+            position: relative;
+            z-index: 1;
         }
 
         .profile-img-container:hover img {
@@ -278,6 +338,27 @@
             transform: translateY(0);
         }
 
+        /* Aviso anti-print */
+        .print-warning {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 0, 0, 0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 14px;
+            z-index: 10000;
+            display: none;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -320,6 +401,14 @@
     </style>
 </head>
 <body>
+    <!-- PROTECÃO ANTI-PRINT - Overlay invisível -->
+    <div class="anti-print-overlay" id="antiPrintOverlay"></div>
+    
+    <!-- Aviso de tentativa de print -->
+    <div class="print-warning" id="printWarning">
+        <i class="fas fa-camera"></i> Print detectado! Conteúdo protegido.
+    </div>
+
     <div class="matrix-bg" id="matrix-bg"></div>
 
     <header id="header">
@@ -349,8 +438,9 @@
                 <div class="profile-img">
                     <div class="profile-img-container" id="profile-container">
                         <img id="profile-picture" 
-                             src="https://i.ibb.co/yc6hTkHb/Captura-de-Tela-15.png" 
-                             alt="Samuel Ciryaco de Andrade"
+                             src="https://i.postimg.cc/gjcvnLqD/Chat-GPT-Image-28-de-fev-de-2026-14-09-21.png" 
+                             alt="Samuel Ciryaco de Andrade - Full Stack Developer"
+                             class="no-context"
                              onerror="this.src='https://via.placeholder.com/350x450/00ff41/000000?text=Samuel+Ciryaco'">
                     </div>
                 </div>
@@ -447,6 +537,126 @@
         });
 
         window.addEventListener('DOMContentLoaded', createMatrix);
+
+        // ========== PROTEÇÕES ANTI-PRINT ==========
+        
+        // 1. Bloquear teclas de print (PrtSc, Ctrl+P, etc)
+        document.addEventListener('keydown', function(e) {
+            // Tecla Print Screen (código 44)
+            if (e.key === 'PrintScreen' || e.keyCode === 44) {
+                e.preventDefault();
+                showPrintWarning();
+                activateOverlay();
+                return false;
+            }
+            
+            // Ctrl + P (Print)
+            if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+                e.preventDefault();
+                showPrintWarning();
+                activateOverlay();
+                return false;
+            }
+            
+            // Ctrl + Shift + I (DevTools) - opcional
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'I') {
+                e.preventDefault();
+                return false;
+            }
+            
+            // F12 (DevTools) - opcional
+            if (e.key === 'F12') {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // 2. Bloquear menu de contexto (clique direito)
+        document.addEventListener('contextmenu', function(e) {
+            // Permite clique direito em áreas não protegidas (opcional)
+            if (!e.target.closest('.profile-img-container')) {
+                // Se quiser bloquear tudo, descomente a linha abaixo
+                // e.preventDefault();
+            }
+        });
+
+        // 3. Detectar combinações de teclas para print em Mac
+        document.addEventListener('keydown', function(e) {
+            // Cmd + Shift + 3 (print full screen no Mac)
+            if ((e.metaKey && e.shiftKey && e.key === '3') ||
+                // Cmd + Shift + 4 (print área no Mac)
+                (e.metaKey && e.shiftKey && e.key === '4')) {
+                e.preventDefault();
+                showPrintWarning();
+                activateOverlay();
+                return false;
+            }
+            
+            // Cmd + Shift + 5 (screen recording no Mac)
+            if (e.metaKey && e.shiftKey && e.key === '5') {
+                e.preventDefault();
+                showPrintWarning();
+                activateOverlay();
+                return false;
+            }
+        });
+
+        // 4. Detectar visibilidade da página (quando muda de aba, pode indicar gravação)
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                // Opcional: limpar algo quando sai da página
+            }
+        });
+
+        // 5. Overlay que aparece quando tenta printar
+        function activateOverlay() {
+            const overlay = document.getElementById('antiPrintOverlay');
+            document.body.classList.add('print-attempt');
+            
+            // Remove após 2 segundos
+            setTimeout(() => {
+                document.body.classList.remove('print-attempt');
+            }, 2000);
+        }
+
+        // 6. Mostrar aviso
+        function showPrintWarning() {
+            const warning = document.getElementById('printWarning');
+            warning.style.display = 'block';
+            
+            setTimeout(() => {
+                warning.style.display = 'none';
+            }, 3000);
+        }
+
+        // 7. Bloquear arrastar imagens
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('dragstart', (e) => e.preventDefault());
+        });
+
+        // 8. Detectar tentativa de screenshot via JavaScript (limitado)
+        // Alguns navegadores permitem detectar mudanças na área de transferência
+        document.addEventListener('copy', function(e) {
+            // Se copiar algo que pode ser imagem
+            e.clipboardData.setData('text/plain', 'Conteúdo protegido');
+            e.preventDefault();
+        });
+
+        // 9. Proteção adicional: limpar console (opcional)
+        console.clear();
+        console.log('%cConteúdo protegido contra prints', 'color: #00ff41; font-size: 16px;');
+
+        // 10. Detectar se está sendo gravado (tentativa heurística)
+        let lastTime = Date.now();
+        setInterval(() => {
+            const currentTime = Date.now();
+            // Se o intervalo for muito maior que 100ms, pode ser que a aba esteja inativa
+            // (não necessariamente print, mas pode indicar gravação)
+            if (currentTime - lastTime > 500) {
+                // Possível gravação? Opcional: ativar proteção
+            }
+            lastTime = currentTime;
+        }, 100);
     </script>
 </body>
 </html>
