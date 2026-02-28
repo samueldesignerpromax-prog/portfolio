@@ -67,6 +67,7 @@
             -moz-user-drag: none;
             -o-user-drag: none;
             pointer-events: auto;
+            -webkit-touch-callout: none;
         }
 
         /* Desabilitar menu de contexto em elementos protegidos */
@@ -255,6 +256,20 @@
             z-index: 2;
         }
 
+        /* PROTECÃO EXTRA - Camada invisível sobre a imagem */
+        .profile-img-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: 10;
+            pointer-events: none;
+            box-shadow: inset 0 0 0 0 var(--primary-color);
+        }
+
         .profile-img-container i {
             font-size: 4rem;
             margin-bottom: 1rem;
@@ -267,6 +282,7 @@
             transition: transform 0.5s;
             position: relative;
             z-index: 1;
+            pointer-events: none; /* Impede interação direta com a imagem */
         }
 
         .profile-img-container:hover img {
@@ -359,6 +375,11 @@
             100% { opacity: 0.8; }
         }
 
+        /* Esconder imagem de ferramentas de inspeção */
+        .hidden-from-bots {
+            display: none;
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -437,11 +458,18 @@
             <div class="about-content">
                 <div class="profile-img">
                     <div class="profile-img-container" id="profile-container">
+                        <!-- Imagem principal (protegida) -->
                         <img id="profile-picture" 
                              src="https://i.postimg.cc/gjcvnLqD/Chat-GPT-Image-28-de-fev-de-2026-14-09-21.png" 
                              alt="Samuel Ciryaco de Andrade - Full Stack Developer"
                              class="no-context"
                              onerror="this.src='https://via.placeholder.com/350x450/00ff41/000000?text=Samuel+Ciryaco'">
+                        
+                        <!-- Imagem falsa para enganar bots/copy (invisível) -->
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3C/svg%3E" 
+                             style="display:none" 
+                             alt=""
+                             aria-hidden="true">
                     </div>
                 </div>
                 <div class="about-text animate-on-scroll">
@@ -538,11 +566,11 @@
 
         window.addEventListener('DOMContentLoaded', createMatrix);
 
-        // ========== PROTEÇÕES ANTI-PRINT ==========
+        // ========== PROTEÇÕES ANTI-PRINT E ANTI-CÓPIA ==========
         
-        // 1. Bloquear teclas de print (PrtSc, Ctrl+P, etc)
+        // 1. Bloquear teclas de print e cópia
         document.addEventListener('keydown', function(e) {
-            // Tecla Print Screen (código 44)
+            // Tecla Print Screen
             if (e.key === 'PrintScreen' || e.keyCode === 44) {
                 e.preventDefault();
                 showPrintWarning();
@@ -550,7 +578,7 @@
                 return false;
             }
             
-            // Ctrl + P (Print)
+            // Ctrl+P
             if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
                 e.preventDefault();
                 showPrintWarning();
@@ -558,42 +586,46 @@
                 return false;
             }
             
-            // Ctrl + Shift + I (DevTools) - opcional
-            if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'I') {
+            // Ctrl+C (cópia)
+            if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
+                // Verifica se está tentando copiar a imagem
+                const selection = window.getSelection().toString();
+                if (!selection) {
+                    e.preventDefault();
+                    showCopyWarning();
+                    return false;
+                }
+            }
+            
+            // Ctrl+S (salvar)
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
                 e.preventDefault();
                 return false;
             }
             
-            // F12 (DevTools) - opcional
+            // Ctrl+U (ver código fonte)
+            if ((e.ctrlKey || e.metaKey) && e.key === 'u') {
+                e.preventDefault();
+                return false;
+            }
+            
+            // F12
             if (e.key === 'F12') {
                 e.preventDefault();
                 return false;
             }
         });
 
-        // 2. Bloquear menu de contexto (clique direito)
+        // 2. Bloquear menu de contexto completamente
         document.addEventListener('contextmenu', function(e) {
-            // Permite clique direito em áreas não protegidas (opcional)
-            if (!e.target.closest('.profile-img-container')) {
-                // Se quiser bloquear tudo, descomente a linha abaixo
-                // e.preventDefault();
-            }
+            e.preventDefault();
+            return false;
         });
 
-        // 3. Detectar combinações de teclas para print em Mac
+        // 3. Detectar atalhos de Mac
         document.addEventListener('keydown', function(e) {
-            // Cmd + Shift + 3 (print full screen no Mac)
-            if ((e.metaKey && e.shiftKey && e.key === '3') ||
-                // Cmd + Shift + 4 (print área no Mac)
-                (e.metaKey && e.shiftKey && e.key === '4')) {
-                e.preventDefault();
-                showPrintWarning();
-                activateOverlay();
-                return false;
-            }
-            
-            // Cmd + Shift + 5 (screen recording no Mac)
-            if (e.metaKey && e.shiftKey && e.key === '5') {
+            // Cmd+Shift+3, Cmd+Shift+4, Cmd+Shift+5
+            if (e.metaKey && e.shiftKey && (e.key === '3' || e.key === '4' || e.key === '5')) {
                 e.preventDefault();
                 showPrintWarning();
                 activateOverlay();
@@ -601,62 +633,84 @@
             }
         });
 
-        // 4. Detectar visibilidade da página (quando muda de aba, pode indicar gravação)
-        document.addEventListener('visibilitychange', function() {
-            if (document.hidden) {
-                // Opcional: limpar algo quando sai da página
-            }
+        // 4. Proteger contra cópia de imagem via arrasto
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('dragstart', (e) => e.preventDefault());
+            img.addEventListener('mousedown', (e) => e.preventDefault());
+            img.addEventListener('mouseup', (e) => e.preventDefault());
         });
 
-        // 5. Overlay que aparece quando tenta printar
+        // 5. Sobrescrever métodos de cópia
+        document.addEventListener('copy', function(e) {
+            e.clipboardData.setData('text/plain', 'Conteúdo protegido por direitos autorais');
+            e.preventDefault();
+        });
+
+        document.addEventListener('cut', function(e) {
+            e.preventDefault();
+        });
+
+        // 6. Desabilitar seleção de texto em toda a página
+        document.body.style.userSelect = 'none';
+        document.body.style.webkitUserSelect = 'none';
+        document.body.style.mozUserSelect = 'none';
+        document.body.style.msUserSelect = 'none';
+
+        // 7. Funções auxiliares
         function activateOverlay() {
             const overlay = document.getElementById('antiPrintOverlay');
             document.body.classList.add('print-attempt');
             
-            // Remove após 2 segundos
             setTimeout(() => {
                 document.body.classList.remove('print-attempt');
             }, 2000);
         }
 
-        // 6. Mostrar aviso
         function showPrintWarning() {
             const warning = document.getElementById('printWarning');
             warning.style.display = 'block';
+            warning.innerHTML = '<i class="fas fa-camera"></i> Print bloqueado! Conteúdo protegido.';
             
             setTimeout(() => {
                 warning.style.display = 'none';
             }, 3000);
         }
 
-        // 7. Bloquear arrastar imagens
-        document.querySelectorAll('img').forEach(img => {
-            img.addEventListener('dragstart', (e) => e.preventDefault());
-        });
+        function showCopyWarning() {
+            const warning = document.getElementById('printWarning');
+            warning.style.display = 'block';
+            warning.innerHTML = '<i class="fas fa-copy"></i> Cópia bloqueada! Conteúdo protegido.';
+            warning.style.background = 'rgba(255, 165, 0, 0.8)';
+            
+            setTimeout(() => {
+                warning.style.display = 'none';
+                warning.style.background = 'rgba(255, 0, 0, 0.8)';
+            }, 3000);
+        }
 
-        // 8. Detectar tentativa de screenshot via JavaScript (limitado)
-        // Alguns navegadores permitem detectar mudanças na área de transferência
-        document.addEventListener('copy', function(e) {
-            // Se copiar algo que pode ser imagem
-            e.clipboardData.setData('text/plain', 'Conteúdo protegido');
-            e.preventDefault();
-        });
-
-        // 9. Proteção adicional: limpar console (opcional)
-        console.clear();
-        console.log('%cConteúdo protegido contra prints', 'color: #00ff41; font-size: 16px;');
-
-        // 10. Detectar se está sendo gravado (tentativa heurística)
-        let lastTime = Date.now();
-        setInterval(() => {
-            const currentTime = Date.now();
-            // Se o intervalo for muito maior que 100ms, pode ser que a aba esteja inativa
-            // (não necessariamente print, mas pode indicar gravação)
-            if (currentTime - lastTime > 500) {
-                // Possível gravação? Opcional: ativar proteção
+        // 8. Detectar DevTools (opcional)
+        const element = new Image();
+        Object.defineProperty(element, 'id', {
+            get: function() {
+                showDevToolsWarning();
             }
-            lastTime = currentTime;
-        }, 100);
+        });
+        console.log('%c', element);
+
+        function showDevToolsWarning() {
+            // Aviso opcional sobre DevTools
+        }
+
+        // 9. Limpar console
+        console.clear();
+        console.log('%c🚫 Conteúdo protegido contra cópia e prints', 'color: #00ff41; font-size: 16px; font-weight: bold;');
+
+        // 10. Proteger via CSSOM (dificulta inspeção)
+        setInterval(() => {
+            // Reaplicar proteções se alguém tentar remover via console
+            document.body.style.userSelect = 'none';
+            document.body.style.webkitUserSelect = 'none';
+        }, 1000);
     </script>
 </body>
 </html>
