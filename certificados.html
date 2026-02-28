@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samuel Ciryaco de Andrade - Todos os Certificados</title>
+    <title>Samuel Ciryaco de Andrade - Todos os Certificados (147)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -491,7 +491,7 @@
 
     <section class="certificates">
         <div class="container">
-            <h1 class="section-title">Todos os Certificados (122)</h1>
+            <h1 class="section-title">Todos os Certificados (147)</h1>
             
             <div class="filters">
                 <button class="filter-btn active" data-filter="all">Todos</button>
@@ -513,161 +513,54 @@
     </section>
 
     <script>
-        // LISTA COMPLETA - 122 CERTIFICADOS
+        // LISTA COMPLETA - 147 CERTIFICADOS (122 originais + 25 novos de Node.js, Linux e Cibersegurança)
         const certificates = [
-            // ===== 45 CERTIFICADOS COM IMAGENS (1-45) - TODOS OS NOVOS LINKS ADICIONADOS =====
-            // ID 1
+            // ===== 45 CERTIFICADOS COM IMAGENS (1-45) =====
             { id: 1, title: 'Treinamento Não-Supervisionado em Machine Learning', category: 'pdf', hours: 1, date: '2026-01-17', description: 'Treinamento não-supervisionado - DIO', image: 'https://i.postimg.cc/p9fDg6j9/1.png' },
-            
-            // ID 2 (temos duas opções, vou usar a .png)
             { id: 2, title: 'Treinamento Supervisionado para Machine Learning', category: 'pdf', hours: 2, date: '2026-01-17', description: 'Treinamento supervisionado - DIO', image: 'https://i.postimg.cc/jWHzGFfD/2.png' },
-            
-            // ID 3
             { id: 3, title: 'Aprendizado por Reforço em Machine Learning', category: 'pdf', hours: 1, date: '2026-01-17', description: 'Aprendizado por reforço - DIO', image: 'https://i.postimg.cc/qts895KR/3.webp' },
-            
-            // ID 4 (não veio novo link, mantendo o antigo)
             { id: 4, title: 'Algoritmos de Regressão para Machine Learning', category: 'pdf', hours: 1, date: '2026-01-17', description: 'Algoritmos de regressão - DIO', image: 'https://i.postimg.cc/hfLV5wRr/4.png' },
-            
-            // ID 5
             { id: 5, title: 'Extração de Features e Redução de Dimensionalidade', category: 'pdf', hours: 2, date: '2026-01-20', description: 'Extração de features - DIO', image: 'https://i.postimg.cc/q6hgdNFQ/5.webp' },
-            
-            // ID 6
             { id: 6, title: 'Redução de Dimensionalidade em Imagens para Redes Neurais', category: 'pdf', hours: 2, date: '2026-01-20', description: 'Redução de dimensionalidade - DIO', image: 'https://i.postimg.cc/2Lb3f1t2/6.webp' },
-            
-            // ID 7
             { id: 7, title: 'Materiais Complementares: Algoritmos de Treinamento em ML', category: 'pdf', hours: 1, date: '2026-01-20', description: 'Algoritmos de treinamento - DIO', image: 'https://i.postimg.cc/jnwCrD1X/7.webp' },
-            
-            // ID 8
             { id: 8, title: 'Métodos de Validação de Treinamento', category: 'pdf', hours: 2, date: '2026-01-20', description: 'Validação de treinamento - DIO', image: 'https://i.postimg.cc/jnwCrD14/8.webp' },
-            
-            // ID 9
             { id: 9, title: 'Métodos de Otimização de Aprendizado', category: 'pdf', hours: 2, date: '2026-01-21', description: 'Métodos de otimização - DIO', image: 'https://i.postimg.cc/2Lb3f1td/9.webp' },
-            
-            // ID 10
             { id: 10, title: 'Otimização de Modelos em Hiperparâmetros', category: 'pdf', hours: 1, date: '2026-01-21', description: 'Otimização de hiperparâmetros - DIO', image: 'https://i.postimg.cc/hQzhqXYb/10.webp' },
-            
-            // ID 11
             { id: 11, title: 'Modelos de ML: Métricas de Avaliação de Desempenho', category: 'pdf', hours: 1, date: '2026-01-21', description: 'Métricas de desempenho - DIO', image: 'https://i.postimg.cc/BPLtGjzT/11.webp' },
-            
-            // ID 12
             { id: 12, title: 'Cálculo de Métricas de Avaliação de Aprendizado', category: 'pdf', hours: 2, date: '2026-02-16', description: 'Métricas de avaliação - DIO', image: 'https://i.postimg.cc/GT8914fG/12.webp' },
-            
-            // ID 13
             { id: 13, title: 'Materiais Complementares: Teoria do Aprendizado Estatístico', category: 'pdf', hours: 1, date: '2026-01-21', description: 'Teoria do aprendizado - DIO', image: 'https://i.postimg.cc/hQzhqXYx/13.webp' },
-            
-            // ID 14
             { id: 14, title: 'Tipos de Redes de Deep Learning', category: 'pdf', hours: 2, date: '2026-01-22', description: 'Tipos de redes neurais - DIO', image: 'https://i.postimg.cc/ZvB0hWQN/14.webp' },
-            
-            // ID 15
             { id: 15, title: 'Redes de Classificação para Deep Learning', category: 'pdf', hours: 2, date: '2026-01-23', description: 'Redes de classificação - DIO', image: 'https://i.postimg.cc/9wRzjDk7/15.webp' },
-            
-            // ID 16
             { id: 16, title: 'Redes de Detecção em Deep Learning', category: 'pdf', hours: 2, date: '2026-01-25', description: 'Redes de detecção - DIO', image: 'https://i.postimg.cc/PpFNcWSK/16.webp' },
-            
-            // ID 17
             { id: 17, title: 'Redes de Segmentação em Deep Learning', category: 'pdf', hours: 1, date: '2026-01-25', description: 'Redes de segmentação - DIO', image: 'https://i.postimg.cc/ph1y7fsC/17.webp' },
-            
-            // ID 18
             { id: 18, title: 'Redes de Segmentação em Deep Learning', category: 'pdf', hours: 1, date: '2026-01-25', description: 'Redes de segmentação - DIO', image: 'https://i.postimg.cc/JDdtgNpq/18.webp' },
-            
-            // ID 19
             { id: 19, title: 'Aplicações Práticas com Deep Learning', category: 'pdf', hours: 1, date: '2026-01-25', description: 'Aplicações práticas de DL - DIO', image: 'https://i.postimg.cc/ygrW5mLy/19.webp' },
-            
-            // ID 20
             { id: 20, title: 'Criação de Uma Base de Dados e Treinamento da Rede YOLO', category: 'pdf', hours: 2, date: '2026-02-17', description: 'Treinamento da rede YOLO - DIO', image: 'https://i.postimg.cc/N9PLV6d8/20.webp' },
-            
-            // ID 21
             { id: 21, title: 'Materiais Complementares: Fundamentos e Práticas de DL', category: 'pdf', hours: 1, date: '2026-01-25', description: 'Fundamentos de Deep Learning - DIO', image: 'https://i.postimg.cc/VrH5TqKB/21.webp' },
-            
-            // ID 22
             { id: 22, title: 'Introdução às Bibliotecas de Machine Learning', category: 'pdf', hours: 1, date: '2026-01-26', description: 'Bibliotecas de ML - DIO', image: 'https://i.postimg.cc/0MHr3YVY/22.webp' },
-            
-            // ID 23
             { id: 23, title: 'Conhecendo as Bibliotecas Pandas e Scikit-Learn', category: 'pdf', hours: 1, date: '2026-01-26', description: 'Pandas e Scikit-Learn - DIO', image: 'https://i.postimg.cc/34bW6XtG/23.webp' },
-            
-            // ID 24
             { id: 24, title: 'Frameworks para Machine Learning', category: 'pdf', hours: 1, date: '2026-02-03', description: 'Frameworks para ML - DIO', image: 'https://i.postimg.cc/0MHr3YVw/24.webp' },
-            
-            // ID 25
             { id: 25, title: 'Desenvolvimento de Algoritmos no Keras', category: 'pdf', hours: 1, date: '2026-02-03', description: 'Algoritmos com Keras - DIO', image: 'https://i.postimg.cc/r0Yzb1f5/25.webp' },
-            
-            // ID 26
             { id: 26, title: 'Ambientes de Projetos Colaborativos de ML', category: 'pdf', hours: 1, date: '2026-02-04', description: 'Ambientes colaborativos - DIO', image: 'https://i.postimg.cc/ph1y7fsn/26.webp' },
-            
-            // ID 27
             { id: 27, title: 'Criando um Sistema de Reconhecimento Facial do Zero', category: 'pdf', hours: 5, date: '2026-02-17', description: 'Reconhecimento facial - DIO', image: 'https://i.postimg.cc/XGDXhfsr/27.webp' },
-            
-            // ID 28
             { id: 28, title: 'Criando um Sistema de Reconhecimento Facial do Zero', category: 'pdf', hours: 5, date: '2026-02-17', description: 'Reconhecimento facial - DIO', image: 'https://i.postimg.cc/qhZgYs1t/28.webp' },
-            
-            // ID 29
             { id: 29, title: 'Materiais Complementares: Frameworks de Deep Learning', category: 'pdf', hours: 1, date: '2026-02-04', description: 'Frameworks de Deep Learning - DIO', image: 'https://i.postimg.cc/1nY4TGvf/29.webp' },
-            
-            // ID 30 (não veio novo, mantendo antigo)
             { id: 30, title: 'Introdução ao Processamento De Imagens Digitais', category: 'pdf', hours: 2, date: '2026-02-05', description: 'Introdução ao processamento de imagens - DIO', image: 'https://i.postimg.cc/jnNyK3wD/31.png' },
-            
-            // ID 31
             { id: 31, title: 'Aplicações de Processamento De Imagens Digitais', category: 'pdf', hours: 2, date: '2026-02-05', description: 'Aplicações de processamento de imagens - DIO', image: 'https://i.postimg.cc/TLHhSVt2/31.webp' },
-            
-            // ID 32
             { id: 32, title: 'Métodos de Segmentação Com OpenCV', category: 'pdf', hours: 2, date: '2026-02-13', description: 'Segmentação com OpenCV - DIO', image: 'https://i.postimg.cc/dkSDX25t/32.webp' },
-            
-            // ID 33
             { id: 33, title: 'Métodos de Segmentação Com OpenCV', category: 'pdf', hours: 2, date: '2026-02-13', description: 'Segmentação com OpenCV - DIO', image: 'https://i.postimg.cc/5YkjGBs2/33.webp' },
-            
-            // ID 34 (não veio novo, mantendo antigo)
             { id: 34, title: 'Programando Com OpenCV: Abordagens práticas', category: 'pdf', hours: 2, date: '2026-02-13', description: 'OpenCV abordagens práticas - DIO', image: 'https://i.postimg.cc/RJfw9p6V/35.png' },
-            
-            // ID 35
             { id: 35, title: 'Criando um Sistema de Recomendação por Imagens Digitais', category: 'pdf', hours: 3, date: '2026-02-17', description: 'Sistema de recomendação por imagens - DIO', image: 'https://i.postimg.cc/PpFNcWSX/35.webp' },
-            
-            // ID 36
             { id: 36, title: 'Materiais Complementares: Processamento de Imagens com ML', category: 'pdf', hours: 1, date: '2026-02-14', description: 'Processamento de Imagens com ML - DIO', image: 'https://i.postimg.cc/dkSDX25F/36.webp' },
-            
-            // ID 37
             { id: 37, title: 'Introdução à Visão Computacional', category: 'pdf', hours: 1, date: '2026-02-14', description: 'Introdução à Visão Computacional - DIO', image: 'https://i.postimg.cc/VrNdDGWd/37.webp' },
-            
-            // ID 38
             { id: 38, title: 'Algoritmos para Rastreamento de Objetos em Imagens', category: 'pdf', hours: 1, date: '2026-02-14', description: 'Rastreamento de objetos - DIO', image: 'https://i.postimg.cc/phdpqGJy/38.webp' },
-            
-            // ID 39
             { id: 39, title: 'Visão Computacional 3D e seus algoritmos', category: 'pdf', hours: 1, date: '2026-02-14', description: 'Visão Computacional 3D - DIO', image: 'https://i.postimg.cc/PpqP23QJ/39.webp' },
-            
-            // ID 40
             { id: 40, title: 'Algoritmos para Processamento de Linguagem Natural', category: 'pdf', hours: 1, date: '2026-02-16', description: 'Algoritmos para PLN - DIO', image: 'https://i.postimg.cc/r0pKQnNp/40.webp' },
-            
-            // ID 41
             { id: 41, title: 'Criando um sistema de assistência virtual do zero', category: 'pdf', hours: 3, date: '2026-02-17', description: 'Projeto de assistência virtual - DIO', image: 'https://i.postimg.cc/r0pKQnNy/41.webp' },
-            
-            // ID 42 (não veio novo, mantendo antigo)
             { id: 42, title: 'Materiais Complementares: Visão Computacional com ML', category: 'pdf', hours: 1, date: '2026-02-16', description: 'Materiais complementares - DIO', image: 'https://i.postimg.cc/PCn2LYdt/40.png' },
-            
-            // ID 43
             { id: 43, title: 'Materiais Complementares: Visão Computacional com ML', category: 'pdf', hours: 1, date: '2026-02-16', description: 'Materiais complementares - DIO', image: 'https://i.postimg.cc/CBKzmPsx/43.webp' },
-            
-            // ID 44 - DESTAQUE
-            { 
-                id: 44, 
-                title: 'Avalie este Bootcamp', 
-                category: 'pdf', 
-                hours: 1, 
-                date: '2026-02-17', 
-                description: 'Curso de avaliação de Bootcamp - DIO', 
-                image: 'https://i.postimg.cc/prBbPVYy/46.png',
-                special: true 
-            },
-            
-            // ID 45 - DESTAQUE
-            { 
-                id: 45, 
-                title: 'BairesDev - Machine Learning Practitioner', 
-                category: 'pdf', 
-                hours: 96, 
-                date: '2026-02-17', 
-                description: 'Bootcamp completo de Machine Learning - DIO',
-                image: 'https://i.postimg.cc/XqqXCPHp/45.png',
-                special: true 
-            },
+            { id: 44, title: 'Avalie este Bootcamp', category: 'pdf', hours: 1, date: '2026-02-17', description: 'Curso de avaliação de Bootcamp - DIO', image: 'https://i.postimg.cc/prBbPVYy/46.png', special: true },
+            { id: 45, title: 'BairesDev - Machine Learning Practitioner', category: 'pdf', hours: 96, date: '2026-02-17', description: 'Bootcamp completo de Machine Learning - DIO', image: 'https://i.postimg.cc/XqqXCPHp/45.png', special: true },
             
             // ===== 31 CERTIFICADOS ML (mantidos) =====
             { id: 46, title: 'ML Não-Supervisionado', category: 'ml', hours: 1, date: '2026-01-17', description: 'Treinamento não-supervisionado' },
@@ -752,8 +645,42 @@
             { id: 119, title: 'Visão Computacional', category: 'ml', hours: 1, date: '2026-02-12', description: 'Fundamentos visão' },
             { id: 120, title: 'Processamento de Linguagem Natural', category: 'ml', hours: 1, date: '2026-02-11', description: 'PLN' },
             { id: 121, title: 'Algoritmos e ML', category: 'ml', hours: 1, date: '2026-02-11', description: 'Fundamentos ML' },
-            { id: 122, title: 'Desafios de Código Iniciais', category: 'programacao', hours: 1, date: '2025-12-20', description: 'Lógica' }
+            { id: 122, title: 'Desafios de Código Iniciais', category: 'programacao', hours: 1, date: '2025-12-20', description: 'Lógica' },
+            
+            // ===== 25 NOVOS CERTIFICADOS - NODE.JS, LINUX E CIBERSEGURANÇA (adicionados dos PDFs) =====
+            { id: 123, title: 'Carrinho de Compras da Shopee com Node.js', category: 'programacao', hours: 2, date: '2026-02-28', description: 'Projeto prático com Node.js - DIO' },
+            { id: 124, title: 'Modularização com EcmaScript Modules', category: 'programacao', hours: 3, date: '2026-02-26', description: 'Módulos ES6 no Node.js - DIO' },
+            { id: 125, title: 'Modularização de Projetos Node.js com CommonJS', category: 'programacao', hours: 2, date: '2026-02-26', description: 'CommonJS no Node.js - DIO' },
+            { id: 126, title: 'Simulador de Corridas do Mario Kart com Node.js', category: 'programacao', hours: 2, date: '2026-02-28', description: 'Projeto lúdico com Node.js - DIO' },
+            { id: 127, title: 'Simulador de Corridas do Mario Kart com Node.js', category: 'programacao', hours: 2, date: '2026-02-28', description: 'Projeto lúdico com Node.js - DIO (duplicado)' },
+            { id: 128, title: 'Inicializando Projetos Node.js', category: 'programacao', hours: 1, date: '2026-02-26', description: 'Primeiros passos com npm - DIO' },
+            { id: 129, title: 'Instalando Ambiente de Desenvolvimento Node.js', category: 'programacao', hours: 1, date: '2026-02-25', description: 'Configuração do Node.js - DIO' },
+            { id: 130, title: 'Introdução ao Node.js', category: 'programacao', hours: 1, date: '2026-02-25', description: 'Fundamentos do Node.js - DIO' },
+            { id: 131, title: 'Bem-Vindo ao Mundo do Node.js', category: 'programacao', hours: 1, date: '2026-02-25', description: 'Introdução ao ecossistema Node - DIO' },
+            { id: 132, title: 'Usando IA Como Copiloto para Criar Novas Features no Seu Projeto', category: 'programacao', hours: 1, date: '2026-02-28', description: 'IA no desenvolvimento - DIO' },
+            { id: 133, title: 'Utilizando Copilotos de Desenvolvimento de Software', category: 'programacao', hours: 1, date: '2026-02-24', description: 'Ferramentas de IA - DIO' },
+            { id: 134, title: 'Utilizando Copilotos de Desenvolvimento de Software', category: 'programacao', hours: 1, date: '2026-02-24', description: 'Ferramentas de IA - DIO (duplicado)' },
+            { id: 135, title: 'O que são IAs Generativas', category: 'ml', hours: 1, date: '2026-02-21', description: 'Conceitos de IA Generativa - DIO' },
+            { id: 136, title: 'Aplicações e Impacto da IA no Mundo Atual', category: 'ml', hours: 1, date: '2026-02-20', description: 'Impacto da IA - DIO' },
+            { id: 137, title: 'A Era da IA: Machine Learning, LLMs, IA Generativa e Agentes', category: 'ml', hours: 1, date: '2026-02-20', description: 'Panorama da IA - DIO' },
+            { id: 138, title: 'Bem vindo a Experiência do seu Bootcamp Jornada para o Futuro', category: 'ml', hours: 1, date: '2026-02-20', description: 'Boas-vindas ao bootcamp - DIO' },
+            { id: 139, title: 'Gerenciando Usuários no Linux', category: 'programacao', hours: 2, date: '2026-02-27', description: 'Administração de usuários Linux - DIO' },
+            { id: 140, title: 'Manipulando Arquivos no Linux', category: 'programacao', hours: 3, date: '2026-02-27', description: 'Comandos para arquivos - DIO' },
+            { id: 141, title: 'Acesso Remoto a Máquinas Linux', category: 'programacao', hours: 1, date: '2026-02-19', description: 'SSH e acesso remoto - DIO' },
+            { id: 142, title: 'Instalando o Linux', category: 'programacao', hours: 1, date: '2026-02-19', description: 'Instalação do SO - DIO' },
+            { id: 143, title: 'Introdução ao Sistema Operacional Linux', category: 'programacao', hours: 1, date: '2026-02-18', description: 'Fundamentos do Linux - DIO' },
+            { id: 144, title: 'Acelere sua Aprendizagem com IA: Explore o Poder do NotebookLM', category: 'ml', hours: 4, date: '2026-02-13', description: 'Ferramenta NotebookLM - DIO' },
+            { id: 145, title: 'Técnicas de Engenharia de Prompt', category: 'ml', hours: 2, date: '2026-01-08', description: 'Engenharia de prompt avançada - DIO' },
+            { id: 146, title: 'Desafios de Projetos: Crie Um Portfólio Vencedor', category: 'programacao', hours: 1, date: '2025-11-26', description: 'Como criar portfólio - DIO' },
+            { id: 147, title: 'Introdução à Engenharia de Prompts', category: 'ml', hours: 1, date: '2026-01-27', description: 'Fundamentos de prompt - DIO' },
+            { id: 148, title: 'Introdução à Engenharia de Prompts', category: 'ml', hours: 1, date: '2026-01-27', description: 'Fundamentos de prompt - DIO (duplicado)' },
+            { id: 149, title: 'Fundamentos de Modelos de Linguagem de Grande Escala', category: 'ml', hours: 1, date: '2026-01-27', description: 'LLMs - DIO' },
+            { id: 150, title: 'Introdução à Inteligência Artificial', category: 'ml', hours: 1, date: '2026-01-23', description: 'Conceitos de IA - DIO' },
+            { id: 151, title: 'Bem vindo a Experiência Riachuelo Cibersegurança', category: 'programacao', hours: 1, date: '2026-02-18', description: 'Boas-vindas ao bootcamp de cibersegurança - DIO' }
         ];
+
+        // Re-indexar IDs para garantir que sejam únicos
+        certificates.forEach((cert, index) => { cert.id = index + 1; });
 
         // Elementos DOM
         const modal = document.getElementById('certModal');
