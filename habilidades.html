@@ -159,7 +159,7 @@
 
         .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
@@ -169,10 +169,11 @@
             border-radius: 10px;
             box-shadow: var(--shadow);
             text-align: center;
-            transition: transform 0.3s;
+            transition: transform 0.3s, border-color 0.3s;
             position: relative;
             overflow: hidden;
             border: 1px solid rgba(0, 255, 65, 0.2);
+            backdrop-filter: blur(4px);
         }
 
         .skill-card::before {
@@ -188,6 +189,7 @@
         .skill-card:hover {
             transform: translateY(-10px);
             border-color: var(--primary-color);
+            box-shadow: 0 8px 20px rgba(0, 255, 65, 0.2);
         }
 
         .skill-card i {
@@ -203,6 +205,8 @@
 
         .skill-card p {
             color: #ccc;
+            font-size: 0.9rem;
+            min-height: 60px;
         }
 
         .skill-level {
@@ -217,7 +221,6 @@
             height: 100%;
             background-color: var(--primary-color);
             border-radius: 3px;
-            width: 0%;
             transition: width 1s ease;
         }
 
@@ -375,7 +378,24 @@
                         <div class="skill-progress" style="width: 70%"></div>
                     </div>
                 </div>
-                <!-- NOVA HABILIDADE: Cibersegurança Riachuelo -->
+                <!-- NOVA HABILIDADE: Node.js -->
+                <div class="skill-card animate-on-scroll" style="--percent: 78%">
+                    <i class="fab fa-node-js"></i>
+                    <h3>Node.js</h3>
+                    <p>Desenvolvimento backend com Express.js, APIs REST, WebSockets, e microsserviços.</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 78%"></div>
+                    </div>
+                </div>
+                <!-- NOVA HABILIDADE: Java QA -->
+                <div class="skill-card animate-on-scroll" style="--percent: 72%">
+                    <i class="fab fa-java"></i>
+                    <h3>Java QA</h3>
+                    <p>Testes automatizados com JUnit, Selenium WebDriver, Cucumber BDD e Rest Assured.</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 72%"></div>
+                    </div>
+                </div>
                 <div class="skill-card animate-on-scroll" style="--percent: 65%">
                     <i class="fas fa-shield-alt"></i>
                     <h3>Cibersegurança</h3>
@@ -391,9 +411,11 @@
     <script>
         function createMatrix() {
             const matrixBg = document.getElementById('matrix-bg');
+            if (!matrixBg) return;
             const chars = '01';
             const fontSize = 18;
             const columns = Math.floor(window.innerWidth / fontSize);
+            matrixBg.innerHTML = '';
             
             for (let i = 0; i < columns; i++) {
                 const code = document.createElement('div');
@@ -413,21 +435,27 @@
             }
         }
 
-        document.querySelector('.hamburger').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        });
+        const hamburger = document.querySelector('.hamburger');
+        if (hamburger) {
+            hamburger.addEventListener('click', function() {
+                document.querySelector('.nav-links').classList.toggle('active');
+            });
+        }
 
         window.addEventListener('scroll', function() {
             const header = document.getElementById('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
+            if (header) {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
             }
         });
 
         const observerOptions = {
-            threshold: 0.1
+            threshold: 0.1,
+            rootMargin: '0px 0px -20px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -442,7 +470,12 @@
             observer.observe(element);
         });
 
-        window.addEventListener('DOMContentLoaded', createMatrix);
+        window.addEventListener('DOMContentLoaded', () => {
+            createMatrix();
+            window.addEventListener('resize', () => {
+                createMatrix();
+            });
+        });
     </script>
 </body>
 </html>
