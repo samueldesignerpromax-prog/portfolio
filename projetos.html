@@ -212,6 +212,7 @@
         .project-info p {
             margin-bottom: 1rem;
             color: #ccc;
+            font-size: 0.9rem;
         }
 
         .project-tech {
@@ -276,6 +277,22 @@
             font-weight: bold;
             z-index: 10;
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .company-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            z-index: 10;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
         }
 
         .animate-on-scroll {
@@ -355,22 +372,73 @@
     </section>
 
     <script>
-        // ===== 18 PROJETOS (12 ANTIGOS + 6 NOVOS) =====
+        // ===== TODOS OS PROJETOS ATUALIZADOS =====
         const projects = [
-            // PRIMEIRO PROJETO EM DESTAQUE (BACKEND)
+            // PROJETO EMPRESA (DESTAQUE ESPECIAL)
             {
                 id: 1,
-                title: 'API Backend - Sistema Completo',
-                description: 'Primeiro projeto backend desenvolvido com Node.js, Express e MongoDB. API RESTful completa com autenticação, banco de dados e integrações. Destaque para arquitetura MVC e boas práticas de desenvolvimento.',
-                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Backend+API',
-                link: 'https://smauel-10.vercel.app/',
-                github: 'https://github.com/samueldesignerpromax-prog/backend-api',
-                tech: ['Node.js', 'Express', 'MongoDB', 'JWT', 'REST API', 'Backend'],
-                highlight: true
+                title: 'Samuel Tech IA - Minha Empresa',
+                description: 'Minha empresa de tecnologia especializada em soluções com Inteligência Artificial. Desenvolvemos sistemas inteligentes, chatbots e automações personalizadas para empresas e empreendedores.',
+                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Samuel+Tech+IA',
+                link: 'https://samuel-tech-ia-q4x7-4b79cf7si.vercel.app/',
+                github: '',
+                tech: ['IA', 'Chatbots', 'Automação', 'Sistemas Web', 'Empresa'],
+                highlight: true,
+                isCompany: true
             },
-            // NOVOS PROJETOS ADICIONADOS
+            // SISTEMA PDV
             {
                 id: 2,
+                title: 'Sistema PDV - Ponto de Venda',
+                description: 'Sistema completo de Ponto de Venda (PDV) com gestão de produtos, vendas, clientes, controle de estoque, emissão de cupons fiscais e relatórios gerenciais.',
+                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Sistema+PDV',
+                link: 'https://sistema-pdv-10-95l9dqf2n-samueldesignerpromax-progs-projects.vercel.app/',
+                github: '',
+                tech: ['Node.js', 'JavaScript', 'PDV', 'Gestão', 'Backend']
+            },
+            // PRIMEIRO BACKEND
+            {
+                id: 3,
+                title: 'Primeiro Backend - API REST',
+                description: 'Meu primeiro projeto backend completo! API RESTful desenvolvida com Node.js, Express e MongoDB. Inclui autenticação JWT, CRUD completo, validações e integração com banco de dados.',
+                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Backend+API+REST',
+                link: 'https://exemplo-8iotjnp4j-samueldesignerpromax-progs-projects.vercel.app/',
+                github: '',
+                tech: ['Node.js', 'Express', 'MongoDB', 'JWT', 'REST API']
+            },
+            // JOGO REIS CONTRA DEUSES
+            {
+                id: 4,
+                title: 'Jogo - Reis vs Deuses 3.0',
+                description: 'Jogo épico onde reis enfrentam deuses em batalhas emocionantes! Versão 3.0 com melhorias gráficas, novas fases e mecânicas de jogo. (Em constante evolução)',
+                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Reis+vs+Deuses+3.0',
+                link: 'https://jogo-reis-contra-deuses-3-0-7c549ayei.vercel.app/',
+                github: '',
+                tech: ['JavaScript', 'HTML5', 'CSS3', 'Game Development']
+            },
+            // SEGUNDO JOGO
+            {
+                id: 5,
+                title: 'Jogo - Aventura Épica',
+                description: 'Jogo interativo com desafios e missões. Projeto de desenvolvimento de games com foco em jogabilidade e experiência do usuário.',
+                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Jogo+Aventura',
+                link: 'https://jogo-7x9tv95u0-samueldesignerpromax-progs-projects.vercel.app/',
+                github: '',
+                tech: ['JavaScript', 'Game Logic', 'HTML5 Canvas', 'CSS3']
+            },
+            // AFILIADOS ONLINE
+            {
+                id: 6,
+                title: 'Afiliados Online - Plataforma',
+                description: 'Plataforma completa para afiliados com sistema de links personalizados, dashboard de métricas, comissões e ferramentas para impulsionar vendas.',
+                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Afiliados+Online',
+                link: 'https://afiliados-onlline.vercel.app/',
+                github: '',
+                tech: ['HTML5', 'CSS3', 'JavaScript', 'Marketing Digital', 'Dashboard']
+            },
+            // SORVETERIA ONLINE
+            {
+                id: 7,
                 title: 'Sorveteria Online',
                 description: 'Site para sorveteria com cardápio digital, sabores e sistema de pedidos online.',
                 image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Sorveteria',
@@ -378,8 +446,9 @@
                 github: 'https://github.com/samueldesignerpromax-prog/Sorveteria-',
                 tech: ['HTML5', 'CSS3', 'JavaScript', 'Responsive']
             },
+            // CHATBOT IA 3.0
             {
-                id: 3,
+                id: 8,
                 title: 'Chatbot IA 3.0',
                 description: 'Chatbot inteligente com IA avançada, reconhecimento de linguagem natural e respostas automatizadas.',
                 image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Chatbot+IA+3.0',
@@ -387,8 +456,9 @@
                 github: 'https://github.com/samueldesignerpromax-prog/Chatbot-IA-3.0',
                 tech: ['JavaScript', 'IA', 'Machine Learning', 'NLP']
             },
+            // PET SHOP
             {
-                id: 4,
+                id: 9,
                 title: 'Pet Shop - Loja Virtual',
                 description: 'Website completo para pet shop com produtos, serviços e agendamento de banho e tosa.',
                 image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Pet+Shop',
@@ -396,8 +466,9 @@
                 github: 'https://github.com/samueldesignerpromax-prog/Pet-Shop',
                 tech: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap']
             },
+            // PIZZARIA SABOR ÚNICO
             {
-                id: 5,
+                id: 10,
                 title: 'Pizzaria Sabor Único',
                 description: 'Site de delivery para pizzaria com cardápio interativo, promoções e sistema de pedidos.',
                 image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Pizzaria+Sabor+Único',
@@ -405,8 +476,9 @@
                 github: 'https://github.com/samueldesignerpromax-prog/Pizzaria-sabor-unico',
                 tech: ['HTML5', 'CSS3', 'JavaScript', 'API']
             },
+            // COMERCIAL IA
             {
-                id: 6,
+                id: 11,
                 title: 'Comercial IA',
                 description: 'Plataforma comercial com inteligência artificial para análise de vendas e recomendações.',
                 image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Comercial+IA',
@@ -414,9 +486,9 @@
                 github: 'https://github.com/samueldesignerpromax-prog/Comercial-IA',
                 tech: ['HTML5', 'CSS3', 'JavaScript', 'IA', 'Analytics']
             },
-            // PROJETOS ANTERIORES (12 PROJETOS)
+            // AVATAR 3.0
             {
-                id: 7,
+                id: 12,
                 title: 'Avatar 3.0 - Portfólio Interativo',
                 description: 'Portfólio interativo com tema futurista, efeitos Matrix, administração de conteúdo e visualização dinâmica de certificados e projetos.',
                 image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Avatar+3.0',
@@ -424,26 +496,19 @@
                 github: 'https://github.com/samueldesignerpromax-prog/Avatar-3.0',
                 tech: ['HTML5', 'CSS3', 'JavaScript', 'Matrix Effect']
             },
+            // ASSISTENTE VIRTUAL
             {
-                id: 8,
+                id: 13,
                 title: 'Assistente Virtual - Samuel Designer Pro Max',
                 description: 'Assistente virtual inteligente com reconhecimento de voz e IA para atendimento automático de clientes.',
-                image: 'https://raw.githubusercontent.com/samueldesignerpromax-prog/Assistente-virtual-do-Samuel/main/Imagem%20do%20WhatsApp%20de%202024-09-24%20%C3%A0(s)%2016.13.59_5d2b8d2a.jpg',
+                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Assistente+Virtual',
                 link: 'https://samueldesignerpromax-prog.github.io/Assistente-virtual-do-Samuel/',
                 github: 'https://github.com/samueldesignerpromax-prog/Assistente-virtual-do-Samuel',
                 tech: ['JavaScript', 'Speech Recognition', 'IA']
             },
+            // SISTEMA DE AFILIAÇÃO
             {
-                id: 9,
-                title: 'Chatbot Inteligente - Versão Anterior',
-                description: 'Sistema de chatbot desenvolvido com JavaScript para atendimento automático e interativo.',
-                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Chatbot+AI',
-                link: 'https://samueldesignerpromax-prog.github.io/chatbot/',
-                github: 'https://github.com/samueldesignerpromax-prog/chatbot',
-                tech: ['JavaScript', 'CSS3', 'HTML5']
-            },
-            {
-                id: 10,
+                id: 14,
                 title: 'Sistema de Afiliação - E-books',
                 description: 'Plataforma de afiliação e vendas de e-books com design responsivo e sistema de pagamento.',
                 image: 'https://via.placeholder.com/600x400/00ff41/000000?text=E-books+Store',
@@ -451,8 +516,9 @@
                 github: 'https://github.com/samueldesignerpromax-prog/Afilia-o-e-vendas-de-e-books',
                 tech: ['HTML5', 'CSS3', 'JavaScript', 'Payment Integration']
             },
+            // ADEGA LEN
             {
-                id: 11,
+                id: 15,
                 title: 'Adega Len - Website',
                 description: 'Site institucional para adega com catálogo de produtos e informações sobre vinhos.',
                 image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Adega+Len',
@@ -460,26 +526,9 @@
                 github: 'https://github.com/samueldesignerpromax-prog/Adega-len',
                 tech: ['HTML5', 'CSS3', 'Responsive Design']
             },
+            // LOJA DE ROUPAS
             {
-                id: 12,
-                title: 'Plataforma de Vendas Online',
-                description: 'E-commerce completo com carrinho de compras e sistema de checkout.',
-                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=E-commerce',
-                link: 'https://samueldesignerpromax-prog.github.io/Vendas-online/',
-                github: 'https://github.com/samueldesignerpromax-prog/Vendas-online',
-                tech: ['HTML5', 'CSS3', 'JavaScript', 'LocalStorage']
-            },
-            {
-                id: 13,
-                title: 'Pizzaria Delivery',
-                description: 'Site de delivery de pizza com cardápio online e sistema de pedidos.',
-                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Pizzaria',
-                link: 'https://samueldesignerpromax-prog.github.io/Pizzaria/',
-                github: 'https://github.com/samueldesignerpromax-prog/Pizzaria',
-                tech: ['HTML5', 'CSS3', 'JavaScript']
-            },
-            {
-                id: 14,
+                id: 16,
                 title: 'Loja de Roupas Online',
                 description: 'E-commerce de moda com catálogo de produtos e filtros de busca.',
                 image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Fashion+Store',
@@ -487,8 +536,9 @@
                 github: 'https://github.com/samueldesignerpromax-prog/Loja-de-Roupa',
                 tech: ['HTML5', 'CSS3', 'JavaScript', 'Filters']
             },
+            // HAMBURGUERIA
             {
-                id: 15,
+                id: 17,
                 title: 'Hamburgueria Artesanal',
                 description: 'Site para hamburgueria com cardápio digital e sistema de delivery.',
                 image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Hamburgueria',
@@ -496,50 +546,30 @@
                 github: 'https://github.com/samueldesignerpromax-prog/Hamburgueria',
                 tech: ['HTML5', 'CSS3', 'JavaScript']
             },
+            // PADARIA
             {
-                id: 16,
+                id: 18,
                 title: 'Padaria Adelaide Maria',
                 description: 'Website institucional para padaria tradicional com produtos artesanais.',
                 image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Padaria',
                 link: 'https://fijccufufxu.github.io/Padaria-Adelaide-Maria-/',
                 github: 'https://github.com/fijccufufxu/Padaria-Adelaide-Maria-',
                 tech: ['HTML5', 'CSS3']
-            },
-            {
-                id: 17,
-                title: 'Portfólio Pessoal - Wix',
-                description: 'Site pessoal desenvolvido na plataforma Wix com informações profissionais.',
-                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Portfolio+Wix',
-                link: 'https://samueldesignerprom.wixsite.com/my-site-2',
-                tech: ['Wix', 'Web Design']
-            },
-            {
-                id: 18,
-                title: 'Site Pessoal - Wix',
-                description: 'Outro site pessoal desenvolvido na plataforma Wix com diferentes abordagens.',
-                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Personal+Site',
-                link: 'https://ciryacodeandradesa6.wixsite.com/meusite',
-                tech: ['Wix', 'Web Design']
             }
         ];
 
         function displayProjects() {
             const container = document.getElementById('projects-container');
-            container.innerHTML = ''; // Limpa o container
+            container.innerHTML = '';
             
             projects.forEach(project => {
                 const card = document.createElement('div');
                 card.className = `project-card animate-on-scroll ${project.highlight ? 'highlight-project' : ''}`;
                 
-                // Tratamento para imagem do assistente virtual
-                let imgSrc = project.image;
-                if (project.id === 8 && project.image.includes('raw.githubusercontent')) {
-                    imgSrc = project.image; // Mantém a URL real da imagem
-                }
-                
                 card.innerHTML = `
-                    <div class="project-img">
-                        <img src="${imgSrc}" alt="${project.title}" onerror="this.style.display='none'; this.parentElement.innerHTML += '<i class=\'fas fa-laptop-code\' style=\'font-size: 4rem;\'></i>'">
+                    <div class="project-img" style="position: relative;">
+                        ${project.isCompany ? '<div class="company-badge"><i class="fas fa-building"></i> Minha Empresa</div>' : ''}
+                        <img src="${project.image}" alt="${project.title}" onerror="this.style.display='none'; this.parentElement.innerHTML += '<i class=\\'fas fa-laptop-code\\' style=\\'font-size: 4rem;\\'></i>'">
                     </div>
                     <div class="project-info">
                         <h3>${project.title}</h3>
@@ -560,13 +590,13 @@
             observeElements();
         }
 
-        // Matrix background
         function createMatrix() {
             const matrixBg = document.getElementById('matrix-bg');
-            matrixBg.innerHTML = ''; // Limpa o background
+            if (!matrixBg) return;
             const chars = '01';
             const fontSize = 18;
             const columns = Math.floor(window.innerWidth / fontSize);
+            matrixBg.innerHTML = '';
             
             for (let i = 0; i < columns; i++) {
                 const code = document.createElement('div');
@@ -586,29 +616,30 @@
             }
         }
 
-        // Menu hamburger
-        document.querySelector('.hamburger').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        });
+        const hamburger = document.querySelector('.hamburger');
+        if (hamburger) {
+            hamburger.addEventListener('click', function() {
+                document.querySelector('.nav-links').classList.toggle('active');
+            });
+        }
 
-        // Fechar menu ao clicar em um link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 document.querySelector('.nav-links').classList.remove('active');
             });
         });
 
-        // Header scroll
         window.addEventListener('scroll', function() {
             const header = document.getElementById('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
+            if (header) {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
             }
         });
 
-        // Observador de animações
         function observeElements() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -623,14 +654,10 @@
             });
         }
 
-        // Redimensionamento da janela
         window.addEventListener('resize', () => {
-            const matrixBg = document.getElementById('matrix-bg');
-            matrixBg.innerHTML = '';
             createMatrix();
         });
 
-        // Inicializar
         window.addEventListener('DOMContentLoaded', () => {
             createMatrix();
             displayProjects();
