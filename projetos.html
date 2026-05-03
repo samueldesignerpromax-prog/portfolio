@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samuel Ciryaco de Andrade - Projetos</title>
+    <title>Samuel Ciryaco de Andrade - Portfólio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -46,6 +46,7 @@
             font-family: 'Courier New', monospace;
             font-size: 18px;
             animation: fall linear infinite;
+            white-space: pre;
         }
 
         @keyframes fall {
@@ -64,8 +65,7 @@
         }
 
         header {
-            background-color: rgba(10, 10, 10, 0.9);
-            color: var(--light-color);
+            background-color: rgba(10, 10, 10, 0.95);
             padding: 1rem 0;
             position: fixed;
             width: 100%;
@@ -73,6 +73,7 @@
             z-index: 1000;
             box-shadow: var(--shadow);
             backdrop-filter: blur(10px);
+            transition: var(--transition);
         }
 
         header.scrolled {
@@ -104,10 +105,10 @@
         .nav-links a {
             color: var(--light-color);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: var(--transition);
             font-weight: 500;
-            position: relative;
             padding: 0.5rem 0;
+            position: relative;
         }
 
         .nav-links a::after {
@@ -138,14 +139,12 @@
         }
 
         .projects {
-            padding: 150px 0 100px;
+            padding: 120px 0 80px;
         }
 
         .section-title {
             text-align: center;
             margin-bottom: 3rem;
-            color: var(--light-color);
-            position: relative;
         }
 
         .section-title::after {
@@ -159,26 +158,28 @@
 
         .projects-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
             gap: 2rem;
         }
 
         .project-card {
-            background-color: rgba(30, 30, 30, 0.8);
-            border-radius: 10px;
+            background-color: rgba(30, 30, 30, 0.85);
+            border-radius: 15px;
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
             border: 1px solid rgba(0, 255, 65, 0.2);
+            backdrop-filter: blur(5px);
         }
 
         .project-card:hover {
             transform: translateY(-10px);
             border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(0, 255, 65, 0.2);
         }
 
         .project-img {
-            height: 250px;
+            height: 180px;
             overflow: hidden;
             position: relative;
             background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
@@ -188,15 +189,8 @@
             color: var(--primary-color);
         }
 
-        .project-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .project-card:hover .project-img img {
-            transform: scale(1.1);
+        .project-img i {
+            font-size: 4rem;
         }
 
         .project-info {
@@ -206,50 +200,51 @@
         .project-info h3 {
             margin-bottom: 0.5rem;
             color: var(--primary-color);
-            font-size: 1.3rem;
+            font-size: 1.2rem;
         }
 
         .project-info p {
             margin-bottom: 1rem;
             color: #ccc;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            line-height: 1.5;
         }
 
         .project-tech {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin: 1rem 0;
+            margin: 0.8rem 0;
         }
 
         .tech-tag {
             background-color: rgba(0, 255, 65, 0.1);
             color: var(--primary-color);
-            padding: 0.3rem 0.8rem;
+            padding: 0.2rem 0.7rem;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             border: 1px solid rgba(0, 255, 65, 0.3);
         }
 
         .project-links {
             display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
+            gap: 0.8rem;
+            margin-top: 0.8rem;
             flex-wrap: wrap;
         }
 
         .project-links a {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
+            gap: 0.4rem;
+            padding: 0.4rem 0.8rem;
             background-color: rgba(0, 255, 65, 0.1);
             color: var(--primary-color);
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 8px;
             transition: var(--transition);
             border: 1px solid rgba(0, 255, 65, 0.3);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
 
         .project-links a:hover {
@@ -259,56 +254,53 @@
 
         .highlight-project {
             border: 2px solid var(--primary-color);
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.4);
             position: relative;
             overflow: hidden;
         }
 
         .highlight-project::before {
-            content: '★ DESTAQUE ★';
+            content: '⭐ DESTAQUE PRINCIPAL ⭐';
             position: absolute;
-            top: 10px;
-            right: -30px;
+            top: 12px;
+            right: -35px;
             background: var(--primary-color);
             color: var(--secondary-color);
-            padding: 5px 40px;
+            padding: 4px 35px;
             transform: rotate(45deg);
-            font-size: 0.8rem;
+            font-size: 0.65rem;
             font-weight: bold;
             z-index: 10;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
         }
 
         .company-badge {
             position: absolute;
-            top: 15px;
-            left: 15px;
+            top: 12px;
+            left: 12px;
             background: var(--primary-color);
             color: var(--secondary-color);
-            padding: 5px 12px;
+            padding: 4px 10px;
             border-radius: 20px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: bold;
             z-index: 10;
-            display: inline-flex;
+            display: flex;
             align-items: center;
             gap: 5px;
         }
 
         .new-badge {
             position: absolute;
-            top: 15px;
-            right: 15px;
+            top: 12px;
+            right: 12px;
             background: #ff4444;
             color: white;
-            padding: 5px 12px;
+            padding: 4px 10px;
             border-radius: 20px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: bold;
             z-index: 10;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
             animation: pulse 1.5s infinite;
         }
 
@@ -320,12 +312,36 @@
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.8s;
+            transition: all 0.6s ease;
         }
 
         .animate-on-scroll.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: rgba(10, 10, 10, 0.9);
+            margin-top: 2rem;
+            border-top: 1px solid rgba(0, 255, 65, 0.2);
+        }
+
+        footer p {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        @media (max-width: 850px) {
+            .projects-container {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            }
         }
 
         @media (max-width: 768px) {
@@ -335,11 +351,11 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background-color: rgba(10, 10, 10, 0.95);
+                background-color: rgba(10, 10, 10, 0.98);
                 flex-direction: column;
                 padding: 1rem 0;
                 text-align: center;
-                z-index: 1000;
+                gap: 0;
             }
 
             .nav-links.active {
@@ -347,7 +363,7 @@
             }
 
             .nav-links li {
-                margin: 0.5rem 0;
+                margin: 0.8rem 0;
             }
 
             .hamburger {
@@ -368,13 +384,7 @@
             <nav>
                 <div class="logo">Samuel<span>Ciryaco</span></div>
                 <ul class="nav-links">
-                    <li><a href="index.html">Início</a></li>
-                    <li><a href="sobre.html">Sobre</a></li>
-                    <li><a href="habilidades.html">Habilidades</a></li>
-                    <li><a href="cursos.html">Cursos</a></li>
-                    <li><a href="certificados.html">Certificados</a></li>
-                    <li><a href="projetos.html" class="active">Projetos</a></li>
-                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="#projetos" class="active">Projetos</a></li>
                 </ul>
                 <div class="hamburger">
                     <i class="fas fa-bars"></i>
@@ -383,271 +393,261 @@
         </div>
     </header>
 
-    <section class="projects">
+    <section class="projects" id="projetos">
         <div class="container">
             <h2 class="section-title">Meus Projetos</h2>
-            
-            <div class="projects-container" id="projects-container">
-                <!-- Projetos serão carregados via JavaScript -->
-            </div>
+            <div class="projects-container" id="projects-container"></div>
         </div>
     </section>
 
+    <footer>
+        <p>Samuel Ciryaco de Andrade - Portfólio | <a href="https://github.com/samueldesignerpromax-prog" target="_blank">GitHub</a></p>
+    </footer>
+
     <script>
-        // ===== TODOS OS PROJETOS ATUALIZADOS COM OS NOVOS LINKS =====
+        // ===== TODOS OS 22 PROJETOS =====
         const projects = [
-            // PROJETO EMPRESA (DESTAQUE ESPECIAL)
+            // 1 - SAMUEL TECH GAMES (DESTAQUE PRINCIPAL)
             {
-                id: 1,
-                title: 'Samuel Tech IA - Minha Empresa',
-                description: 'Minha empresa de tecnologia especializada em soluções com Inteligência Artificial. Desenvolvemos sistemas inteligentes, chatbots e automações personalizadas para empresas e empreendedores.',
-                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Samuel+Tech+IA',
-                link: 'https://samuel-tech-ia-q4x7-4b79cf7si.vercel.app/',
-                github: '',
-                tech: ['IA', 'Chatbots', 'Automação', 'Sistemas Web', 'Empresa'],
+                title: '🎮 Samuel Tech Games - Portal de Jogos Indie',
+                description: 'Plataforma completa de jogos indie com sistema de avaliações em tempo real! ✓ 7 jogos com JavaScript puro ✓ API própria (Node.js + Express) ✓ Comentários salvos na nuvem ✓ Efeito Matrix ✓ Sincronizado PC/Celular',
+                icon: 'fa-gamepad',
+                link: 'https://samuel-tech-games-2dj6.onrender.com',
+                tech: ['JavaScript Puro', 'Node.js', 'Express', 'API REST', 'Matrix Effect', 'Backend'],
                 highlight: true,
                 isCompany: true
             },
-            // SISTEMA DE AFILIADOS (NOVO)
+            // 2 - Samuel Tech IA
             {
-                id: 2,
-                title: 'Sistema de Afiliados Premium',
-                description: 'Plataforma completa para gerenciamento de afiliados com dashboard, comissões, links personalizados, métricas em tempo real e sistema de pagamentos integrado.',
-                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Sistema+de+Afiliados',
+                title: '🏢 Samuel Tech IA - Minha Empresa',
+                description: 'Minha empresa de tecnologia especializada em soluções com Inteligência Artificial. Desenvolvemos sistemas inteligentes, chatbots e automações personalizadas.',
+                icon: 'fa-building',
+                link: 'https://samuel-tech-ia-q4x7-4b79cf7si.vercel.app/',
+                tech: ['IA', 'Chatbots', 'Automação', 'Sistemas Web'],
+                isCompany: true
+            },
+            // 3 - Sistema de Afiliados Premium
+            {
+                title: '💰 Sistema de Afiliados Premium',
+                description: 'Plataforma completa para gerenciamento de afiliados com dashboard, comissões, links personalizados, métricas em tempo real.',
+                icon: 'fa-chart-line',
                 link: 'https://sistema-afiliados-gamma.vercel.app/',
-                github: '',
-                tech: ['Node.js', 'React', 'MongoDB', 'Dashboard', 'Afiliados'],
+                tech: ['Node.js', 'React', 'MongoDB', 'Dashboard'],
                 isNew: true
             },
-            // SALGADOS PRO (NOVO)
+            // 4 - Salgados Pro
             {
-                id: 3,
-                title: 'Salgados Pro - E-commerce',
-                description: 'Sistema completo de venda de salgados online com carrinho, checkout, API de pedidos e integração com WhatsApp. Design moderno e responsivo.',
-                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Salgados+Pro',
+                title: '🍔 Salgados Pro - E-commerce',
+                description: 'Sistema completo de venda de salgados online com carrinho, checkout, API de pedidos e integração com WhatsApp.',
+                icon: 'fa-cart-shopping',
                 link: 'https://salgados-pro.vercel.app/',
-                github: '',
-                tech: ['HTML5', 'CSS3', 'JavaScript', 'API', 'WhatsApp API'],
+                tech: ['HTML5', 'CSS3', 'JavaScript', 'WhatsApp API'],
                 isNew: true
             },
-            // BARBEARIA SHOW (NOVO)
+            // 5 - Barbearia Show
             {
-                id: 4,
-                title: 'Barbearia Show - Agendamento Online',
-                description: 'Sistema completo para barbearia com agendamento online, gestão de clientes, serviços, horários e notificações automáticas.',
-                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Barbearia+Show',
+                title: '✂️ Barbearia Show - Agendamento',
+                description: 'Sistema completo para barbearia com agendamento online, gestão de clientes, serviços e horários.',
+                icon: 'fa-cut',
                 link: 'https://barbearia-show.vercel.app/',
-                github: '',
-                tech: ['React', 'Node.js', 'MongoDB', 'Calendar', 'Agendamento'],
+                tech: ['React', 'Node.js', 'MongoDB', 'Calendar'],
                 isNew: true
             },
-            // VENDA DE SALGADOS (NOVO)
+            // 6 - Venda de Salgados
             {
-                id: 5,
-                title: 'Venda de Salgados - Delivery',
-                description: 'Site de delivery especializado em salgados com cardápio completo, sistema de carrinho, checkout e integração com WhatsApp para pedidos.',
-                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Venda+de+Salgados',
+                title: '🥐 Venda de Salgados - Delivery',
+                description: 'Site de delivery especializado em salgados com cardápio completo, sistema de carrinho e integração com WhatsApp.',
+                icon: 'fa-truck',
                 link: 'https://venda-de-salgados.vercel.app/',
-                github: '',
-                tech: ['HTML5', 'CSS3', 'JavaScript', 'LocalStorage', 'Delivery'],
+                tech: ['HTML5', 'CSS3', 'JavaScript', 'LocalStorage'],
                 isNew: true
             },
-            // SISTEMA PDV
+            // 7 - Sistema PDV
             {
-                id: 6,
-                title: 'Sistema PDV - Ponto de Venda',
-                description: 'Sistema completo de Ponto de Venda (PDV) com gestão de produtos, vendas, clientes, controle de estoque, emissão de cupons fiscais e relatórios gerenciais.',
-                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Sistema+PDV',
+                title: '📟 Sistema PDV - Ponto de Venda',
+                description: 'Sistema completo de PDV com gestão de produtos, vendas, clientes, controle de estoque e relatórios gerenciais.',
+                icon: 'fa-cash-register',
                 link: 'https://sistema-pdv-10-95l9dqf2n-samueldesignerpromax-progs-projects.vercel.app/',
-                github: '',
-                tech: ['Node.js', 'JavaScript', 'PDV', 'Gestão', 'Backend']
+                tech: ['Node.js', 'JavaScript', 'PDV', 'Gestão']
             },
-            // PRIMEIRO BACKEND
+            // 8 - Primeiro Backend
             {
-                id: 7,
-                title: 'Primeiro Backend - API REST',
-                description: 'Meu primeiro projeto backend completo! API RESTful desenvolvida com Node.js, Express e MongoDB. Inclui autenticação JWT, CRUD completo, validações e integração com banco de dados.',
-                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Backend+API+REST',
+                title: '🔧 Primeiro Backend - API REST',
+                description: 'Meu primeiro projeto backend completo! API RESTful com Node.js, Express e MongoDB. Inclui autenticação JWT e CRUD completo.',
+                icon: 'fa-server',
                 link: 'https://exemplo-8iotjnp4j-samueldesignerpromax-progs-projects.vercel.app/',
-                github: '',
-                tech: ['Node.js', 'Express', 'MongoDB', 'JWT', 'REST API']
+                tech: ['Node.js', 'Express', 'MongoDB', 'JWT']
             },
-            // JOGO REIS CONTRA DEUSES
+            // 9 - Jogo Reis vs Deuses
             {
-                id: 8,
-                title: 'Jogo - Reis vs Deuses 3.0',
-                description: 'Jogo épico onde reis enfrentam deuses em batalhas emocionantes! Versão 3.0 com melhorias gráficas, novas fases e mecânicas de jogo. (Em constante evolução)',
-                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Reis+vs+Deuses+3.0',
+                title: '⚔️ Reis vs Deuses 3.0',
+                description: 'Jogo épico onde reis enfrentam deuses em batalhas emocionantes! Novas fases e mecânicas de jogo.',
+                icon: 'fa-dragon',
                 link: 'https://jogo-reis-contra-deuses-3-0-7c549ayei.vercel.app/',
-                github: '',
-                tech: ['JavaScript', 'HTML5', 'CSS3', 'Game Development']
+                tech: ['JavaScript', 'HTML5', 'CSS3', 'Game Dev']
             },
-            // SEGUNDO JOGO
+            // 10 - Jogo Aventura
             {
-                id: 9,
-                title: 'Jogo - Aventura Épica',
-                description: 'Jogo interativo com desafios e missões. Projeto de desenvolvimento de games com foco em jogabilidade e experiência do usuário.',
-                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Jogo+Aventura',
+                title: '🗺️ Jogo - Aventura Épica',
+                description: 'Jogo interativo com desafios e missões. Projeto de desenvolvimento de games com foco em jogabilidade.',
+                icon: 'fa-map',
                 link: 'https://jogo-7x9tv95u0-samueldesignerpromax-progs-projects.vercel.app/',
-                github: '',
-                tech: ['JavaScript', 'Game Logic', 'HTML5 Canvas', 'CSS3']
+                tech: ['JavaScript', 'Game Logic', 'HTML5 Canvas']
             },
-            // AFILIADOS ONLINE
+            // 11 - Afiliados Online
             {
-                id: 10,
-                title: 'Afiliados Online - Plataforma',
-                description: 'Plataforma completa para afiliados com sistema de links personalizados, dashboard de métricas, comissões e ferramentas para impulsionar vendas.',
-                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Afiliados+Online',
+                title: '📊 Afiliados Online',
+                description: 'Plataforma para afiliados com links personalizados, dashboard de métricas e comissões.',
+                icon: 'fa-share-alt',
                 link: 'https://afiliados-onlline.vercel.app/',
-                github: '',
-                tech: ['HTML5', 'CSS3', 'JavaScript', 'Marketing Digital', 'Dashboard']
+                tech: ['HTML5', 'CSS3', 'JavaScript', 'Dashboard']
             },
-            // SORVETERIA ONLINE
+            // 12 - Sorveteria Online
             {
-                id: 11,
-                title: 'Sorveteria Online',
+                title: '🍦 Sorveteria Online',
                 description: 'Site para sorveteria com cardápio digital, sabores e sistema de pedidos online.',
-                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Sorveteria',
+                icon: 'fa-ice-cream',
                 link: 'https://samueldesignerpromax-prog.github.io/Sorveteria-/',
                 github: 'https://github.com/samueldesignerpromax-prog/Sorveteria-',
-                tech: ['HTML5', 'CSS3', 'JavaScript', 'Responsive']
+                tech: ['HTML5', 'CSS3', 'JavaScript']
             },
-            // CHATBOT IA 3.0
+            // 13 - Chatbot IA 3.0
             {
-                id: 12,
-                title: 'Chatbot IA 3.0',
+                title: '🤖 Chatbot IA 3.0',
                 description: 'Chatbot inteligente com IA avançada, reconhecimento de linguagem natural e respostas automatizadas.',
-                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Chatbot+IA+3.0',
+                icon: 'fa-microphone',
                 link: 'https://samueldesignerpromax-prog.github.io/Chatbot-IA-3.0/',
                 github: 'https://github.com/samueldesignerpromax-prog/Chatbot-IA-3.0',
-                tech: ['JavaScript', 'IA', 'Machine Learning', 'NLP']
+                tech: ['JavaScript', 'IA', 'NLP']
             },
-            // PET SHOP
+            // 14 - Pet Shop
             {
-                id: 13,
-                title: 'Pet Shop - Loja Virtual',
+                title: '🐕 Pet Shop - Loja Virtual',
                 description: 'Website completo para pet shop com produtos, serviços e agendamento de banho e tosa.',
-                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Pet+Shop',
+                icon: 'fa-paw',
                 link: 'https://samueldesignerpromax-prog.github.io/Pet-Shop/',
                 github: 'https://github.com/samueldesignerpromax-prog/Pet-Shop',
-                tech: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap']
+                tech: ['HTML5', 'CSS3', 'JavaScript']
             },
-            // PIZZARIA SABOR ÚNICO
+            // 15 - Pizzaria Sabor Único
             {
-                id: 14,
-                title: 'Pizzaria Sabor Único',
+                title: '🍕 Pizzaria Sabor Único',
                 description: 'Site de delivery para pizzaria com cardápio interativo, promoções e sistema de pedidos.',
-                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Pizzaria+Sabor+Único',
+                icon: 'fa-pizza-slice',
                 link: 'https://samueldesignerpromax-prog.github.io/Pizzaria-sabor-unico/',
                 github: 'https://github.com/samueldesignerpromax-prog/Pizzaria-sabor-unico',
-                tech: ['HTML5', 'CSS3', 'JavaScript', 'API']
+                tech: ['HTML5', 'CSS3', 'JavaScript']
             },
-            // COMERCIAL IA
+            // 16 - Comercial IA
             {
-                id: 15,
-                title: 'Comercial IA',
+                title: '💼 Comercial IA',
                 description: 'Plataforma comercial com inteligência artificial para análise de vendas e recomendações.',
-                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Comercial+IA',
+                icon: 'fa-chart-simple',
                 link: 'https://samueldesignerpromax-prog.github.io/Comercial-IA/',
                 github: 'https://github.com/samueldesignerpromax-prog/Comercial-IA',
-                tech: ['HTML5', 'CSS3', 'JavaScript', 'IA', 'Analytics']
+                tech: ['HTML5', 'CSS3', 'JavaScript', 'IA']
             },
-            // AVATAR 3.0
+            // 17 - Avatar 3.0
             {
-                id: 16,
-                title: 'Avatar 3.0 - Portfólio Interativo',
-                description: 'Portfólio interativo com tema futurista, efeitos Matrix, administração de conteúdo e visualização dinâmica de certificados e projetos.',
-                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Avatar+3.0',
+                title: '👤 Avatar 3.0',
+                description: 'Portfólio interativo com tema futurista, efeitos Matrix e visualização dinâmica de projetos.',
+                icon: 'fa-user-astronaut',
                 link: 'https://samueldesignerpromax-prog.github.io/Avatar-3.0/',
                 github: 'https://github.com/samueldesignerpromax-prog/Avatar-3.0',
-                tech: ['HTML5', 'CSS3', 'JavaScript', 'Matrix Effect']
+                tech: ['HTML5', 'CSS3', 'JavaScript', 'Matrix']
             },
-            // ASSISTENTE VIRTUAL
+            // 18 - Assistente Virtual
             {
-                id: 17,
-                title: 'Assistente Virtual - Samuel Designer Pro Max',
-                description: 'Assistente virtual inteligente com reconhecimento de voz e IA para atendimento automático de clientes.',
-                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Assistente+Virtual',
+                title: '🎙️ Assistente Virtual',
+                description: 'Assistente virtual inteligente com reconhecimento de voz e IA para atendimento automático.',
+                icon: 'fa-headset',
                 link: 'https://samueldesignerpromax-prog.github.io/Assistente-virtual-do-Samuel/',
                 github: 'https://github.com/samueldesignerpromax-prog/Assistente-virtual-do-Samuel',
                 tech: ['JavaScript', 'Speech Recognition', 'IA']
             },
-            // SISTEMA DE AFILIAÇÃO E-BOOKS
+            // 19 - Sistema de Afiliação E-books
             {
-                id: 18,
-                title: 'Sistema de Afiliação - E-books',
-                description: 'Plataforma de afiliação e vendas de e-books com design responsivo e sistema de pagamento.',
-                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=E-books+Store',
+                title: '📚 Afiliação - E-books',
+                description: 'Plataforma de afiliação e vendas de e-books com design responsivo.',
+                icon: 'fa-book',
                 link: 'https://samueldesignerpromax-prog.github.io/Afilia-o-e-vendas-de-e-books/',
                 github: 'https://github.com/samueldesignerpromax-prog/Afilia-o-e-vendas-de-e-books',
-                tech: ['HTML5', 'CSS3', 'JavaScript', 'Payment Integration']
+                tech: ['HTML5', 'CSS3', 'JavaScript']
             },
-            // ADEGA LEN
+            // 20 - Adega Len
             {
-                id: 19,
-                title: 'Adega Len - Website',
+                title: '🍷 Adega Len',
                 description: 'Site institucional para adega com catálogo de produtos e informações sobre vinhos.',
-                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Adega+Len',
+                icon: 'fa-wine-glass',
                 link: 'https://samueldesignerpromax-prog.github.io/Adega-len/',
                 github: 'https://github.com/samueldesignerpromax-prog/Adega-len',
-                tech: ['HTML5', 'CSS3', 'Responsive Design']
+                tech: ['HTML5', 'CSS3']
             },
-            // LOJA DE ROUPAS
+            // 21 - Loja de Roupas
             {
-                id: 20,
-                title: 'Loja de Roupas Online',
+                title: '👕 Loja de Roupas Online',
                 description: 'E-commerce de moda com catálogo de produtos e filtros de busca.',
-                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Fashion+Store',
+                icon: 'fa-shirt',
                 link: 'https://samueldesignerpromax-prog.github.io/Loja-de-Roupa/',
                 github: 'https://github.com/samueldesignerpromax-prog/Loja-de-Roupa',
-                tech: ['HTML5', 'CSS3', 'JavaScript', 'Filters']
+                tech: ['HTML5', 'CSS3', 'JavaScript']
             },
-            // HAMBURGUERIA
+            // 22 - Hamburgueria
             {
-                id: 21,
-                title: 'Hamburgueria Artesanal',
+                title: '🍔 Hamburgueria Artesanal',
                 description: 'Site para hamburgueria com cardápio digital e sistema de delivery.',
-                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Hamburgueria',
+                icon: 'fa-burger',
                 link: 'https://samueldesignerpromax-prog.github.io/Hamburgueria/',
                 github: 'https://github.com/samueldesignerpromax-prog/Hamburgueria',
                 tech: ['HTML5', 'CSS3', 'JavaScript']
             },
-            // PADARIA
+            // 23 - Padaria
             {
-                id: 22,
-                title: 'Padaria Adelaide Maria',
+                title: '🥖 Padaria Adelaide Maria',
                 description: 'Website institucional para padaria tradicional com produtos artesanais.',
-                image: 'https://via.placeholder.com/600x400/00ff41/000000?text=Padaria',
+                icon: 'fa-bread-slice',
                 link: 'https://fijccufufxu.github.io/Padaria-Adelaide-Maria-/',
                 github: 'https://github.com/fijccufufxu/Padaria-Adelaide-Maria-',
                 tech: ['HTML5', 'CSS3']
             }
         ];
 
+        // ===== FUNÇÃO PARA EXIBIR PROJETOS =====
         function displayProjects() {
             const container = document.getElementById('projects-container');
+            if (!container) return;
+            
             container.innerHTML = '';
             
             projects.forEach(project => {
                 const card = document.createElement('div');
                 card.className = `project-card animate-on-scroll ${project.highlight ? 'highlight-project' : ''}`;
                 
+                const techTags = project.tech.map(t => `<span class="tech-tag">${t}</span>`).join('');
+                
+                let linksHtml = `<a href="${project.link}" target="_blank"><i class="fas fa-external-link-alt"></i> Ver Online</a>`;
+                if (project.github) {
+                    linksHtml += `<a href="${project.github}" target="_blank"><i class="fab fa-github"></i> GitHub</a>`;
+                }
+                
+                let badgesHtml = '';
+                if (project.isCompany) {
+                    badgesHtml += `<div class="company-badge"><i class="fas fa-building"></i> Minha Empresa</div>`;
+                }
+                if (project.isNew) {
+                    badgesHtml += `<div class="new-badge"><i class="fas fa-star"></i> NOVO</div>`;
+                }
+                
                 card.innerHTML = `
                     <div class="project-img" style="position: relative;">
-                        ${project.isCompany ? '<div class="company-badge"><i class="fas fa-building"></i> Minha Empresa</div>' : ''}
-                        ${project.isNew ? '<div class="new-badge"><i class="fas fa-star"></i> NOVO</div>' : ''}
-                        <img src="${project.image}" alt="${project.title}" onerror="this.style.display='none'; this.parentElement.innerHTML += '<i class=\\'fas fa-laptop-code\\' style=\\'font-size: 4rem;\\'></i>'">
+                        ${badgesHtml}
+                        <i class="fas ${project.icon}" style="font-size: 3.5rem;"></i>
                     </div>
                     <div class="project-info">
                         <h3>${project.title}</h3>
                         <p>${project.description}</p>
-                        <div class="project-tech">
-                            ${project.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}
-                        </div>
-                        <div class="project-links">
-                            <a href="${project.link}" target="_blank"><i class="fas fa-external-link-alt"></i> Ver Online</a>
-                            ${project.github ? `<a href="${project.github}" target="_blank"><i class="fab fa-github"></i> GitHub</a>` : ''}
-                        </div>
+                        <div class="project-tech">${techTags}</div>
+                        <div class="project-links">${linksHtml}</div>
                     </div>
                 `;
                 
@@ -657,9 +657,11 @@
             observeElements();
         }
 
+        // ===== EFEITO MATRIX =====
         function createMatrix() {
             const matrixBg = document.getElementById('matrix-bg');
             if (!matrixBg) return;
+            
             const chars = '01';
             const fontSize = 18;
             const columns = Math.floor(window.innerWidth / fontSize);
@@ -683,30 +685,7 @@
             }
         }
 
-        const hamburger = document.querySelector('.hamburger');
-        if (hamburger) {
-            hamburger.addEventListener('click', function() {
-                document.querySelector('.nav-links').classList.toggle('active');
-            });
-        }
-
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.querySelector('.nav-links').classList.remove('active');
-            });
-        });
-
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (header) {
-                if (window.scrollY > 100) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            }
-        });
-
+        // ===== OBSERVADOR DE SCROLL =====
         function observeElements() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -721,10 +700,32 @@
             });
         }
 
+        // ===== MENU HAMBURGUER =====
+        const hamburger = document.querySelector('.hamburger');
+        if (hamburger) {
+            hamburger.addEventListener('click', function() {
+                document.querySelector('.nav-links').classList.toggle('active');
+            });
+        }
+
+        // ===== SCROLL HEADER =====
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (header) {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }
+        });
+
+        // ===== REDIMENSIONAR =====
         window.addEventListener('resize', () => {
             createMatrix();
         });
 
+        // ===== INICIALIZAÇÃO =====
         window.addEventListener('DOMContentLoaded', () => {
             createMatrix();
             displayProjects();
