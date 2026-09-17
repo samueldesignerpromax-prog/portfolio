@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samuel Ciryaco de Andrade - Todos os Certificados (183)</title>
+    <title>Samuel Ciryaco de Andrade - Todos os Certificados (191)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -491,7 +491,7 @@
 
     <section class="certificates">
         <div class="container">
-            <h1 class="section-title">Todos os Certificados (183)</h1>
+            <h1 class="section-title">Todos os Certificados (191)</h1>
             
             <div class="filters">
                 <button class="filter-btn active" data-filter="all">Todos</button>
@@ -501,6 +501,7 @@
                 <button class="filter-btn" data-filter="nodejs">Node.js</button>
                 <button class="filter-btn" data-filter="programacao">Programação</button>
                 <button class="filter-btn" data-filter="office">Office</button>
+                <button class="filter-btn" data-filter="ibmbob">IBM Bob</button>
             </div>
 
             <div class="search-box">
@@ -514,7 +515,7 @@
     </section>
 
     <script>
-        // LISTA COMPLETA - 183 CERTIFICADOS
+        // LISTA COMPLETA - 191 CERTIFICADOS
         const certificates = [
             // ===== 45 CERTIFICADOS COM IMAGENS (1-45) =====
             { id: 1, title: 'Treinamento Não-Supervisionado em Machine Learning', category: 'pdf', hours: 1, date: '2026-01-17', description: 'Treinamento não-supervisionado - DIO', image: 'https://i.postimg.cc/p9fDg6j9/1.png' },
@@ -648,7 +649,7 @@
             { id: 121, title: 'Algoritmos e ML', category: 'ml', hours: 1, date: '2026-02-11', description: 'Fundamentos ML' },
             { id: 122, title: 'Desafios de Código Iniciais', category: 'programacao', hours: 1, date: '2025-12-20', description: 'Lógica' },
             
-            // ===== 25 NOVOS CERTIFICADOS - NODE.JS, LINUX E CIBERSEGURANÇA =====
+            // ===== 25 CERTIFICADOS NODE.JS, LINUX E CIBERSEGURANÇA =====
             { id: 123, title: 'Carrinho de Compras da Shopee com Node.js', category: 'nodejs', hours: 2, date: '2026-02-28', description: 'Projeto prático com Node.js - DIO' },
             { id: 124, title: 'Modularização com EcmaScript Modules', category: 'nodejs', hours: 3, date: '2026-02-26', description: 'Módulos ES6 no Node.js - DIO' },
             { id: 125, title: 'Modularização de Projetos Node.js com CommonJS', category: 'nodejs', hours: 2, date: '2026-02-26', description: 'CommonJS no Node.js - DIO' },
@@ -703,153 +704,100 @@
             { id: 165, title: 'Conceitos e Práticas de Sistemas Operacionais e Máquinas Virtuais', category: 'programacao', hours: 2, date: '2026-03-01', description: 'Curso de cibersegurança - DIO' },
             { id: 166, title: 'Príncipios da Cibersegurança', category: 'programacao', hours: 2, date: '2026-03-01', description: 'Curso de cibersegurança - DIO' },
             
-            // ===== 14 NOVOS CERTIFICADOS NODE.JS DOS PDFS =====
-            { 
-                id: 167, 
-                title: 'Recriando a API da Champions League com Node.js e Express', 
-                category: 'nodejs', 
-                hours: 5, 
-                date: '2026-03-13', 
-                description: 'Projeto de API com Node.js e Express - DIO' 
-            },
-            { 
-                id: 168, 
-                title: 'Criando uma Minimal API da Fórmula 1 com Node.js e Fastify', 
-                category: 'nodejs', 
-                hours: 1, 
-                date: '2026-03-13', 
-                description: 'API minimalista com Fastify - DIO' 
-            },
-            { 
-                id: 169, 
-                title: 'Gerenciador de Podcasts - API NodeJS Com Typescript e HTTP Module', 
-                category: 'nodejs', 
-                hours: 2, 
-                date: '2026-03-13', 
-                description: 'API de podcasts com TypeScript - DIO' 
-            },
-            { 
-                id: 170, 
-                title: 'Introdução ao desenvolvimento de API', 
-                category: 'nodejs', 
-                hours: 1, 
-                date: '2026-03-13', 
-                description: 'Fundamentos de desenvolvimento de APIs - DIO' 
-            },
-            { 
-                id: 171, 
-                title: 'Debugging com Node.js', 
-                category: 'nodejs', 
-                hours: 1, 
-                date: '2026-03-11', 
-                description: 'Técnicas de depuração em Node.js - DIO' 
-            },
-            { 
-                id: 172, 
-                title: 'Como configurar TypeScript em Projetos Node.js', 
-                category: 'nodejs', 
-                hours: 1, 
-                date: '2026-03-11', 
-                description: 'Configuração de TypeScript no Node.js - DIO' 
-            },
-            { 
-                id: 173, 
-                title: 'Introdução a TypeScript e Supersets', 
-                category: 'nodejs', 
-                hours: 1, 
-                date: '2026-03-09', 
-                description: 'Fundamentos do TypeScript - DIO' 
-            },
-            { 
-                id: 174, 
-                title: 'Criando um Gerador de QR Codes para E-commerces com Node.js', 
-                category: 'nodejs', 
-                hours: 2, 
-                date: '2026-03-13', 
-                description: 'Gerador de QR Codes com Node.js - DIO' 
-            },
-            { 
-                id: 175, 
-                title: 'Gerenciando Variáveis de Ambientes com NPM', 
-                category: 'nodejs', 
-                hours: 1, 
-                date: '2026-03-01', 
-                description: 'Variáveis de ambiente no Node.js - DIO' 
-            },
-            { 
-                id: 176, 
-                title: 'NPM Scripts em Node.js', 
-                category: 'nodejs', 
-                hours: 1, 
-                date: '2026-03-01', 
-                description: 'Automação com NPM scripts - DIO' 
-            },
-            { 
-                id: 177, 
-                title: 'Gerenciando Pacotes com Node', 
-                category: 'nodejs', 
-                hours: 1, 
-                date: '2026-03-01', 
-                description: 'Gerenciamento de pacotes NPM - DIO' 
-            },
-            { 
-                id: 178, 
-                title: 'Carrinho de Compras da Shopee com Node.js', 
-                category: 'nodejs', 
-                hours: 2, 
-                date: '2026-02-28', 
-                description: 'Projeto de carrinho de compras - DIO' 
-            },
-            { 
-                id: 179, 
-                title: 'Modularização com EcmaScript Modules', 
-                category: 'nodejs', 
-                hours: 3, 
-                date: '2026-02-26', 
-                description: 'Módulos ES6 em JavaScript - DIO' 
-            },
-            { 
-                id: 180, 
-                title: 'Modularização de Projetos Node.js com CommonJS', 
-                category: 'nodejs', 
-                hours: 2, 
-                date: '2026-02-26', 
-                description: 'CommonJS no Node.js - DIO' 
-            },
+            // ===== 14 CERTIFICADOS NODE.JS DOS PDFS =====
+            { id: 167, title: 'Recriando a API da Champions League com Node.js e Express', category: 'nodejs', hours: 5, date: '2026-03-13', description: 'Projeto de API com Node.js e Express - DIO' },
+            { id: 168, title: 'Criando uma Minimal API da Fórmula 1 com Node.js e Fastify', category: 'nodejs', hours: 1, date: '2026-03-13', description: 'API minimalista com Fastify - DIO' },
+            { id: 169, title: 'Gerenciador de Podcasts - API NodeJS Com Typescript e HTTP Module', category: 'nodejs', hours: 2, date: '2026-03-13', description: 'API de podcasts com TypeScript - DIO' },
+            { id: 170, title: 'Introdução ao desenvolvimento de API', category: 'nodejs', hours: 1, date: '2026-03-13', description: 'Fundamentos de desenvolvimento de APIs - DIO' },
+            { id: 171, title: 'Debugging com Node.js', category: 'nodejs', hours: 1, date: '2026-03-11', description: 'Técnicas de depuração em Node.js - DIO' },
+            { id: 172, title: 'Como configurar TypeScript em Projetos Node.js', category: 'nodejs', hours: 1, date: '2026-03-11', description: 'Configuração de TypeScript no Node.js - DIO' },
+            { id: 173, title: 'Introdução a TypeScript e Supersets', category: 'nodejs', hours: 1, date: '2026-03-09', description: 'Fundamentos do TypeScript - DIO' },
+            { id: 174, title: 'Criando um Gerador de QR Codes para E-commerces com Node.js', category: 'nodejs', hours: 2, date: '2026-03-13', description: 'Gerador de QR Codes com Node.js - DIO' },
+            { id: 175, title: 'Gerenciando Variáveis de Ambientes com NPM', category: 'nodejs', hours: 1, date: '2026-03-01', description: 'Variáveis de ambiente no Node.js - DIO' },
+            { id: 176, title: 'NPM Scripts em Node.js', category: 'nodejs', hours: 1, date: '2026-03-01', description: 'Automação com NPM scripts - DIO' },
+            { id: 177, title: 'Gerenciando Pacotes com Node', category: 'nodejs', hours: 1, date: '2026-03-01', description: 'Gerenciamento de pacotes NPM - DIO' },
+            { id: 178, title: 'Carrinho de Compras da Shopee com Node.js', category: 'nodejs', hours: 2, date: '2026-02-28', description: 'Projeto de carrinho de compras - DIO' },
+            { id: 179, title: 'Modularização com EcmaScript Modules', category: 'nodejs', hours: 3, date: '2026-02-26', description: 'Módulos ES6 em JavaScript - DIO' },
+            { id: 180, title: 'Modularização de Projetos Node.js com CommonJS', category: 'nodejs', hours: 2, date: '2026-02-26', description: 'CommonJS no Node.js - DIO' },
             
-            // ===== CERTIFICADO EM DESTAQUE COM A NOVA IMAGEM (NODE.JS) =====
+            // ===== CERTIFICADOS EM DESTAQUE =====
+            { id: 181, title: 'Jornada Para o Futuro - Node.js', category: 'nodejs', hours: 40, date: '2026-03-13', description: 'Bootcamp completo de Node.js - DIO', image: 'https://i.postimg.cc/6qYLbzL2/15-(2).png', special: true },
+            { id: 182, title: 'PHP - Hypertext Preprocessor', category: 'programacao', hours: 40, date: '2026-04-12', description: 'Curso completo de PHP - Do básico ao avançado', image: 'https://i.postimg.cc/XNR7HfTZ/download.png', special: true },
+            { id: 183, title: 'C# - Fundamentos e Programação Orientada a Objetos', category: 'programacao', hours: 50, date: '2026-04-25', description: 'Curso completo de C# - Sintaxe, POO, .NET e aplicações práticas', image: 'https://i.postimg.cc/7YPjLkSm/download-(1).png', special: true },
+            
+            // ===== NOVOS CERTIFICADOS IBM BOB (184-191) =====
             { 
-                id: 181, 
-                title: 'Jornada Para o Futuro - Node.js',
-                category: 'nodejs', 
-                hours: 40, 
-                date: '2026-03-13', 
-                description: 'Bootcamp completo de Node.js - DIO', 
-                image: 'https://i.postimg.cc/6qYLbzL2/15-(2).png',
+                id: 184, 
+                title: 'Boas Vindas ao Bootcamp IBM Bob: IA de Nível Empresarial para Desenvolvedores e Tech Leaders', 
+                category: 'ibmbob', 
+                hours: 1, 
+                date: '2026-08-13', 
+                description: 'Boas-vindas ao Bootcamp IBM Bob - DIO', 
+                code: '8V2JYNXP', 
                 special: true 
             },
-
-            // ===== CERTIFICADO PHP EM DESTAQUE =====
             { 
-                id: 182, 
-                title: 'PHP - Hypertext Preprocessor', 
-                category: 'programacao', 
-                hours: 40, 
-                date: '2026-04-12', 
-                description: 'Curso completo de PHP - Do básico ao avançado', 
-                image: 'https://i.postimg.cc/XNR7HfTZ/download.png',
-                special: true 
+                id: 185, 
+                title: 'Programando na Era dos Agentes de IA', 
+                category: 'ibmbob', 
+                hours: 1, 
+                date: '2026-08-13', 
+                description: 'Programação com agentes de IA - DIO', 
+                code: '8TDBMWXD' 
             },
-
-            // ===== NOVO CERTIFICADO C# EM DESTAQUE =====
             { 
-                id: 183, 
-                title: 'C# - Fundamentos e Programação Orientada a Objetos', 
-                category: 'programacao', 
-                hours: 50, 
-                date: '2026-04-25', 
-                description: 'Curso completo de C# - Sintaxe, POO, .NET e aplicações práticas', 
-                image: 'https://i.postimg.cc/7YPjLkSm/download-(1).png',
+                id: 186, 
+                title: 'IBM Bob: Conhecendo Seu Parceiro de Código', 
+                category: 'ibmbob', 
+                hours: 1, 
+                date: '2026-08-13', 
+                description: 'Introdução ao IBM Bob como parceiro de código - DIO', 
+                code: 'WHLSJITL' 
+            },
+            { 
+                id: 187, 
+                title: 'Conversando com o Bob: Chat, Contexto e Comandos', 
+                category: 'ibmbob', 
+                hours: 1, 
+                date: '2026-08-13', 
+                description: 'Interação com o IBM Bob via chat e comandos - DIO', 
+                code: 'OHU6KIR2' 
+            },
+            { 
+                id: 188, 
+                title: 'Bob no Fluxo Git: do Terminal ao Pull Request', 
+                category: 'ibmbob', 
+                hours: 1, 
+                date: '2026-08-13', 
+                description: 'IBM Bob integrado ao fluxo Git - DIO', 
+                code: 'BHQCFMLJ' 
+            },
+            { 
+                id: 189, 
+                title: 'MCP: Dando Superpoderes ao Seu Agente de IA', 
+                category: 'ibmbob', 
+                hours: 1, 
+                date: '2026-09-17', 
+                description: 'Model Context Protocol para agentes de IA - DIO', 
+                code: 'OW0H8MJT' 
+            },
+            { 
+                id: 190, 
+                title: 'Bob em Produção: Segurança, Boas Práticas e Métricas', 
+                category: 'ibmbob', 
+                hours: 1, 
+                date: '2026-09-17', 
+                description: 'IBM Bob em ambiente de produção - DIO', 
+                code: 'IHUC3HQL' 
+            },
+            { 
+                id: 191, 
+                title: 'Construindo Seu Primeiro Produto com um Agente de IA', 
+                category: 'ibmbob', 
+                hours: 1, 
+                date: '2026-09-17', 
+                description: 'Projeto prático com agente de IA - DIO', 
+                code: 'C44Q6WCY', 
                 special: true 
             }
         ];
@@ -892,10 +840,11 @@
                         <i class="fas fa-certificate"></i>
                         <h3>Certificado sem imagem</h3>
                         <p>Este certificado não possui arquivo de imagem disponível</p>
-                        <p style="margin-top: 20px; color: #00ff41;">${cert.title}</p>
+                        <p style="margin-top: 20px; color: #00ff41; font-weight: bold;">${cert.title}</p>
                         <p>${cert.description}</p>
                         <p>Carga horária: ${cert.hours}h</p>
                         <p>Data: ${new Date(cert.date).toLocaleDateString('pt-BR')}</p>
+                        ${cert.code ? `<p style="margin-top: 15px; color: #00ff41;"><strong>Código de Validação:</strong> ${cert.code}</p>` : ''}
                     </div>
                 `;
             }
@@ -1031,6 +980,7 @@
             const nodejsCount = certificates.filter(c => c.category === 'nodejs').length;
             const progCount = certificates.filter(c => c.category === 'programacao').length;
             const officeCount = certificates.filter(c => c.category === 'office').length;
+            const ibmbobCount = certificates.filter(c => c.category === 'ibmbob').length;
             
             filterBtns[0].textContent = `Todos (${total})`;
             filterBtns[1].textContent = `⭐ Destaques (${destaquesCount})`;
@@ -1039,6 +989,7 @@
             filterBtns[4].textContent = `Node.js (${nodejsCount})`;
             filterBtns[5].textContent = `Programação (${progCount})`;
             filterBtns[6].textContent = `Office (${officeCount})`;
+            filterBtns[7].textContent = `IBM Bob (${ibmbobCount})`;
         }
 
         // Event listeners
