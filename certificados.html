@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samuel Ciryaco de Andrade - Todos os Certificados (192)</title>
+    <title>Samuel Ciryaco de Andrade - Todos os Certificados (214)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -53,6 +53,7 @@
             font-size: 1.8rem;
             font-weight: bold;
             color: var(--light-color);
+            text-decoration: none;
         }
 
         .logo span {
@@ -200,6 +201,13 @@
             align-items: center;
             justify-content: center;
             position: relative;
+            overflow: hidden;
+        }
+
+        .certificate-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .certificate-preview i {
@@ -262,7 +270,6 @@
             transform: translateX(5px);
         }
 
-        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -456,16 +463,13 @@
     </style>
 </head>
 <body>
-    <!-- Modal -->
     <div class="modal" id="certModal">
         <div class="modal-content">
             <div class="modal-header">
                 <h3 id="modalTitle">Certificado</h3>
                 <button class="close-modal" id="closeModal">&times;</button>
             </div>
-            <div class="modal-body" id="modalBody">
-                <!-- Conteúdo será carregado aqui -->
-            </div>
+            <div class="modal-body" id="modalBody"></div>
         </div>
     </div>
 
@@ -491,8 +495,8 @@
 
     <section class="certificates">
         <div class="container">
-            <h1 class="section-title">Todos os Certificados (192)</h1>
-            
+            <h1 class="section-title">Todos os Certificados (214)</h1>
+
             <div class="filters">
                 <button class="filter-btn active" data-filter="all">Todos</button>
                 <button class="filter-btn" data-filter="destaques">⭐ Destaques</button>
@@ -515,7 +519,6 @@
     </section>
 
     <script>
-        // LISTA COMPLETA - 192 CERTIFICADOS
         const certificates = [
             // ===== 45 CERTIFICADOS COM IMAGENS (1-45) =====
             { id: 1, title: 'Treinamento Não-Supervisionado em Machine Learning', category: 'pdf', hours: 1, date: '2026-01-17', description: 'Treinamento não-supervisionado - DIO', image: 'https://i.postimg.cc/p9fDg6j9/1.png' },
@@ -563,7 +566,7 @@
             { id: 43, title: 'Materiais Complementares: Visão Computacional com ML', category: 'pdf', hours: 1, date: '2026-02-16', description: 'Materiais complementares - DIO', image: 'https://i.postimg.cc/CBKzmPsx/43.webp' },
             { id: 44, title: 'Avalie este Bootcamp', category: 'pdf', hours: 1, date: '2026-02-17', description: 'Curso de avaliação de Bootcamp - DIO', image: 'https://i.postimg.cc/prBbPVYy/46.png', special: true },
             { id: 45, title: 'BairesDev - Machine Learning Practitioner', category: 'pdf', hours: 96, date: '2026-02-17', description: 'Bootcamp completo de Machine Learning - DIO', image: 'https://i.postimg.cc/XqqXCPHp/45.png', special: true },
-            
+
             // ===== 31 CERTIFICADOS ML =====
             { id: 46, title: 'ML Não-Supervisionado', category: 'ml', hours: 1, date: '2026-01-17', description: 'Treinamento não-supervisionado' },
             { id: 47, title: 'ML Supervisionado', category: 'ml', hours: 2, date: '2026-01-17', description: 'Treinamento supervisionado' },
@@ -596,7 +599,7 @@
             { id: 74, title: 'R para ML', category: 'ml', hours: 2, date: '2026-01-14', description: 'ML com R' },
             { id: 75, title: 'Anaconda e TensorFlow', category: 'ml', hours: 1, date: '2026-01-16', description: 'Ferramentas de ML' },
             { id: 76, title: 'Introdução ao COLAB', category: 'ml', hours: 2, date: '2026-01-16', description: 'Google Colab' },
-            
+
             // ===== 15 CERTIFICADOS PROGRAMAÇÃO =====
             { id: 77, title: 'Desafios de Código', category: 'programacao', hours: 1, date: '2025-12-20', description: 'Lógica avançada' },
             { id: 78, title: 'Sistema Bancário POO', category: 'programacao', hours: 1, date: '2026-01-08', description: 'POO com Python' },
@@ -615,7 +618,7 @@
             { id: 91, title: 'GitHub Algoritmos', category: 'programacao', hours: 1, date: '2026-01-08', description: 'Algoritmos em Python' },
             { id: 92, title: 'Decoradores Python', category: 'programacao', hours: 1, date: '2025-12-13', description: 'Decoradores' },
             { id: 93, title: 'Gerenciamento Pacotes', category: 'programacao', hours: 1, date: '2025-12-20', description: 'Boas práticas' },
-            
+
             // ===== 6 CERTIFICADOS OFFICE =====
             { id: 94, title: 'AI Builders Day', category: 'office', hours: 4, date: '2025-01-01', description: 'Evento Tera' },
             { id: 95, title: 'Bootcamp Python', category: 'office', hours: 1, date: '2025-01-01', description: 'Introdução' },
@@ -623,7 +626,7 @@
             { id: 97, title: 'Garance Corporo', category: 'office', hours: 1, date: '2025-01-01', description: 'Certificado' },
             { id: 98, title: 'SOS Project', category: 'office', hours: 1, date: '2025-01-01', description: 'Participação' },
             { id: 99, title: 'SOS Avançado', category: 'office', hours: 2, date: '2025-01-01', description: 'Curso avançado' },
-            
+
             // ===== 23 CERTIFICADOS EXTRAS =====
             { id: 100, title: 'Introdução ao Python', category: 'programacao', hours: 2, date: '2025-10-29', description: 'Fundamentos' },
             { id: 101, title: 'Ambiente Python', category: 'programacao', hours: 1, date: '2025-10-26', description: 'Configuração' },
@@ -648,7 +651,7 @@
             { id: 120, title: 'Processamento de Linguagem Natural', category: 'ml', hours: 1, date: '2026-02-11', description: 'PLN' },
             { id: 121, title: 'Algoritmos e ML', category: 'ml', hours: 1, date: '2026-02-11', description: 'Fundamentos ML' },
             { id: 122, title: 'Desafios de Código Iniciais', category: 'programacao', hours: 1, date: '2025-12-20', description: 'Lógica' },
-            
+
             // ===== 25 CERTIFICADOS NODE.JS, LINUX E CIBERSEGURANÇA =====
             { id: 123, title: 'Carrinho de Compras da Shopee com Node.js', category: 'nodejs', hours: 2, date: '2026-02-28', description: 'Projeto prático com Node.js - DIO' },
             { id: 124, title: 'Modularização com EcmaScript Modules', category: 'nodejs', hours: 3, date: '2026-02-26', description: 'Módulos ES6 no Node.js - DIO' },
@@ -703,7 +706,7 @@
             { id: 164, title: 'Fundamentos de Redes de Computadores', category: 'programacao', hours: 1, date: '2026-03-02', description: 'Curso de cibersegurança - DIO' },
             { id: 165, title: 'Conceitos e Práticas de Sistemas Operacionais e Máquinas Virtuais', category: 'programacao', hours: 2, date: '2026-03-01', description: 'Curso de cibersegurança - DIO' },
             { id: 166, title: 'Príncipios da Cibersegurança', category: 'programacao', hours: 2, date: '2026-03-01', description: 'Curso de cibersegurança - DIO' },
-            
+
             // ===== 14 CERTIFICADOS NODE.JS DOS PDFS =====
             { id: 167, title: 'Recriando a API da Champions League com Node.js e Express', category: 'nodejs', hours: 5, date: '2026-03-13', description: 'Projeto de API com Node.js e Express - DIO' },
             { id: 168, title: 'Criando uma Minimal API da Fórmula 1 com Node.js e Fastify', category: 'nodejs', hours: 1, date: '2026-03-13', description: 'API minimalista com Fastify - DIO' },
@@ -719,105 +722,55 @@
             { id: 178, title: 'Carrinho de Compras da Shopee com Node.js', category: 'nodejs', hours: 2, date: '2026-02-28', description: 'Projeto de carrinho de compras - DIO' },
             { id: 179, title: 'Modularização com EcmaScript Modules', category: 'nodejs', hours: 3, date: '2026-02-26', description: 'Módulos ES6 em JavaScript - DIO' },
             { id: 180, title: 'Modularização de Projetos Node.js com CommonJS', category: 'nodejs', hours: 2, date: '2026-02-26', description: 'CommonJS no Node.js - DIO' },
-            
+
             // ===== CERTIFICADOS EM DESTAQUE =====
             { id: 181, title: 'Jornada Para o Futuro - Node.js', category: 'nodejs', hours: 40, date: '2026-03-13', description: 'Bootcamp completo de Node.js - DIO', image: 'https://i.postimg.cc/6qYLbzL2/15-(2).png', special: true },
             { id: 182, title: 'PHP - Hypertext Preprocessor', category: 'programacao', hours: 40, date: '2026-04-12', description: 'Curso completo de PHP - Do básico ao avançado', image: 'https://i.postimg.cc/XNR7HfTZ/download.png', special: true },
             { id: 183, title: 'C# - Fundamentos e Programação Orientada a Objetos', category: 'programacao', hours: 50, date: '2026-04-25', description: 'Curso completo de C# - Sintaxe, POO, .NET e aplicações práticas', image: 'https://i.postimg.cc/7YPjLkSm/download-(1).png', special: true },
-            
-            // ===== NOVOS CERTIFICADOS IBM BOB (184-191) =====
-            { 
-                id: 184, 
-                title: 'Boas Vindas ao Bootcamp IBM Bob: IA de Nível Empresarial para Desenvolvedores e Tech Leaders', 
-                category: 'ibmbob', 
-                hours: 1, 
-                date: '2026-08-13', 
-                description: 'Boas-vindas ao Bootcamp IBM Bob - DIO', 
-                code: '8V2JYNXP', 
-                special: true 
-            },
-            { 
-                id: 185, 
-                title: 'Programando na Era dos Agentes de IA', 
-                category: 'ibmbob', 
-                hours: 1, 
-                date: '2026-08-13', 
-                description: 'Programação com agentes de IA - DIO', 
-                code: '8TDBMWXD' 
-            },
-            { 
-                id: 186, 
-                title: 'IBM Bob: Conhecendo Seu Parceiro de Código', 
-                category: 'ibmbob', 
-                hours: 1, 
-                date: '2026-08-13', 
-                description: 'Introdução ao IBM Bob como parceiro de código - DIO', 
-                code: 'WHLSJITL' 
-            },
-            { 
-                id: 187, 
-                title: 'Conversando com o Bob: Chat, Contexto e Comandos', 
-                category: 'ibmbob', 
-                hours: 1, 
-                date: '2026-08-13', 
-                description: 'Interação com o IBM Bob via chat e comandos - DIO', 
-                code: 'OHU6KIR2' 
-            },
-            { 
-                id: 188, 
-                title: 'Bob no Fluxo Git: do Terminal ao Pull Request', 
-                category: 'ibmbob', 
-                hours: 1, 
-                date: '2026-08-13', 
-                description: 'IBM Bob integrado ao fluxo Git - DIO', 
-                code: 'BHQCFMLJ' 
-            },
-            { 
-                id: 189, 
-                title: 'MCP: Dando Superpoderes ao Seu Agente de IA', 
-                category: 'ibmbob', 
-                hours: 1, 
-                date: '2026-09-17', 
-                description: 'Model Context Protocol para agentes de IA - DIO', 
-                code: 'OW0H8MJT' 
-            },
-            { 
-                id: 190, 
-                title: 'Bob em Produção: Segurança, Boas Práticas e Métricas', 
-                category: 'ibmbob', 
-                hours: 1, 
-                date: '2026-09-17', 
-                description: 'IBM Bob em ambiente de produção - DIO', 
-                code: 'IHUC3HQL' 
-            },
-            { 
-                id: 191, 
-                title: 'Construindo Seu Primeiro Produto com um Agente de IA', 
-                category: 'ibmbob', 
-                hours: 1, 
-                date: '2026-09-17', 
-                description: 'Projeto prático com agente de IA - DIO', 
-                code: 'C44Q6WCY', 
-                special: true 
-            },
 
-            // ===== NOVO CERTIFICADO ADICIONADO AOS DESTAQUES =====
-            { 
-                id: 192, 
-                title: 'Certificado em Destaque', 
-                category: 'pdf', 
-                hours: 1, 
-                date: '2026-09-17', 
-                description: 'Certificado adicionado aos destaques', 
-                image: 'https://i.postimg.cc/SKYtKFVd/10.png', 
-                special: true 
-            }
+            // ===== CERTIFICADOS IBM BOB =====
+            { id: 184, title: 'Boas Vindas ao Bootcamp IBM Bob: IA de Nível Empresarial para Desenvolvedores e Tech Leaders', category: 'ibmbob', hours: 1, date: '2026-08-13', description: 'Boas-vindas ao Bootcamp IBM Bob - DIO', code: '8V2JYNXP', special: true },
+            { id: 185, title: 'Programando na Era dos Agentes de IA', category: 'ibmbob', hours: 1, date: '2026-08-13', description: 'Programação com agentes de IA - DIO', code: '8TDBMWXD' },
+            { id: 186, title: 'IBM Bob: Conhecendo Seu Parceiro de Código', category: 'ibmbob', hours: 1, date: '2026-08-13', description: 'Introdução ao IBM Bob como parceiro de código - DIO', code: 'WHLSJITL' },
+            { id: 187, title: 'Conversando com o Bob: Chat, Contexto e Comandos', category: 'ibmbob', hours: 1, date: '2026-08-13', description: 'Interação com o IBM Bob via chat e comandos - DIO', code: 'OHU6KIR2' },
+            { id: 188, title: 'Bob no Fluxo Git: do Terminal ao Pull Request', category: 'ibmbob', hours: 1, date: '2026-08-13', description: 'IBM Bob integrado ao fluxo Git - DIO', code: 'BHQCFMLJ' },
+            { id: 189, title: 'MCP: Dando Superpoderes ao Seu Agente de IA', category: 'ibmbob', hours: 1, date: '2026-09-17', description: 'Model Context Protocol para agentes de IA - DIO', code: 'OW0H8MJT' },
+            { id: 190, title: 'Bob em Produção: Segurança, Boas Práticas e Métricas', category: 'ibmbob', hours: 1, date: '2026-09-17', description: 'IBM Bob em ambiente de produção - DIO', code: 'IHUC3HQL' },
+            { id: 191, title: 'Construindo Seu Primeiro Produto com um Agente de IA', category: 'ibmbob', hours: 1, date: '2026-09-17', description: 'Projeto prático com agente de IA - DIO', code: 'C44Q6WCY', special: true },
+            { id: 192, title: 'Certificado em Destaque', category: 'pdf', hours: 1, date: '2026-09-17', description: 'Certificado adicionado aos destaques', image: 'https://i.postimg.cc/SKYtKFVd/10.png', special: true },
+
+            // ===== CERTIFICADOS SPRING BOOT / API REST (PDFs 2026) =====
+            { id: 193, title: 'Desenvolvendo sua API Inteligente com Reconhecimento de Fala e Spring Boot', category: 'pdf', hours: 3, date: '2026-10-10', description: 'Projeto com Spring Boot e reconhecimento de fala - DIO', code: 'R7OUCYCB' },
+            { id: 194, title: 'Consumindo APIs Externas com o Spring Cloud OpenFeign', category: 'pdf', hours: 2, date: '2026-10-10', description: 'Comunicação entre serviços com OpenFeign - DIO', code: 'J6CCTAKU' },
+            { id: 195, title: 'Simplificando a Segurança em APIs REST com Spring Security', category: 'pdf', hours: 2, date: '2026-10-10', description: 'Autenticação e autorização em APIs REST - DIO', code: 'FWETML1F' },
+            { id: 196, title: 'Conectando sua API com Banco de Dados Através do Spring Data', category: 'pdf', hours: 2, date: '2026-10-10', description: 'Persistência de dados com Spring Data - DIO', code: 'C1ZCHBLD' },
+            { id: 197, title: 'Criando sua Primeira API REST com Spring Boot', category: 'pdf', hours: 2, date: '2026-09-25', description: 'Primeiros passos com Spring Boot - DIO', code: '8YAUT21U', special: true },
+            { id: 198, title: 'Design Patterns com Java: Dos Clássicos (GoF) ao Spring Framework', category: 'pdf', hours: 2, date: '2026-10-10', description: 'Padrões de projeto aplicados no Spring - DIO', code: '6IYA2KZW' },
+            { id: 199, title: 'SOLID e Clean Code em Java: Escrevendo Código de Alta Qualidade', category: 'pdf', hours: 1, date: '2026-10-10', description: 'Boas práticas de código em Java - DIO', code: 'ECPVLFLN' },
+            { id: 200, title: 'Annotations em Java: Marcando o Seu Código de Maneira Inteligente', category: 'pdf', hours: 2, date: '2026-10-10', description: 'Uso de annotations em Java - DIO', code: 'J9F7OHXY' },
+            { id: 201, title: 'Como Funciona HTTP Protocol', category: 'pdf', hours: 1, date: '2026-09-19', description: 'Fundamentos do protocolo HTTP - DIO', code: 'DZGGHLPE' },
+            { id: 202, title: 'Como a Web Funciona?', category: 'pdf', hours: 1, date: '2026-09-18', description: 'Fundamentos da web - DIO' },
+
+            // ===== CERTIFICADOS JAVA FUNDAMENTOS (PDFs 2026) =====
+            { id: 203, title: 'Debugging e o Tratamento de Exceções em Java', category: 'pdf', hours: 2, date: '2026-04-10', description: 'Depuração e exceções em Java - DIO', code: '5AIPWH7K' },
+            { id: 204, title: 'Imersão Prática com Collections e Outras Classes Úteis do Java', category: 'pdf', hours: 11, date: '2026-04-09', description: 'Collections Framework em Java - DIO', code: 'OGDPRREE', special: true },
+            { id: 205, title: 'Dominando Interfaces e Lambda em Java', category: 'pdf', hours: 2, date: '2026-03-26', description: 'Interfaces funcionais e lambdas - DIO', code: 'AFTHAT6Z' },
+            { id: 206, title: 'Herança e Polimorfismo em Java', category: 'pdf', hours: 2, date: '2026-03-24', description: 'Herança e polimorfismo em POO - DIO', code: 'Q16FPA8D' },
+            { id: 207, title: 'Java e a Arte da Abstração com Classes e Encapsulamento', category: 'pdf', hours: 2, date: '2026-03-23', description: 'Abstração e encapsulamento em Java - DIO', code: '9TGMNRO1' },
+            { id: 208, title: 'Estruturas de Controle em Java', category: 'pdf', hours: 2, date: '2026-03-21', description: 'Condicionais e loops em Java - DIO' },
+            { id: 209, title: 'Fundamentos da Sintaxe da Linguagem Java', category: 'pdf', hours: 2, date: '2026-03-19', description: 'Sintaxe básica do Java - DIO', code: '9HIIUPNR' },
+            { id: 210, title: 'Introdução ao Java e seu Ambiente de Desenvolvimento', category: 'pdf', hours: 2, date: '2026-03-18', description: 'Primeiros passos com Java - DIO', code: 'F3N6BNNH' },
+
+            // ===== CERTIFICADOS IA E BOOTCAMP ITAÚ =====
+            { id: 211, title: 'DIO Agent: Nunca Mais Estude Sozinho', category: 'pdf', hours: 1, date: '2026-10-10', description: 'Ferramenta de estudos DIO Agent - DIO', code: 'YTQNMPFF' },
+            { id: 212, title: 'Potencializando Seus Estudos e Carreira com IA (Chatbots, Copilotos e Agentes)', category: 'pdf', hours: 2, date: '2026-10-10', description: 'IA aplicada a estudos e carreira - DIO', code: 'MSKZ2XHV', special: true },
+            { id: 213, title: 'Introdução à Inteligência Artificial', category: 'pdf', hours: 1, date: '2026-01-23', description: 'Fundamentos de IA - DIO', code: 'HUGSGLZK' },
+            { id: 214, title: 'Boas vindas ao Bootcamp Itaú - Java com Inteligência Artificial', category: 'pdf', hours: 1, date: '2026-09-17', description: 'Boas-vindas ao bootcamp Itaú Java + IA - DIO', special: true }
         ];
 
-        // Re-indexar IDs para garantir que sejam únicos
+        // Re-indexar IDs
         certificates.forEach((cert, index) => { cert.id = index + 1; });
 
-        // Elementos DOM
         const modal = document.getElementById('certModal');
         const modalTitle = document.getElementById('modalTitle');
         const modalBody = document.getElementById('modalBody');
@@ -829,16 +782,14 @@
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
 
-        // Configurações
         let currentPage = 1;
         let currentFilter = 'all';
         let searchTerm = '';
         const itemsPerPage = 12;
 
-        // Função para abrir certificado
         function openCertificate(cert) {
             modalTitle.textContent = cert.title;
-            
+
             if (cert.image) {
                 modalBody.innerHTML = `
                     <a href="${cert.image}" class="download-btn" download="${cert.title.replace(/[^a-z0-9]/gi, '_')}.png">
@@ -860,12 +811,11 @@
                     </div>
                 `;
             }
-            
+
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
 
-        // Fechar modal
         function closeModal() {
             modal.style.display = 'none';
             modalBody.innerHTML = '';
@@ -883,7 +833,6 @@
             }
         });
 
-        // Filtrar certificados
         function filterCertificates() {
             return certificates.filter(cert => {
                 if (currentFilter === 'destaques') {
@@ -896,7 +845,6 @@
             });
         }
 
-        // Exibir certificados
         function displayCertificates() {
             const filtered = filterCertificates();
             const totalPages = Math.ceil(filtered.length / itemsPerPage);
@@ -921,10 +869,14 @@
                 const card = document.createElement('div');
                 card.className = `certificate-card ${cert.special ? 'special' : ''}`;
                 card.onclick = () => openCertificate(cert);
-                
+
+                const previewContent = cert.image 
+                    ? `<img src="${cert.image}" alt="${cert.title}" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\\'fas fa-certificate\\'></i>';">`
+                    : `<i class="fas fa-certificate"></i>`;
+
                 card.innerHTML = `
                     <div class="certificate-preview">
-                        <i class="fas fa-certificate"></i>
+                        ${previewContent}
                     </div>
                     <div class="certificate-info">
                         <h3>${cert.title}</h3>
@@ -938,7 +890,7 @@
                         </span>
                     </div>
                 `;
-                
+
                 grid.appendChild(card);
             });
 
@@ -946,7 +898,6 @@
             updateFilterCounts();
         }
 
-        // Atualizar paginação
         function updatePagination(totalPages) {
             paginationDiv.innerHTML = '';
 
@@ -971,11 +922,10 @@
             `;
         }
 
-        // Mudar página
         window.changePage = (page) => {
             const filtered = filterCertificates();
             const totalPages = Math.ceil(filtered.length / itemsPerPage);
-            
+
             if (page >= 1 && page <= totalPages) {
                 currentPage = page;
                 displayCertificates();
@@ -983,7 +933,6 @@
             }
         };
 
-        // Atualizar contadores dos filtros
         function updateFilterCounts() {
             const total = certificates.length;
             const destaquesCount = certificates.filter(c => c.special === true).length;
@@ -993,7 +942,7 @@
             const progCount = certificates.filter(c => c.category === 'programacao').length;
             const officeCount = certificates.filter(c => c.category === 'office').length;
             const ibmbobCount = certificates.filter(c => c.category === 'ibmbob').length;
-            
+
             filterBtns[0].textContent = `Todos (${total})`;
             filterBtns[1].textContent = `⭐ Destaques (${destaquesCount})`;
             filterBtns[2].textContent = `PDFs (${pdfCount})`;
@@ -1004,7 +953,6 @@
             filterBtns[7].textContent = `IBM Bob (${ibmbobCount})`;
         }
 
-        // Event listeners
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 filterBtns.forEach(b => b.classList.remove('active'));
@@ -1021,14 +969,12 @@
             displayCertificates();
         });
 
-        // Menu hamburger
         if (hamburger) {
             hamburger.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
             });
         }
 
-        // Header scroll
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
@@ -1040,7 +986,6 @@
             }
         });
 
-        // Inicializar
         displayCertificates();
     </script>
 </body>
