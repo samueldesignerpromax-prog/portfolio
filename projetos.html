@@ -349,6 +349,21 @@
             box-shadow: 0 0 15px #00bcd4;
         }
 
+        .finance-badge {
+            position: absolute;
+            top: 98px;
+            left: 12px;
+            background: #ffd700;
+            color: #000;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            z-index: 10;
+            animation: pulse 1.5s infinite;
+            box-shadow: 0 0 15px #ffd700;
+        }
+
         @keyframes pulse {
             0%,
             100% {
@@ -473,7 +488,21 @@
                 isCyber: true
             },
             // --------------------------------------------------------------
-            // 1 - LENIOR CHAT (DESTAQUE IA)
+            // 1 - ANÁLISE FINANCEIRA (NOVO DESTAQUE FINANCEIRO)
+            // --------------------------------------------------------------
+            {
+                title: '📈 Samuel Tech IA - Análise Financeira e Simulador de Investimentos',
+                description: '⭐ PROJETO DESTAQUE! Plataforma completa de análise financeira e simulador de investimentos conectada à bolsa de valores. O sistema busca cotações em tempo real de ações como PETR4, VALE3, ITUB4, BBDC4 e ABEV3 através de um provedor financeiro. Possui um simulador educativo que permite testar estratégias de investimento com dados históricos reais e dinheiro fictício, calculando valor final, lucro/prejuízo, variação percentual e comparação com dinheiro parado. A ferramenta também exibe indicadores técnicos como RSI 14, Média 20, volatilidade anual e variação em 30 pregões. Inclui gráficos históricos de preços e notícias de mercado atualizadas via Google News RSS. Tecnologias: React, Node.js, Express, APIs financeiras, Vercel e Render.',
+                icon: 'fa-chart-line',
+                link: 'https://samuel-tech-ia-analise-financeira.onrender.com/',
+                tech: ['React', 'Node.js', 'Express', 'API Financeira', 'Simulador', 'Bolsa de Valores', 'Indicadores Técnicos', 'Render'],
+                highlight: true,
+                isFullStack: true,
+                isAI: true,
+                isFinance: true
+            },
+            // --------------------------------------------------------------
+            // 2 - LENIOR CHAT (DESTAQUE IA)
             // --------------------------------------------------------------
             {
                 title: '🧠 Lenior Chat - Assistente IA com LLM',
@@ -484,7 +513,7 @@
                 isAI: true
             },
             // --------------------------------------------------------------
-            // 2 - PIZZA MANIA
+            // 3 - PIZZA MANIA
             // --------------------------------------------------------------
             {
                 title: '🍕 Pizza Mania - E-commerce de Pizzaria',
@@ -495,7 +524,7 @@
                 isNew: true
             },
             // --------------------------------------------------------------
-            // 3 - CUIDADO HUMANIZADO BATISTA
+            // 4 - CUIDADO HUMANIZADO BATISTA
             // --------------------------------------------------------------
             {
                 title: '🏥 Cuidado Humanizado Batista',
@@ -507,7 +536,7 @@
                 isFullStack: true
             },
             // --------------------------------------------------------------
-            // 4 - MEU CATÁLOGO FULL STACK
+            // 5 - MEU CATÁLOGO FULL STACK
             // --------------------------------------------------------------
             {
                 title: '🎬 Meu Catálogo Full Stack',
@@ -518,7 +547,7 @@
                 isFullStack: true
             },
             // --------------------------------------------------------------
-            // 5 - SISTEMA DE AGENDAMENTO FULL STACK
+            // 6 - SISTEMA DE AGENDAMENTO FULL STACK
             // --------------------------------------------------------------
             {
                 title: '📅 Sistema de Agendamento Full Stack',
@@ -530,7 +559,7 @@
                 isFullStack: true
             },
             // --------------------------------------------------------------
-            // 6 - E-COMMERCE FULL STACK
+            // 7 - E-COMMERCE FULL STACK
             // --------------------------------------------------------------
             {
                 title: '🛒 E-commerce Full Stack',
@@ -542,7 +571,7 @@
                 isFullStack: true
             },
             // --------------------------------------------------------------
-            // 7 - TESTE DENTISTA
+            // 8 - TESTE DENTISTA
             // --------------------------------------------------------------
             {
                 title: '🦷 Clínica Odontológica - Teste',
@@ -552,7 +581,7 @@
                 tech: ['HTML5', 'CSS3', 'JavaScript', 'Responsivo']
             },
             // --------------------------------------------------------------
-            // 8 - DENTISTA GENDO
+            // 9 - DENTISTA GENDO
             // --------------------------------------------------------------
             {
                 title: '🦷 Dentista Gendo - Site Profissional',
@@ -774,7 +803,7 @@
                 if (project.isCompany) {
                     badgesHtml += `<div class="company-badge"><i class="fas fa-building"></i> Minha Empresa</div>`;
                 }
-                if (project.isNew && !project.isAI && !project.isFullStack && !project.highlight) {
+                if (project.isNew && !project.isAI && !project.isFullStack && !project.highlight && !project.isFinance) {
                     badgesHtml += `<div class="new-badge"><i class="fas fa-star"></i> NOVO</div>`;
                 }
                 if (project.isFullStack) {
@@ -785,6 +814,9 @@
                 }
                 if (project.isCyber) {
                     badgesHtml += `<div class="cyber-badge"><i class="fas fa-shield-halved"></i> CIBERSEGURANÇA</div>`;
+                }
+                if (project.isFinance) {
+                    badgesHtml += `<div class="finance-badge"><i class="fas fa-dollar-sign"></i> FINANÇAS</div>`;
                 }
 
                 card.innerHTML = `
