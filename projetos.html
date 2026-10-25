@@ -274,6 +274,91 @@
             letter-spacing: 1px;
         }
 
+        /* ===== NOVA SEÇÃO DE DESTAQUES ===== */
+        .featured-section {
+            padding: 110px 0 40px;
+            text-align: center;
+        }
+        .featured-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--light-color);
+        }
+        .featured-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 10px auto;
+        }
+        .featured-subtitle {
+            color: #aaa;
+            font-size: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            text-align: left;
+        }
+        .featured-card {
+            background: linear-gradient(135deg, rgba(0, 255, 65, 0.08), rgba(0, 255, 65, 0.02));
+            border: 2px solid var(--primary-color);
+            border-radius: 15px;
+            padding: 1.8rem;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        .featured-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 255, 65, 0.4);
+        }
+        .featured-card::before {
+            content: '⭐ PRINCIPAL';
+            position: absolute;
+            top: 12px;
+            right: -35px;
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 4px 35px;
+            transform: rotate(45deg);
+            font-size: 0.6rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .featured-icon {
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            margin-bottom: 0.3rem;
+        }
+        .featured-card h3 {
+            color: var(--primary-color);
+            font-size: 1.15rem;
+            margin: 0;
+        }
+        .featured-card p {
+            color: #ccc;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+        .featured-card .project-links {
+            margin-top: auto;
+        }
+        @media (max-width: 768px) {
+            .featured-section { padding: 100px 0 30px; }
+            .featured-title { font-size: 1.5rem; }
+            .featured-grid { grid-template-columns: 1fr; }
+        }
+        /* ===== FIM DA NOVA SEÇÃO ===== */
+
         .company-badge {
             position: absolute;
             top: 12px;
@@ -451,7 +536,8 @@
             <nav>
                 <div class="logo">Samuel<span>Ciryaco</span></div>
                 <ul class="nav-links">
-                    <li><a href="#projetos" class="active">Projetos</a></li>
+                    <li><a href="#destaques" class="active">Destaques</a></li>
+                    <li><a href="#projetos">Projetos</a></li>
                 </ul>
                 <div class="hamburger">
                     <i class="fas fa-bars"></i>
@@ -459,6 +545,16 @@
             </nav>
         </div>
     </header>
+
+    <!-- ===== NOVA SEÇÃO DE DESTAQUES ===== -->
+    <section class="featured-section" id="destaques">
+        <div class="container">
+            <h2 class="featured-title">⭐ Projetos em Destaque</h2>
+            <p class="featured-subtitle">Os principais projetos desenvolvidos por Samuel Tech IA</p>
+            <div class="featured-grid" id="featured-grid"></div>
+        </div>
+    </section>
+    <!-- ===== FIM DA NOVA SEÇÃO ===== -->
 
     <section class="projects" id="projetos">
         <div class="container">
@@ -472,7 +568,39 @@
     </footer>
 
     <script>
-        // ===== ARRAY DE PROJETOS =====
+        // ===== 4 PROJETOS PRINCIPAIS (DESTAQUES) =====
+        const featuredProjects = [
+            {
+                title: '🏢 Samuel Tech IA — Site Institucional',
+                description: 'Site institucional completo da Samuel Tech IA, com portfólio, serviços, preços, contato e chatbot interativo. Multi-páginas, responsivo e com identidade visual própria.',
+                icon: 'fa-building',
+                link: 'https://samuel-tech-ia-site.vercel.app/',
+                tech: ['HTML5', 'CSS3', 'JavaScript', 'Vercel', 'Chatbot']
+            },
+            {
+                title: '📈 Análise Financeira e Simulador',
+                description: 'Plataforma completa de análise financeira e simulador de investimentos conectada à bolsa. Cotações em tempo real, indicadores técnicos (RSI 14, Média 20), simulador educativo e notícias via Google News RSS.',
+                icon: 'fa-chart-line',
+                link: 'https://samuel-tech-ia-analise-financeira.onrender.com/',
+                tech: ['React', 'Node.js', 'Express', 'API Financeira', 'Render']
+            },
+            {
+                title: '🔍 Samuel Search — Buscador Web',
+                description: 'Buscador web moderno e funcional, com interface limpa, resultados em tempo real e integração com APIs de busca. Preparação para cursos e penhas digitais.',
+                icon: 'fa-magnifying-glass',
+                link: 'https://search-prepara-cursos-penha.vercel.app/',
+                tech: ['HTML5', 'CSS3', 'JavaScript', 'API', 'Vercel']
+            },
+            {
+                title: '💻 Programador — Plataforma Tech',
+                description: 'Plataforma dedicada a programadores com conteúdo, ferramentas e recursos para desenvolvimento. Interface moderna e responsiva.',
+                icon: 'fa-code',
+                link: 'https://programador-nine.vercel.app/',
+                tech: ['HTML5', 'CSS3', 'JavaScript', 'Vercel']
+            }
+        ];
+
+        // ===== ARRAY DE PROJETOS (COMPLETO) =====
         const projects = [
             // --------------------------------------------------------------
             // 0 - SERVIX (NOVO DESTAQUE PRINCIPAL)
@@ -780,6 +908,28 @@
             }
         ];
 
+        // ===== FUNÇÃO PARA EXIBIR OS 4 PROJETOS DESTAQUE =====
+        function displayFeatured() {
+            const grid = document.getElementById('featured-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            featuredProjects.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'featured-card animate-on-scroll';
+                const techTags = p.tech.map(t => `<span class="tech-tag">${t}</span>`).join('');
+                card.innerHTML = `
+                    <i class="fas ${p.icon} featured-icon"></i>
+                    <h3>${p.title}</h3>
+                    <p>${p.description}</p>
+                    <div class="project-tech">${techTags}</div>
+                    <div class="project-links">
+                        <a href="${p.link}" target="_blank"><i class="fas fa-external-link-alt"></i> Abrir projeto</a>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
         // ===== FUNÇÃO PARA EXIBIR PROJETOS =====
         function displayProjects() {
             const container = document.getElementById('projects-container');
@@ -909,6 +1059,7 @@
         // ===== INICIALIZAÇÃO =====
         window.addEventListener('DOMContentLoaded', () => {
             createMatrix();
+            displayFeatured();
             displayProjects();
         });
     </script>
