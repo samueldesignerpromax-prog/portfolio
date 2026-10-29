@@ -449,6 +449,66 @@
             box-shadow: 0 0 15px #ffd700;
         }
 
+        .search-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: #00ff41;
+            color: #000;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            z-index: 10;
+            animation: pulse 1.5s infinite;
+            box-shadow: 0 0 15px #00ff41;
+        }
+
+        .supervisor-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #ffd700;
+            color: #000;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            z-index: 10;
+            animation: pulse 1.5s infinite;
+            box-shadow: 0 0 15px #ffd700;
+        }
+
+        .bi-badge {
+            position: absolute;
+            top: 55px;
+            left: 12px;
+            background: #f2c811;
+            color: #000;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            z-index: 10;
+            animation: pulse 1.5s infinite;
+            box-shadow: 0 0 15px #f2c811;
+        }
+
+        .excel-badge {
+            position: absolute;
+            top: 98px;
+            left: 12px;
+            background: #217346;
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            z-index: 10;
+            animation: pulse 1.5s infinite;
+            box-shadow: 0 0 15px #217346;
+        }
+
         @keyframes pulse {
             0%,
             100% {
@@ -568,8 +628,19 @@
     </footer>
 
     <script>
-        // ===== 4 PROJETOS PRINCIPAIS (DESTAQUES) =====
+        // ===== PROJETOS PRINCIPAIS (DESTAQUES) =====
         const featuredProjects = [
+            // --------------------------------------------------------------
+            // NOVO - SAMUEL SEARCH (MELHOR PROJETO / NAVEGADOR PRÓPRIO)
+            // --------------------------------------------------------------
+            {
+                title: '🔍 Samuel Search — Navegador Próprio da Samuel Tech IA',
+                description: '⭐ MELHOR PROJETO! Navegador/buscador próprio da Samuel Tech IA. Um dos melhores projetos desenvolvidos: buscador web moderno e funcional com interface limpa, resultados em tempo real e integração com APIs de busca. Experiência de navegação própria, rápida e inteligente — a identidade da Samuel Tech IA em forma de buscador.',
+                icon: 'fa-magnifying-glass',
+                link: 'https://samuel-search.onrender.com/',
+                tech: ['Navegador Próprio', 'HTML5', 'CSS3', 'JavaScript', 'API de Busca', 'Render'],
+                isBest: true
+            },
             {
                 title: '🏢 Samuel Tech IA — Site Institucional',
                 description: 'Site institucional completo da Samuel Tech IA, com portfólio, serviços, preços, contato e chatbot interativo. Multi-páginas, responsivo e com identidade visual própria.',
@@ -583,13 +654,6 @@
                 icon: 'fa-chart-line',
                 link: 'https://samuel-tech-ia-analise-financeira.onrender.com/',
                 tech: ['React', 'Node.js', 'Express', 'API Financeira', 'Render']
-            },
-            {
-                title: '🔍 Samuel Search — Buscador Web',
-                description: 'Buscador web moderno e funcional, com interface limpa, resultados em tempo real e integração com APIs de busca. Preparação para cursos e penhas digitais.',
-                icon: 'fa-magnifying-glass',
-                link: 'https://search-prepara-cursos-penha.vercel.app/',
-                tech: ['HTML5', 'CSS3', 'JavaScript', 'API', 'Vercel']
             },
             {
                 title: '💻 Programador — Plataforma Tech',
@@ -699,7 +763,20 @@
                 isFullStack: true
             },
             // --------------------------------------------------------------
-            // 8 - TESTE DENTISTA
+            // 8 - CONTROLE LEO (SUPERVISOR / GESTÃO / BI)
+            // --------------------------------------------------------------
+            {
+                title: '📊 Controle Leo — Painel de Indicadores e Gestão (Supervisor)',
+                description: 'Sistema profissional de gestão e supervisão de equipes (Equipe Leo). Dashboard consolidado com indicadores de todos os colaboradores: tempo logado, tempo produtivo, atendimentos, % CSAT, % transferência, saldo de banco de horas, absenteísmo mensal e quartis. Inclui gestão de dados (editar, adicionar e apagar registros), lista de funcionários, YouPoints, controle de BH, controle de indicadores e apresentações comparativas. Análise de dados com Power BI e Excel para dashboards e relatórios gerenciais.',
+                icon: 'fa-chart-pie',
+                link: 'https://controle-leo2594.vercel.app/',
+                tech: ['Power BI', 'Excel', 'Dashboard de Indicadores', 'Gestão de Equipes', 'Supervisão', 'Análise de Dados', 'Nuvem', 'Vercel'],
+                isSupervisor: true,
+                isBI: true,
+                isExcel: true
+            },
+            // --------------------------------------------------------------
+            // 9 - TESTE DENTISTA
             // --------------------------------------------------------------
             {
                 title: '🦷 Clínica Odontológica - Teste',
@@ -709,7 +786,7 @@
                 tech: ['HTML5', 'CSS3', 'JavaScript', 'Responsivo']
             },
             // --------------------------------------------------------------
-            // 9 - DENTISTA GENDO
+            // 10 - DENTISTA GENDO
             // --------------------------------------------------------------
             {
                 title: '🦷 Dentista Gendo - Site Profissional',
@@ -908,7 +985,7 @@
             }
         ];
 
-        // ===== FUNÇÃO PARA EXIBIR OS 4 PROJETOS DESTAQUE =====
+        // ===== FUNÇÃO PARA EXIBIR OS PROJETOS DESTAQUE =====
         function displayFeatured() {
             const grid = document.getElementById('featured-grid');
             if (!grid) return;
@@ -953,7 +1030,7 @@
                 if (project.isCompany) {
                     badgesHtml += `<div class="company-badge"><i class="fas fa-building"></i> Minha Empresa</div>`;
                 }
-                if (project.isNew && !project.isAI && !project.isFullStack && !project.highlight && !project.isFinance) {
+                if (project.isNew && !project.isAI && !project.isFullStack && !project.highlight && !project.isFinance && !project.isSupervisor) {
                     badgesHtml += `<div class="new-badge"><i class="fas fa-star"></i> NOVO</div>`;
                 }
                 if (project.isFullStack) {
@@ -967,6 +1044,15 @@
                 }
                 if (project.isFinance) {
                     badgesHtml += `<div class="finance-badge"><i class="fas fa-dollar-sign"></i> FINANÇAS</div>`;
+                }
+                if (project.isSupervisor) {
+                    badgesHtml += `<div class="supervisor-badge"><i class="fas fa-user-tie"></i> SUPERVISOR</div>`;
+                }
+                if (project.isBI) {
+                    badgesHtml += `<div class="bi-badge"><i class="fas fa-chart-bar"></i> POWER BI</div>`;
+                }
+                if (project.isExcel) {
+                    badgesHtml += `<div class="excel-badge"><i class="fas fa-file-excel"></i> EXCEL</div>`;
                 }
 
                 card.innerHTML = `
