@@ -541,6 +541,22 @@
             box-shadow: 0 0 15px #3ddc84;
         }
 
+        /* NOVO BADGE - BUSCADOR WEB (AMANDA, FELIPE, BRUNO) */
+        .websearch-badge {
+            position: absolute;
+            top: 98px;
+            left: 12px;
+            background: #00ff41;
+            color: #000;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            z-index: 10;
+            animation: pulse 1.5s infinite;
+            box-shadow: 0 0 15px #00ff41;
+        }
+
         @keyframes pulse {
             0%,
             100% {
@@ -662,9 +678,6 @@
     <script>
         // ===== PROJETOS PRINCIPAIS (DESTAQUES) =====
         const featuredProjects = [
-            // --------------------------------------------------------------
-            // ÂNGELICA (NOVA - IA LLM QUE CONVERSA EM LINGUAGEM NATURAL - SITE + APP)
-            // --------------------------------------------------------------
             {
                 title: '👼 Ângelica — IA LLM com Linguagem Natural (Site + App de Celular)',
                 description: '⭐ PROJETO DESTAQUE! Ângelica é uma IA LLM que conversa com linguagem natural, de forma fluida e humanizada. Disponível em duas versões: no site (web) e como aplicativo instalado no celular. A experiência é a mesma em ambas as plataformas — converse naturalmente, tire dúvidas e receba respostas inteligentes geradas por modelos de linguagem. A assistente pessoal da Samuel Tech IA que cabe no seu bolso e no seu navegador.',
@@ -674,9 +687,6 @@
                 isAI: true,
                 isMobile: true
             },
-            // --------------------------------------------------------------
-            // LENIOR VOICE (LLM QUE CONVERSA E PROGRAMA POR CHAT E VOZ)
-            // --------------------------------------------------------------
             {
                 title: '🎙️ Lenior Voice — LLM que Conversa e Programa por Chat e Voz',
                 description: '⭐ PROJETO DESTAQUE! Lenior Voice da Samuel Tech IA: um LLM (Large Language Model) que conversa e programa por chat e voz. O navegador reconhece sua fala (Web Speech API) e lê a resposta do Lenior em voz alta, além de permitir interação por chat. Assistente de voz inteligente com modos de voz, ativação do microfone apenas após ação do usuário e conexão HTTPS. Programe, converse e receba respostas faladas — a inteligência artificial da Samuel Tech IA em formato de voz.',
@@ -685,9 +695,6 @@
                 tech: ['LLM', 'Chat', 'Voz', 'Web Speech API', 'Reconhecimento de Fala', 'IA', 'Vercel'],
                 isVoice: true
             },
-            // --------------------------------------------------------------
-            // NOVO - LENIOR VOZ (ASSISTENTE DE VOZ)
-            // --------------------------------------------------------------
             {
                 title: '🔊 Lenior Voz — Assistente de Voz da Samuel Tech IA',
                 description: '⭐ PROJETO DESTAQUE! Lenior Voz da Samuel Tech IA: assistente de voz inteligente que conversa por voz com o usuário. O navegador reconhece a fala e lê a resposta do Lenior em voz alta. Interface limpa com modo de conversa, ativação do microfone apenas após ação do usuário, conexão HTTPS e identidade visual da Samuel Tech IA.',
@@ -696,9 +703,6 @@
                 tech: ['Assistente de Voz', 'Web Speech API', 'Reconhecimento de Fala', 'IA', 'Chat', 'Vercel'],
                 isVoice: true
             },
-            // --------------------------------------------------------------
-            // SAMUEL SEARCH (MELHOR PROJETO / NAVEGADOR PRÓPRIO - WEB + PC + APP)
-            // --------------------------------------------------------------
             {
                 title: '🔍 Samuel Search — Navegador Próprio da Samuel Tech IA (Web + PC + App)',
                 description: '⭐ MELHOR PROJETO! Navegador/buscador próprio da Samuel Tech IA. Um dos melhores projetos desenvolvidos: buscador web moderno e funcional com interface limpa, resultados em tempo real e integração com APIs de busca. Está disponível na web, instalado no meu PC e agora também como aplicativo no meu celular — a mesma experiência de navegação própria, rápida e inteligente em todas as plataformas. A identidade da Samuel Tech IA em forma de buscador.',
@@ -726,6 +730,33 @@
 
         // ===== ARRAY DE PROJETOS (COMPLETO) =====
         const projects = [
+            // --------------------------------------------------------------
+            // NOVOS PROJETOS - BUSCADORES (AMANDA, FELIPE E BRUNO)
+            // --------------------------------------------------------------
+            {
+                title: '🎀 Amanda Search — Navegador Próprio (Web)',
+                description: '⭐ NOVO PROJETO! Buscador web completo com visual roxo/rosa neon, focado em uma experiência de navegação moderna e integrada. Possui busca em tempo real, previsão do tempo, atalhos rápidos e integração com a API Tavily. Desenvolvido com HTML5, CSS3, JavaScript e Node.js (Express).',
+                icon: 'fa-magnifying-glass',
+                link: 'https://amanda-search.onrender.com',
+                tech: ['Buscador Web', 'HTML5', 'CSS3', 'JavaScript', 'Node.js', 'Express', 'Tavily API', 'Render'],
+                isWebSearch: true
+            },
+            {
+                title: '🏎️ Felipe Search — Navegador Próprio (Web)',
+                description: '⭐ NOVO PROJETO! Navegador/buscador com visual azul escuro e tema de carros esportivos. Interface limpa, sistema de busca robusto e integração com APIs de pesquisa. Totalmente responsivo e hospedado na Render.',
+                icon: 'fa-magnifying-glass',
+                link: 'https://felipe-search.onrender.com/',
+                tech: ['Buscador Web', 'HTML5', 'CSS3', 'JavaScript', 'Node.js', 'Express', 'Tavily API', 'Render'],
+                isWebSearch: true
+            },
+            {
+                title: '🎮 Bruno Search — Navegador Próprio (Web)',
+                description: '⭐ NOVO PROJETO! Buscador web com tema gamer verde neon/escuro. Focado em uma experiência rápida e estilizada, com atalhos para jogos, integração de pesquisa em tempo real e design exclusivo. Desenvolvido com HTML5, CSS3, JavaScript e Node.js (Express).',
+                icon: 'fa-magnifying-glass',
+                link: 'https://bruno-search.onrender.com/',
+                tech: ['Buscador Web', 'HTML5', 'CSS3', 'JavaScript', 'Node.js', 'Express', 'Tavily API', 'Render'],
+                isWebSearch: true
+            },
             // --------------------------------------------------------------
             // 0 - SERVIX (NOVO DESTAQUE PRINCIPAL)
             // --------------------------------------------------------------
@@ -1136,7 +1167,7 @@
                 if (project.isCompany) {
                     badgesHtml += `<div class="company-badge"><i class="fas fa-building"></i> Minha Empresa</div>`;
                 }
-                if (project.isNew && !project.isAI && !project.isFullStack && !project.highlight && !project.isFinance && !project.isSupervisor && !project.isVoice && !project.isMobile) {
+                if (project.isNew && !project.isAI && !project.isFullStack && !project.highlight && !project.isFinance && !project.isSupervisor && !project.isVoice && !project.isMobile && !project.isWebSearch) {
                     badgesHtml += `<div class="new-badge"><i class="fas fa-star"></i> NOVO</div>`;
                 }
                 if (project.isFullStack) {
@@ -1165,6 +1196,9 @@
                 }
                 if (project.isExcel) {
                     badgesHtml += `<div class="excel-badge"><i class="fas fa-file-excel"></i> EXCEL</div>`;
+                }
+                if (project.isWebSearch) {
+                    badgesHtml += `<div class="websearch-badge"><i class="fas fa-magnifying-glass"></i> BUSCADOR WEB</div>`;
                 }
 
                 card.innerHTML = `
